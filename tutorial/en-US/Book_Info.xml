@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE bookinfo PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "BizQLTutorial.ent">
+%BOOK_ENTITIES;
+]>
+<bookinfo id="book-BizQLTutorial-BizQLTutorial">
+	<title>Querying XBRL reports submitted to the SEC</title>
+	<subtitle>An introduction to the XBRL connector for JSONiq</subtitle>
+	<productname>xbrl.io</productname>
+	<productnumber>1.0</productnumber>
+	<edition>1</edition>
+	<pubsnumber>0</pubsnumber>
+	<abstract>
+		<para>
+		  <code>us-gaap:StockholdersEquityAbstract</code> (and many more).
+		</para>
+	</abstract>
+  <corpauthor>
+		<inlinemediaobject>
+			<imageobject>
+				<imagedata fileref="images/28.png" format="PNG" contentwidth="111"/>
+			</imageobject>
+		</inlinemediaobject>
+	</corpauthor>
+	<xi:include href="Author_Group.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+</bookinfo>
+

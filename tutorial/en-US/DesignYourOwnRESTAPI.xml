@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "BizQLTutorial.ent">
+%BOOK_ENTITIES;
+]>
+<chapter id="chap-BizQLTutorial-DesignYourOwnRESTAPI">
+  <title>Design Your Own REST API</title>
+  <para>If the above REST API does not cover your needs, you can design your own REST API.</para>
+  <section>
+    <title>Getting the parameters from the query string</title>
+    <para>We now explain how to do a simple API for just retrieve a company with its ticker.</para>
+    <para>The first thing you need to know is that, whenever you write a public query, its results becomes available through a REST call.</para>
+    <para><uri>http://project-name.xbrl.io/my-query.jq</uri></para>
+
+    <para>For example, you can call the query returning all entities with the following URI:</para>
+    <para><uri>http://project-name.xbrl.io/companies/all.jq</uri></para>
+
+    <para>For more elaborate queries though, the following endpoint is better suited:</para>
+    <para><uri>http://project-name.xbrl.io/v1/_queries/public/companies/all.jq</uri></para>
+
+    <para>However, it is more strict, meaning that it will complain if the query has side effects and if the method is GET -- you have to use POST for side-effecting queries.</para>
+    <para>Finally, this more elaborate endpoint is stricter about types, meaning, you need to use a function to declare the type of what the query returns.</para>
+    <para>For the sake of simplicity, we use the simpler endpoint in ths rest of this chapter.</para>
+  </section>
+
+  <section>
+    <title>Useful functions</title>
+    <para>You will need to read parameters from the query string.
+      There is a function named parameter-values, which lives in the <code>http://www.28msec.com/modules/http-request</code> namespace.
+      It takes a parameter name, and returns the sequence of all its values (it may have several if it appears several times in the request URL).</para>
+    <example>
+      <title>Read a parameter's value(s) from the query string</title>
+      <programlisting>import module namespace companies =
+    "http://xbrl.io/modules/bizql/profiles/sec/companies";
+import module namespace request =
+    "http://www.28msec.com/modules/http/request";
+
+let $tickers := request:parameter-values("t")
+return companies:companies-for-tickers($tickers)</programlisting>
+    </example>
+    <para>Here is a possible way to invoke this query via the REST API:</para>
+    <para>GET <uri>http://project-name.xbrl.io/rest-api/query-string-parameter.jq?t=wmt&amp;t=GOOG</uri></para>
+    <para>There are a few more useful functions. For example, <code>request:method-get()</code>, <code>method-post()</code>, etc, return a boolean and allow
+you to know which method the consumer used.</para>
+    <para>Until now, we used the request module. Likewise, there is a response module <code>http://www.28msec.com/modules/http-response</code>,
+ with which you can tune the output (HTTP code, MIME type, etc).</para>
+    <example>
+      <title>Read a parameter's value(s) from the query string</title>
+      <programlisting>import module namespace companies =
+    "http://xbrl.io/modules/bizql/profiles/sec/companies";
+import module namespace request =
+    "http://www.28msec.com/modules/http-request";
+import module namespace response =
+    "http://www.28msec.com/modules/http-response";
+
+let $tickers := request:param-values("t")
+return switch(true)
+        case request:method-get() and exists($tickers)
+        return {
+          response:content-type("application/json");
+          companies:companies-for-tickers($tickers)
+        }
+        case request:method-get() and empty($tickers)
+        return {
+          response:status-code(404);
+          ()
+        }
+        default return {
+          response:content-type("text/plain");
+          "Method not supported."
+        }
+</programlisting>
+    </example>
+    <para>The above query reacts on the method and on whether companies are found to demonstrate a few of the available features:</para>
+    <itemizedlist>
+      <listitem>
+        <para>If the method is GET and facts are found, it returns them as JSON.</para>      
+        <para>GET <uri>http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&amp;t=GOOG</uri></para>
+      </listitem>
+      <listitem>
+        <para>If the method is GET and no facts are found, it returns a 404 NOT FOUND.</para>      
+        <para>GET <uri>http://project-name.xbrl.io/rest/more-methods.jq?t=dummy</uri></para>
+      </listitem>
+      <listitem>
+        <para>If the method is different, it returns a message in plain text.</para>      
+        <para>DELETE <uri>http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&amp;t=GOOG</uri></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+  <section>
+    <title>That's it for now!</title>
+    <para>With these building blocks, and together with the 28.io platform and modules documentation, you are all set! Do not hesitate to ask questions
+on our Zendesk support platform. We'll be very happy to assist you.</para>
+  </section>
+</chapter>

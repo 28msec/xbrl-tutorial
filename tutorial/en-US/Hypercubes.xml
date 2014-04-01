@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "BizQLTutorial.ent">
+%BOOK_ENTITIES;
+]>
+<chapter id="chap-BizQLTutorial-Hypercubes">
+  <title>Hypercube Querying</title>
+  <para>In the former section, we showed how to get the fact table associated with an SEC network. You may have seen at several place occurrences of the
+word "Hypercube". The facts in an SEC network are actually organized in a hypercubic structure. We now go more into detais on this, and eventually show how you
+can build your own hypercubes and query for fact tables, outside of any SEC network.</para>
+
+
+  <section>
+    <title>Hypercubes</title>
+    <para>Concepts, entities, periods, units, as well as further dimensions are called <emphasis
+      role="bold">aspects</emphasis>. It is possible to organize facts along <emphasis role="bold"
+        >hypercubes</emphasis>, the dimensions of which are these aspects. Usually, there will be
+      either zero or one fact for each possible tuple of aspects. If there is more, it often
+      indicates an inconsistency in the submission.</para>
+    <para>For example, if we stick to the USD unit, you can imagine a cube whose width represents
+      concepts (Assets, Revenues), the height of which represents entities (Amex, Disney) and
+      the depth of which represents periods (year 2012, year 2013, year 2014). This hypercube
+      potentially contains 2 x 2 x 3 = 12 facts.</para>
+    <para>Note: From a practical perspective, it is disputed whether units are considered aspects,
+      or whether they "stick" to the value.</para>
+  </section>
+  <section>
+    <title>Building your own hypercube</title>
+    <para>The simplest hypercube you can imagine is made of four "standard" aspects: concept, entity, period and unit. It does not restrict the
+      value of any of these aspects. It is called dimensionless, because in the XBRL universe, the four basic aspects are not considered XBRL dimensions.</para>
+    <example>
+      <title>The dimensionless hypercube</title>
+    <programlisting>import module namespace hypercubes
+    = "http://xbrl.io/modules/bizql/hypercubes";
+
+hypercubes:dimensionless-hypercube()
+</programlisting>
+    </example>
+    <para>The result of this query shows you the object representation of a hypercube.</para>
+    <example>
+      <title>The object format of hypercubes</title>
+      <programlisting>{
+  "Name" : "xbrl:DimensionlessHypercube", 
+  "Label" : "Dimensionless Hypercube", 
+  "Aspects" : {
+    "xbrl:Concept" : {
+      "Name" : "xbrl:Concept", 
+      "Label" : "Implicit XBRL Concept Dimension"
+    }, 
+    "xbrl:Period" : {
+      "Name" : "xbrl:Period", 
+      "Label" : "Implicit XBRL Period Dimension"
+    }, 
+    "xbrl:Entity" : {
+      "Name" : "xbrl:Entity", 
+      "Label" : "Implicit XBRL Entity Dimension"
+    }, 
+    "xbrl:Unit" : {
+      "Name" : "xbrl:Unit", 
+      "Label" : "Implicit XBRL Unit Dimension", 
+      "Default" : "xbrl:NonNumeric"
+    }
+  }
+}</programlisting>
+    </example>
+    <para>There is a very high number of facts in this hypercube: all those without extra dimensions.
+Hundreds of thousands of them. Very often, when you query for facts, you are asking
+      for specifing archives or for specific concepts. The function sec:facts-for-archives-and-concepts allows you to do so.</para>
+    <para>Let's count all those facts that are in a given archive (here 1423).</para>
+    <example>
+      <title>Retrieving the facts in the dimensionless hypercube for some filings</title>
+      <programlisting>import module namespace hypercubes = "http://xbrl.io/modules/bizql/hypercubes";
+import module namespace sec =
+    "http://xbrl.io/modules/bizql/profiles/sec/core";
+import module namespace fiscal =
+    "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
+
+let $hypercube := hypercubes:dimensionless-hypercube()
+let $filing :=
+    fiscal:filings-for-entities-and-fiscal-periods-and-years(
+      (320193, 1288776),
+      "FY",
+      (2011, 2012)
+    )
+return count(sec:facts-for-archives-and-concepts(
+    $filing,
+     (),
+     { Hypercube: $hypercube }
+))</programlisting>
+    </example>
+    <para>Instead of looking at a single archive, you can look across archives, for concepts like <code>us-gaap:Assets</code> and <code>us-gaap:Equity</code>.
+ There are over 70k such facts.</para>
+    <programlisting>import module namespace hypercubes =
+    "http://xbrl.io/modules/bizql/hypercubes";
+import module namespace sec =
+    "http://xbrl.io/modules/bizql/profiles/sec/core";
+
+let $hypercube := hypercubes:dimensionless-hypercube()
+return count(sec:facts-for-archives-and-concepts((), ("us-gaap:Assets", "us-gaap:Equity"), { Hypercube: $hypercube }))
+</programlisting>
+    <para>You can also build your own hypercube using the above object format. You can leave out the labels. To restrict a dimension, just add
+      a domain field with an object containing pairs looking like { "company id" : { Name: "company id" } }. This is a bit cumbersome for now, but very
+      soon there will be functions that do this for you. Below we show you how to make a restriction on DOW30 companies with just a small modification
+      of the dimensionless hypercube.</para>
+    <programlisting>import module namespace sec = "http://xbrl.io/modules/bizql/profiles/sec/core";
+import module namespace companies = "http://xbrl.io/modules/bizql/profiles/sec/companies";
+
+let $hypercube := {
+  "Name" : "xbrl:DimensionlessHypercube", 
+  "Aspects" : {
+    "xbrl:Concept" : {
+      "Name" : "xbrl:Concept"
+    }, 
+    "xbrl:Period" : {
+      "Name" : "xbrl:Period"
+    }, 
+    "xbrl:Entity" : {
+      "Name" : "xbrl:Entity",
+      "Domains" : {| for $company in companies:companies-for-tags("DOW30")._id
+                     return { $company : { Name: $company } }
+      |}
+    }, 
+    "xbrl:Unit" : {
+      "Name" : "xbrl:Unit", 
+      "Default" : "xbrl:NonNumeric"
+    }
+  }
+}
+return count(sec:facts-for-archives-and-concepts((), ("us-gaap:Assets", "us-gaap:Equity"), { Hypercube: $hypercube }))
+</programlisting>
+    <para>If you begin to query across archives, and attempt to filter on periods, you will very soon notice that it is hard, because fiscal years differ
+from company to company. Technically, fiscal years and periods (FY, Q1, Q2, Q3) are not hypercube dimensions, but you can still filter for them using this
+Profiles.SEC.Fiscal part that annotates objects. For example, here is how to get all assets and equities (no extra dimensions) for FY 2012 (6847 of them)</para>
+    <programlisting>import module namespace sec = "http://xbrl.io/modules/bizql/profiles/sec/core";
+
+let $hypercube := {
+  "Name" : "xbrl:DimensionlessHypercube", 
+  "Aspects" : {
+    "xbrl:Concept" : {
+      "Name" : "xbrl:Concept"
+    }, 
+    "xbrl:Period" : {
+      "Name" : "xbrl:Period"
+    }, 
+    "xbrl:Entity" : {
+      "Name" : "xbrl:Entity"
+    }, 
+    "xbrl:Unit" : {
+      "Name" : "xbrl:Unit", 
+      "Default" : "xbrl:NonNumeric"
+    }
+  }
+}
+return count(sec:facts-for-archives-and-concepts(
+    (),
+    ("us-gaap:Assets", "us-gaap:Equity"),
+    {
+        Hypercube: $hypercube,
+        Filter: {
+            Profiles: {
+                SEC: {
+                    Fiscal: {
+                        Period: "FY",
+                        Year: 2012
+                    }
+                }
+            }
+        }
+    }
+))
+</programlisting>
+    <para>What was done for the basic four dimensions (like xbrl:Equity) applies to extra dimensions as well. Here you can ask for facts reported
+      against the <code>us-gaap:DividendsCommonStock</code> concept, with a dimension <code>us-gaap:StatementEquityComponentsAxis</code> that has a value
+      of <code>us-gaap:CommonStockMember</code>. There are 513 of them.</para>
+    <programlisting>import module namespace sec = "http://xbrl.io/modules/bizql/profiles/sec/core";
+
+let $hypercube := {
+  "Name" : "xbrl:DimensionlessHypercube", 
+  "Aspects" : {
+    "xbrl:Concept" : {
+      "Name" : "xbrl:Concept"
+    }, 
+    "xbrl:Period" : {
+      "Name" : "xbrl:Period"
+    }, 
+    "xbrl:Entity" : {
+      "Name" : "xbrl:Entity"
+    }, 
+    "xbrl:Unit" : {
+      "Name" : "xbrl:Unit", 
+      "Default" : "xbrl:NonNumeric"
+    },
+    "us-gaap:StatementEquityComponentsAxis" : {
+      "Name" : "us-gaap:StatementEquityComponentsAxis",
+      "Domains" : { "us-gaap:CommonStockMember" : { Name: "us-gaap:CommonStockMember" } }
+    }
+  }
+}
+return count(sec:facts-for-archives-and-concepts((), ("us-gaap:DividendsCommonStock"), { Hypercube: $hypercube }))
+</programlisting>
+    <para>Finally, you can combine extra dimensions, restricting several dimensions, filtering on fiscal years, etc. Let's ask for the companies that submitted,
+      for FY 2011, a fact against the <code>us-gaap:DividendsCommonStock</code> concept, with a dimension <code>us-gaap:StatementEquityComponentsAxis</code> that has a value
+      of <code>us-gaap:CommonStockMember</code>. There's only one and it's Walt Disney. And it takes less than one second to ask for this.</para>
+    <programlisting>import module namespace facts = "http://xbrl.io/modules/bizql/facts";
+import module namespace sec = "http://xbrl.io/modules/bizql/profiles/sec/core";
+import module namespace companies = "http://xbrl.io/modules/bizql/profiles/sec/companies";
+
+let $hypercube := {
+  "Name" : "xbrl:DimensionlessHypercube", 
+  "Aspects" : {
+    "xbrl:Concept" : {
+      "Name" : "xbrl:Concept"
+    }, 
+    "xbrl:Period" : {
+      "Name" : "xbrl:Period"
+    }, 
+    "xbrl:Entity" : {
+      "Name" : "xbrl:Entity",
+      "Domains" : {| for $company in companies:companies-for-tags("DOW30")._id
+                     return { $company : { Name: $company } }
+      |}
+    }, 
+    "xbrl:Unit" : {
+      "Name" : "xbrl:Unit", 
+      "Default" : "xbrl:NonNumeric"
+    },
+    "us-gaap:StatementEquityComponentsAxis" : {
+      "Name" : "us-gaap:StatementEquityComponentsAxis",
+      "Domains" : { "us-gaap:CommonStockMember" : { Name: "us-gaap:CommonStockMember" } }
+    }
+  }
+}
+let $fact := sec:facts-for-archives-and-concepts((), ("us-gaap:DividendsCommonStock"), {
+        Hypercube: $hypercube,
+        Filter: {
+            Profiles: {
+                SEC: {
+                    Fiscal: {
+                        Period: "FY",
+                        Year: 2012
+                    }
+                }
+            }
+        } })
+return companies:companies(facts:entity-for-fact($fact)).Profiles.SEC.CompanyName
+</programlisting>
+  <para>The SEC modules provide many functions that just wrap these queries in nicer code, and there are more to come. Browse the documentation to find them.</para>
+  </section>
+    <section>
+    <title>The SECXBRL.info REST API for user-defined hypercubes</title>
+    <para>We also provide a REST API that allows you to build your hypercubes and ask for fact tables and, say, import them into an Excel
+      spreadsheet. The API is documented <ulink url="http://www.secxbrl.info/api">here</ulink></para>
+    <section>
+      <title>Build your hypercube with the REST API</title>
+      <para>You can build your own hypercube by using dimension names as fields in the query string, along with one or several values. For example, "xbrl:Concept=us-gaap:Goodwill" will filter for concepts named us-gaap:Goodwill.</para>
+      <para>For the entity dimension, for convenience, you can use the same parameters as in the companies API: cik, ticker, tag, etc -- instead of "xbrl:Entity".</para>
+      <para>For the concept dimension, use the more convenient "concept" parameter name. For example: <uri>http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:Goodwill&amp;cik=4962</uri></para>
+      <para>For requiring a dimension, without restriction, use a value of "ALL". For example: <uri>http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:DividendsCommonStock&amp;tag=DOW30&amp;us-gaap:StatementEquityComponentsAxis=ALL</uri></para>
+      <para>You can specify a default dimension value using "dimensionname:default", like so: <uri>http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:DividendsCommonStock&amp;tag=DOW30&amp;us-gaap:StatementEquityComponentsAxis=ALL&amp;us-gaap:StatementEquityComponentsAxis:default=sec:myDefault</uri></para>
+      <para>The last query in the former section corresponds to <uri>http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:DividendsCommonStock&amp;tag=DOW30&amp;us-gaap:StatementEquityComponentsAxis=us-gaap:CommonStockMember&amp;fiscalYear=2012&amp;fiscalPeriod=FY</uri></para>
+    </section>
+  </section>
+</chapter>

@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "BizQLTutorial.ent">
+%BOOK_ENTITIES;
+]>
+<chapter id="chap-BizQLTutorial-Filings">
+  <title>Filings</title>
+  <para>In the former chapter, we explained how to deal with companies. We now go into the details of the filings that these companies submitted to the SEC.</para>
+  <para>Physically, companies submit XBRL instances, possibly together with an extension taxonomy.</para>
+  <para>The XBRL connector abstracts from this by grouping the instance and the DTS (us-gaap taxonomy + extension) into what is called an archive.</para>
+  <para>The XBRL connector provides two modules for working with filings. One of them is generic, the other one
+    offers functionality that is specific to the SEC. In this
+    case:<programlisting>http://xbrl.io/modules/bizql/archives
+http://xbrl.io/modules/bizql/profiles/sec/filings</programlisting></para>
+
+
+  <section>
+    <title>Looking Up Filings</title>
+    <para>Let us begin with a very simple query that just lists the SEC filings. It is generic, so
+      it uses the archives module:</para>
+    <example>
+      <title>All filings</title>
+      <programlisting>import module namespace archives =
+    "http://xbrl.io/modules/bizql/archives";
+archives:archives()</programlisting>
+    </example>
+    <para>In the XBRL connector, a filing is represented by a JSON object, like so (in this case, Coca Cola's report for Q1 2013):</para>
+    <example>
+      <title>A filing in JSON format</title>
+      <programlisting>{
+  "_id" : "0000021344-13-000017", 
+  "Entity" : "http://www.sec.gov/CIK 0000021344", 
+  "InstanceURL" : "http://www.sec.gov/Archives/edgar/data/21344/
+000002134413000017/ko-20130329.xml", 
+  "Profiles" : {
+    "SEC" : {
+      "Name" : "SEC", 
+      "FormType" : "10-Q", 
+      "FilingDate" : "04/25/2013", 
+      "FileNumber" : "001-02217", 
+      "AcceptanceDatetime" : "20130425115725", 
+      "Period" : "20130329", 
+      "AssistantDirector" : "9", 
+      "SECFilingPage" : "http://www.sec.gov/Archives/edgar/data/
+21344/000002134413000017/0000021344-13-000017-index.htm", 
+      "DocumentPeriodEndDate" : "2013-03-29", 
+      "Fiscal" : {
+        "DocumentFiscalPeriodFocus" : "Q1", 
+        "DocumentFiscalYearFocus" : 2013
+      }, 
+      "Generator" : "WebFilings"
+    }
+  }, 
+  "Namespaces" : {
+    "link" : "http://www.xbrl.org/2003/linkbase", 
+    "ko" : "http://www.thecoca-colacompany.com/20130329", 
+    "xbrli" : "http://www.xbrl.org/2003/instance", 
+    "xs" : "http://www.w3.org/2001/XMLSchema", 
+    "us-gaap" : "http://fasb.org/us-gaap/2012-01-31", 
+    "nonnum" : "http://www.xbrl.org/dtr/type/non-numeric", 
+    "xbrldt" : "http://xbrl.org/2005/xbrldt", 
+    "num" : "http://www.xbrl.org/dtr/type/numeric", 
+    "dei" : "http://xbrl.sec.gov/dei/2012-01-31", 
+    "iso4217" : "http://www.xbrl.org/2003/iso4217"
+  }, 
+  "Statistics" : {
+    "NumHypercubes" : 25, 
+    "NumNetworks" : 86, 
+    "NumDistinctExplicitDimensions" : 21, 
+    "NumDistinctDomains" : 22, 
+    "NumDistinctMembers" : 93, 
+    "NumDistinctConcretePrimaryItemsInHypercubes" : 244, 
+    "NumDistinctAbstractPrimaryItemsInHypercubes" : 58, 
+    "NumDistinctConcretePrimaryItemsNotInHypercubes" : 60, 
+    "NumDistinctAbstractPrimaryItemsNotInHypercubes" : 160, 
+    "Profiles" : {
+      "SEC" : {
+        "Name" : "SEC", 
+        "NumExtensionConcepts" : 73, 
+        "NumExtensionAbstracts" : 80, 
+        "NumDistinctReportElementNamesEndingWithTable" : 17, 
+        "NumDistinctReportElementNamesEndingWithAxis" : 21, 
+        "NumDistinctReportElementNamesEndingWithDomain" : 22, 
+        "NumDistinctReportElementNamesEndingWithMember" : 71, 
+        "NumDistinctReportElementNamesEndingWithLineItems" : 19, 
+        "NumDistinctReportElementNamesEndingWithAbstract" : 53, 
+        "NumDistinctReportElementNamesEndingWithAnythingElse" : 
+319, 
+        "NumExtensionFacts" : 217
+      }
+    }, 
+    "NumFacts" : 990, 
+    "NumFootnotes" : 1, 
+    "NumComponents" : 53
+  }
+}</programlisting>
+    </example>
+    <para>Some of the information in here is not specific to the SEC: the reporting entity, the URL to the physical XBRL instance, the namespaces to which prefixes (used
+in facts) correspond, and some statistics (number of facts, of hypercubes, etc).</para>
+    <para>Just like companies, filing objects also have SEC-specific information that is embedded in a Profiles.SEC subobject. It contains, for example,
+the SEC form type, the filing date, the reported fiscal period, etc. There are also SEC-specific statistics.</para>
+    <para>You can ask the filings submitted by a given company with the <code>filings:filings-for-companies</code> function:</para>
+    <example>
+      <title>American Express's filings</title>
+      <programlisting>import module namespace companies = "http://xbrl.io/modules/bizql/profiles/sec/companies";
+import module namespace filings = "http://xbrl.io/modules/bizql/profiles/sec/filings";
+
+let $amex := companies:companies(4962)
+return filings:filings-for-companies($amex)</programlisting>
+    </example>
+    <para>As always, any sequence is accepted as input:</para>
+    <example>
+    <title>All filings by American Express and Walt Disney</title>
+      <programlisting>import module namespace companies =
+    "http://xbrl.io/modules/bizql/profiles/sec/companies";
+import module namespace filings =
+    "http://xbrl.io/modules/bizql/profiles/sec/filings";
+
+let $amex := companies:companies(4962)
+let $disney := companies:companies(1001039)
+return filings:filings-for-companies( ($amex, $disney) )</programlisting>
+    </example>
+    <para>For convenience, you can always pass a CIK instead of the company object, which greatly simplifies the query. This applies to all functions
+      taking a sequence of companies as a parameter.</para>
+    <example>
+      <title>Filings by Amex and Disney in a single call</title>
+      <programlisting>import module namespace filings = "http://xbrl.io/modules/bizql/profiles/sec/filings";
+
+filings:filings-for-companies( (4962, 1001039) )</programlisting>
+    </example>
+    <para>If you are looking for a specific fiscal period or year, the fiscal module can help.</para>
+    <example>
+      <title>Filings by Amex and Disney, FY 2011 and FY 2012</title>
+      <programlisting>import module namespace fiscal = "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
+
+fiscal:filings-for-entities-and-fiscal-periods-and-years( (4962, 1001039), "FY", (2011, 2012) )</programlisting>
+    </example>
+  </section>
+
+
+  <section>
+    <title>Diving into a filing</title>
+    <para>Once you have one or more filing objects, you can query them. There are two main ways to do it:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Using JSONiq navigation (with dots and square brackets).</para>
+        <para>Using functions.</para>
+      </listitem>
+    </itemizedlist>
+    <para>For example, if you would like to use the statistics to count the facts in FY 2011 and 2012 filings by Apple and Google:</para>
+    <para>
+      <programlisting>import module namespace fiscal = "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
+
+let $filings := fiscal:filings-for-entities-and-fiscal-periods-and-years( (4962, 1001039), "FY", (2011, 2012) )
+return sum($filings.Statistics.NumFacts)
+</programlisting>
+    </para>
+    <para>Some of the fields are available, for convenience, with functions (in this case, the archive ID as well as the fiscal period and year):</para>
+    <example>
+      <title>Discover Amex's filings by fiscal year and period</title>
+      <programlisting>import module namespace archives =
+    "http://xbrl.io/modules/bizql/archives";
+
+import module namespace companies =
+    "http://xbrl.io/modules/bizql/profiles/sec/companies";
+import module namespace filings =
+    "http://xbrl.io/modules/bizql/profiles/sec/filings";
+
+import module namespace fiscal =
+    "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
+
+let $amex := companies:companies(4962)
+for $filing in filings:filings-for-companies($amex)
+return {
+  AID: archives:aid($filing),
+  Period: fiscal:fiscal-period($filing),
+  Year: fiscal:fiscal-year($filing)
+}
+</programlisting>
+    </example>
+  </section>
+
+
+  <section>
+    <title>The SECXBRL.info REST API for filings</title>
+    <para>We also provide a REST API that allows you to look up filings and, say, import them into an Excel
+      spreadsheet. The API is documented <ulink url="http://www.secxbrl.info/api">here</ulink></para>
+    <section>
+      <title>Retrieve a filing</title>
+      <para>You can retrieve a filing given the CIKs of (one or several) companies
+        with the <code>cik</code> parameter like so:</para>
+      <para><uri>http://secxbrl.xbrl.io/api/filings.jq?cik=320193&amp;cik=1288776</uri></para>
+      <para>If you do not know the CIK of the company you are looking for, you can also use the <code>tag</code> or <code>ticker</code> parameter
+like in the entities API. Or you can use the entities REST API, explained in the former chapter.</para>
+      <para>You can retrieve specify a fiscal period or year
+        with the <code>fiscalPeriod</code> and <code>fiscalYear</code> parameters like so:</para>
+      <para><uri>http://secxbrl.xbrl.io/api/filings.jq?cik=320193&amp;fiscalYear=2012&amp;fiscalPeriod=Q1&amp;fiscalPeriod=Q2</uri></para>
+      <para>You can use fiscalYear=LATEST to retrieve the latest year.</para>
+    </section>
+    <section>
+      <title>Select a format</title>
+      <para>You can also choose the format in which you would like to retrieve filing information, like in the entities API.</para>
+      <para>For example, for Excel:</para>
+      <para><uri>http://secxbrl.xbrl.io/api/filings.jq?cik=320193&amp;cik=1288776&amp;format=csv</uri></para>
+    </section>
+  </section>
+</chapter>
