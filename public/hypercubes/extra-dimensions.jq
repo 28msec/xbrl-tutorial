@@ -22,4 +22,4 @@ let $hypercube := {
     }
   }
 }
-return count(sec:facts-for-archives-and-concepts((), ("us-gaap:DividendsCommonStock"), { Hypercube: $hypercube }))
+return count(sec:facts-for-archives-and-concepts($sec:ALL_OF_THEM, ("us-gaap:DividendsCommonStock"), { Hypercube: $hypercube }))
