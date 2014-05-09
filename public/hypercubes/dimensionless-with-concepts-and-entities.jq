@@ -9,5 +9,5 @@ import module namespace companies =
 let $hypercube := hypercubes:dimensionless-hypercube({
   Concepts: [ "us-gaap:Assets", "us-gaap:Equity" ],
   Entities: [ companies:companies-for-tags("DOW30")._id ]
-}
+})
 return count(sec:facts-for-hypercube($hypercube))

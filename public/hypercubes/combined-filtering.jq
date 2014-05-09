@@ -9,14 +9,13 @@ import module namespace companies =
     "http://xbrl.io/modules/bizql/profiles/sec/companies";
 
 let $hypercube := hypercubes:user-defined-hypercube({
-    "xbrl:Entity" : {
-      Domain: [  companies:companies-for-tags("DOW30")._id ]
-    }, 
-    "us-gaap:StatementEquityComponentsAxis" : {
-      Domain: [ "us-gaap:CommonStockMember" ]
-    }
+  "xbrl:Entity" : {
+    Domain: [  companies:companies-for-tags("DOW30")._id ]
+  }, 
+  "us-gaap:StatementEquityComponentsAxis" : {
+    Domain: [ "us-gaap:CommonStockMember" ]
   }
-}
+})
 let $fact := sec:facts-for-hypercube(
   $hypercube,
   {
@@ -32,5 +31,5 @@ let $fact := sec:facts-for-hypercube(
     }
   }
 )
-return companies:companies(facts:entity-for-fact($fact))
+return companies:companies($fact ! facts:entity-for-fact($$))
     .Profiles.SEC.CompanyName

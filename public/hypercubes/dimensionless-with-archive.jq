@@ -1,6 +1,9 @@
 import module namespace hypercubes =
     "http://xbrl.io/modules/bizql/hypercubes";
 
+import module namespace archives =
+    "http://xbrl.io/modules/bizql/archives";
+
 import module namespace sec =
     "http://xbrl.io/modules/bizql/profiles/sec/core";
 import module namespace fiscal =
@@ -17,7 +20,7 @@ return count(sec:facts-for-hypercube(
   $hypercube,
   {
     Filter: {
-      Archive: $filing
+      Archive: archives:aid($filing)
     }
   }
 ))

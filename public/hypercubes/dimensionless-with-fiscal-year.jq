@@ -6,7 +6,7 @@ import module namespace sec =
 
 let $hypercube := hypercubes:dimensionless-hypercube({
   Concepts: [ "us-gaap:Assets", "us-gaap:Equity" ]
-}
+})
 return count(sec:facts-for-hypercube(
     $hypercube,
     {

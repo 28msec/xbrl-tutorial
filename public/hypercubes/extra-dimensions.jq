@@ -11,5 +11,5 @@ let $hypercube := hypercubes:user-defined-hypercube({
   "us-gaap:StatementEquityComponentsAxis" : {
     Domain: [ "us-gaap:CommonStockMember" ]
   }
-}
+})
 return count(sec:facts-for-hypercube($hypercube))
