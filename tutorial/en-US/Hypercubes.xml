@@ -5,9 +5,11 @@
 ]>
 <chapter id="chap-BizQLTutorial-Hypercubes">
   <title>Hypercube Querying</title>
-  <para>In the former section, we showed how to get the fact table associated with an SEC network. You may have seen at several place occurrences of the
-word "Hypercube". The facts in an SEC network are actually organized in a hypercubic structure. We now go more into detais on this, and eventually show how you
-can build your own hypercubes and query for fact tables, outside of any SEC network.</para>
+  <para>In the former section, we showed how to get the fact table associated with an SEC network.
+    You may have seen at several place occurrences of the word "Hypercube".
+    The facts in an SEC network are actually organized in a hypercubic structure.
+    We now go more into detais on this, and eventually show how you
+    can build your own hypercubes and query for fact tables, outside of any SEC network.</para>
 
 
   <section>
@@ -26,8 +28,10 @@ can build your own hypercubes and query for fact tables, outside of any SEC netw
   </section>
   <section>
     <title>Building your own hypercube</title>
-    <para>The simplest hypercube you can imagine is made of four "standard" aspects: concept, entity, period and unit. It does not restrict the
-      value of any of these aspects. It is called dimensionless, because in the XBRL universe, the four basic aspects are not considered XBRL dimensions.</para>
+    <para>The simplest hypercube you can imagine is made of four "standard" aspects:
+      concept, entity, period and unit. It does not restrict the
+      value of any of these aspects. It is called dimensionless, because in the XBRL universe,
+      the four basic aspects are not considered XBRL dimensions.</para>
     <example>
       <title>The dimensionless hypercube</title>
     <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -61,9 +65,11 @@ can build your own hypercubes and query for fact tables, outside of any SEC netw
   }
 }</programlisting>
     </example>
-    <para>There is a very high number of facts in this hypercube: all those without extra dimensions.
-Hundreds of thousands of them. Very often, when you query for facts, you are asking
-      for specifing archives or for specific concepts. The function sec:facts-for-archives-and-concepts allows you to do so.</para>
+    <para>The facts in a hypercube can be queried with the function <code>sec:facts-for-hypercube</code>.
+    There is a very high number of facts in this hypercube: all those without extra dimensions.
+    Hundreds of thousands of them. Very often, when you query for facts against this dimensionless
+    hypercube, you are asking for specifing archives. The function sec:facts-for-hypercube allows you to do so with
+    its optional second parameter (the first being the hypercube).</para>
     <para>Let's count all those facts that are in a given archive (here 1423).</para>
     <example>
       <title>Retrieving the facts in the dimensionless hypercube for some filings</title>
@@ -72,36 +78,46 @@ Hundreds of thousands of them. Very often, when you query for facts, you are ask
                                 parse="text"/></programlisting>
     </example>
     <para>Instead of looking at a single archive, you can look across archives, for concepts like <code>us-gaap:Assets</code> and <code>us-gaap:Equity</code>.
- There are over 70k such facts.</para>
+      In order to do so, you need to modify the dimensionless hypercube add filter on these two concepts.
+      There are over 70k such facts.</para>
     <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
                                 href="../../public/hypercubes/dimensionless-with-concepts.jq"
                                 parse="text"/></programlisting>
-    <para>You can also build your own hypercube using the above object format. You can leave out the labels. To restrict a dimension, just add
-      a domain field with an object containing pairs looking like { "company id" : { Name: "company id" } }. This is a bit cumbersome for now, but very
-      soon there will be functions that do this for you. Below we show you how to make a restriction on DOW30 companies with just a small modification
-      of the dimensionless hypercube.</para>
+    <para>You can also build your own hypercube. To restrict a dimension, just add
+      a field (One of <code>Concepts</code>, <code>Entities</code>, <code>Periods</code>, <code>Units</code>) with an array of values.
+      Below we show you how to make a restriction on DOW30 companies with just a small modification
+      of the dimensionless hypercube function call.</para>
     <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
                                 href="../../public/hypercubes/dimensionless-with-concepts-and-entities.jq"
                                 parse="text"/></programlisting>
-    <para>If you begin to query across archives, and attempt to filter on periods, you will very soon notice that it is hard, because fiscal years differ
-from company to company. Technically, fiscal years and periods (FY, Q1, Q2, Q3) are not hypercube dimensions, but you can still filter for them using this
-Profiles.SEC.Fiscal part that annotates objects. For example, here is how to get all assets and equities (no extra dimensions) for FY 2012 (6847 of them)</para>
+    <para>If you begin to query across archives, and attempt to filter on periods, you will very soon notice
+      that it is hard, because fiscal years differ from company to company. Technically, fiscal years and
+      periods (FY, Q1, Q2, Q3) are not hypercube dimensions, but you can still filter for them using this
+      Profiles.SEC.Fiscal part that annotates objects using the second parameter of <code>sec:facts-for-hypercube</code>.
+      For example, here is how to get all assets and equities (no extra dimensions) for FY 2012 (6847 of them)</para>
     <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
                                 href="../../public/hypercubes/dimensionless-with-fiscal-year.jq"
                                 parse="text"/></programlisting>
-    <para>What was done for the basic four dimensions (like xbrl:Equity) applies to extra dimensions as well. Here you can ask for facts reported
-      against the <code>us-gaap:DividendsCommonStock</code> concept, with a dimension <code>us-gaap:StatementEquityComponentsAxis</code> that has a value
+    <para>What was done for the basic four dimensions (like xbrl:Equity) applies to extra dimensions as well. There is
+      a more elaborate version of <code>hypercubes:dimensionless-hypercube</code> called <code>hypercubes:user-defined-hypercube</code>
+      that allows you to add any number of dimensions, as well as restrict on them or add default values.
+      Here you can ask for facts reported against the <code>us-gaap:DividendsCommonStock</code> concept,
+      with a dimension <code>us-gaap:StatementEquityComponentsAxis</code> restricted on a value
       of <code>us-gaap:CommonStockMember</code>. There are 513 of them.</para>
     <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
                                 href="../../public/hypercubes/extra-dimensions.jq"
                                 parse="text"/></programlisting>
-    <para>Finally, you can combine extra dimensions, restricting several dimensions, filtering on fiscal years, etc. Let's ask for the companies that submitted,
-      for FY 2011, a fact against the <code>us-gaap:DividendsCommonStock</code> concept, with a dimension <code>us-gaap:StatementEquityComponentsAxis</code> that has a value
-      of <code>us-gaap:CommonStockMember</code>. There's only one and it's Walt Disney. And it takes less than one second to ask for this.</para>
+    <para>Finally, you can combine extra dimensions, restricting several dimensions, filtering on fiscal years,
+      etc. Let's ask for the companies that submitted,
+      for FY 2011, a fact against the <code>us-gaap:DividendsCommonStock</code> concept,
+      with a dimension <code>us-gaap:StatementEquityComponentsAxis</code> that has a value
+      of <code>us-gaap:CommonStockMember</code>.
+      There's only one and it's Walt Disney. And it takes less than one second to ask for this.</para>
     <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
                                 href="../../public/hypercubes/combined-filtering.jq"
                                 parse="text"/></programlisting>
-    <para>The SEC modules provide many functions that just wrap these queries in nicer code, and there are more to come. Browse the documentation to find them.</para>
+    <para>The SEC modules provide many functions that just wrap these queries in nicer code,
+      and there are more to come. The documentation is there for you to find them.</para>
   </section>
     <section>
     <title>The SECXBRL.info REST API for user-defined hypercubes</title>
