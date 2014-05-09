@@ -6,7 +6,7 @@ import module namespace fiscal = "http://xbrl.io/modules/bizql/profiles/sec/fisc
 let $hypercube := hypercubes:dimensionless-hypercube()
 let $filing := fiscal:filings-for-entities-and-fiscal-periods-and-years( (4962, 1001039), "FY", (2011, 2012) )
 return count(sec:facts-for({
-  Hypercube: $hypercube 
+  Hypercube: $hypercube,
   Filter: {
     Archive: $filing
   }
