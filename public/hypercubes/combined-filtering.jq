@@ -1,8 +1,12 @@
-import module namespace facts = "http://xbrl.io/modules/bizql/facts";
-import module namespace hypercubes = "http://xbrl.io/modules/bizql/hypercubes";
+import module namespace facts =
+    "http://xbrl.io/modules/bizql/facts";
+import module namespace hypercubes =
+    "http://xbrl.io/modules/bizql/hypercubes";
 
-import module namespace sec = "http://xbrl.io/modules/bizql/profiles/sec/core";
-import module namespace companies = "http://xbrl.io/modules/bizql/profiles/sec/companies";
+import module namespace sec =
+    "http://xbrl.io/modules/bizql/profiles/sec/core";
+import module namespace companies =
+    "http://xbrl.io/modules/bizql/profiles/sec/companies";
 
 let $hypercube := hypercubes:user-defined-hypercube({
     "xbrl:Entity" : {
@@ -28,4 +32,5 @@ let $fact := sec:facts-for-hypercube(
     }
   }
 )
-return companies:companies(facts:entity-for-fact($fact)).Profiles.SEC.CompanyName
+return companies:companies(facts:entity-for-fact($fact))
+    .Profiles.SEC.CompanyName
