@@ -1,3 +1,4 @@
-import module namespace hypercubes = "http://xbrl.io/modules/bizql/hypercubes";
+import module namespace hypercubes =
+    "http://xbrl.io/modules/bizql/hypercubes";
 
 hypercubes:dimensionless-hypercube()
