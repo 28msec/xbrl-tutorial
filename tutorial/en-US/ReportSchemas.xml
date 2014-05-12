@@ -44,14 +44,19 @@ return sec-networks:model-structures($schema)
 <code>concept map</code>.</para>
     <example>
       <title>Asking for American Express's assets with the mapped fac:Assets concept</title>
-      <programlisting>import module namespace hypercubes = "http://xbrl.io/modules/bizql/hypercubes";
+      <programlisting>import module namespace hypercubes =
+    "http://xbrl.io/modules/bizql/hypercubes";
 import module namespace sec =
     "http://xbrl.io/modules/bizql/profiles/sec/core";
 import module namespace fiscal =
     "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
 
 let $hypercube := hypercubes:dimensionless-hypercube()
-let $filing := fiscal:filings-for-entities-and-fiscal-periods-and-years( 4962, "FY", 2012 )
+let $filing := fiscal:filings-for-entities-and-fiscal-periods-and-years(
+    4962,
+    "FY",
+    2012
+)
 return sec:facts-for-archives-and-concepts(
     $filing,
     "fac:Assets",
@@ -67,7 +72,8 @@ return sec:facts-for-archives-and-concepts(
       desired schema, and the archive for which you would like the facts.</para>
     <example>
       <title>Asking for Amex' FACs</title>
-      <programlisting>import module namespace sec = "http://xbrl.io/modules/bizql/profiles/sec/core";
+      <programlisting>import module namespace sec =
+    "http://xbrl.io/modules/bizql/profiles/sec/core";
 import module namespace fiscal =
     "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
 
@@ -85,7 +91,8 @@ return sec:facts-for-schema(
     <para>You can also ask for them across several archives.</para>
     <example>
       <title>Asking for the FACs of Amex and Disney</title>
-      <programlisting>import module namespace sec = "http://xbrl.io/modules/bizql/profiles/sec/core";
+      <programlisting>import module namespace sec =
+    "http://xbrl.io/modules/bizql/profiles/sec/core";
 import module namespace fiscal =
     "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
 
@@ -109,7 +116,8 @@ return sec:facts-for-schema(
       <title>Retrieve a fact with a concept map</title>
       <para>You can use a concept map with the facts API using the <code>map</code> parameter, together with the name of the containing report schema, like so:
       </para>
-      <para><uri>http://secxbrl.xbrl.io/api/facts.jq?concept=fac:Assets&amp;tag=DOW30&amp;map=FundamentalAccountingConcepts</uri></para>
+      <para><uri>http://secxbrl.xbrl.io/api/facts.jq?concept=fac:Assets</uri>
+        <uri>&amp;tag=DOW30&amp;map=FundamentalAccountingConcepts</uri></para>
     </section>
   </section>
 </chapter>
