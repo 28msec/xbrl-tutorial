@@ -1,11 +1,21 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
-<!ENTITY % BOOK_ENTITIES SYSTEM "BizQLTutorial.ent">
+<!ENTITY % BOOK_ENTITIES SYSTEM "SECTutorial.ent">
 %BOOK_ENTITIES;
 ]>
 <chapter id="chap-BizQLTutorial-ReportSchemas">
   <title>Report schemas</title>
   <para>For convenience, there are report schemas which provide convenient querying hypercubes, and more.</para>
+  <para>By default, your project contains no report schema. In this tutorial, we provide one that you can download
+    under <code>http://facs.28.io/process-report-schema.jq</code>. JSONiq is powerful enough to do this for you with
+    just one click (to 28.io, the Web is nothing but yet another data source...).</para>
+  <example>
+    <title>Download the report schema with the Fundamental Accounting Concepts.</title>
+    <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
+                                href="../../public/report-schemas/download-facs.jq"
+                                parse="text"/></programlisting>
+  </example>
+  <para>(Yes, JSONiq can do updates and side effects, but, ssssshhhh! don't tell anybody we showed you that).</para>
   <section>
     <title>Fundamental Accounting Concepts</title>
     <para>Querying across multiple filings, even across companies, is not easy. This is because companies might not report their data in the same way.
