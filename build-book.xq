@@ -38,7 +38,7 @@ declare function local:docbook-to-markdown($element as node(), $level as xs:inte
    typeswitch($element)
    case element(title) return string-join((1 to $level) ! "#", "") || $element/text() || "
 "
-   case element(emphasis) return "`" || string-join(for $child in $element/node() return local:docbook-to-markdown($child, $level), "") || "`"
+   case element(emphasis) return "*" || string-join(for $child in $element/node() return local:docbook-to-markdown($child, $level), "") || "*"
    case element(uri) return "[" || $element/text() || "](" || $element/text() || ")"
    case element(section) return for $child in $element/node() return local:docbook-to-markdown($child, $level + 1)
    case element(inlinegraphic) return "![" || $element/@fileref || "](" || $element/@fileref || ")"
