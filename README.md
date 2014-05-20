@@ -1,5 +1,4 @@
-XBRL Tutorial
-=============
+#XBRL Tutorial [![Build Status](https://travis-ci.org/28msec/xbrl-tutorial.svg?branch=master)](https://travis-ci.org/28msec/xbrl-tutorial)
 
 This tutorial is up-to-date against the 3.4 Irvine release, published on May 20th, 2014.
 
