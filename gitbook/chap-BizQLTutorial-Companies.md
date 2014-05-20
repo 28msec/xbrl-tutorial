@@ -1,36 +1,24 @@
 
-	
-#Companies
+	#Companies
+	 Companies submit filings to the SEC via the Edgar system.
 
-	
- Companies submit filings to the SEC via the Edgar system.
+  In the XBRL world, companies correspond to reporting `entities.`
 
-  
-In the XBRL world, companies correspond to reporting 
-`entities.`
-
-  
-The XBRL connector provides two modules for working with companies. One of them is generic, the other one
+  The XBRL connector provides two modules for working with companies. One of them is generic, the other one
     offers functionality that is specific to the SEC. Modules are identified with URIs (they look
     very much like Web site addresses), in this
-    case:
-```jsoniq
+    case:```jsoniq
 http://xbrl.io/modules/bizql/entities
 http://xbrl.io/modules/bizql/profiles/sec/companies```
 
 
 
 	
-
-		
-##Looking Up Companies
-
-	  
-Let us begin with a very simple query that just lists the SEC companies. It is generic, so
+		##Looking Up Companies
+	  Let us begin with a very simple query that just lists the SEC companies. It is generic, so
 	    it uses the entities module:
 
 	  
-
  Example - All companies
 
 	    
@@ -41,20 +29,12 @@ import module namespace entities =
 entities:entities()```
 
 	  
+	  This query is just a function call. A function is identified with its prefix (here entities:)
+	    and a name (here entities). This function takes no parameters.
+
+	  In the XBRL connector, a company is represented by a JSON object, like so:
 
 	  
-This query is just a function call. A function is identified with its prefix (here 
-entities:
-)
-	    and a name (here 
-entities
-). This function takes no parameters.
-
-	  
-In the XBRL connector, a company is represented by a JSON object, like so:
-
-	  
-
  Example - A company in JSON format
 
 	    
@@ -81,19 +61,13 @@ ment",
 }```
 
 	  
-
-    
-In the case of companies, most of the information is SEC-specific, and is embedded in a Profiles.SEC subobject. You will
+    In the case of companies, most of the information is SEC-specific, and is embedded in a Profiles.SEC subobject. You will
 see in other parts of the tutorial, that the Profiles.SEC subobject is not restricted to companies, but also applies to all other objects.
 
-	  
-Companies can be
-	    retrieved by tags (for example, indices) using the 
-companies-for-tags
- function, in the companies module, like so:
+	  Companies can be
+	    retrieved by tags (for example, indices) using the companies-for-tags function, in the companies module, like so:
 
 	  
-
  Example - All Dow 30 companies
 
 	    
@@ -104,13 +78,10 @@ import module namespace companies =
 companies:companies-for-tags("DOW30")```
 
 	  
-
-	  
-Almost all functions in the XBRL connector accept sequences as parameters. For example, you can get DOW30 and FORTUNE100 companies
+	  Almost all functions in the XBRL connector accept sequences as parameters. For example, you can get DOW30 and FORTUNE100 companies
 in a single call. Mind the double parenthesis: you are passing one single sequence as a parameter, not two strings as two parameters.
 
 	  
-
  Example - All Dow 30 and Fortune 100 companies (companies in both indices will be returned twice)
 
 	    
@@ -121,12 +92,9 @@ import module namespace companies =
 companies:companies-for-tags( ("DOW30", "FORTUNE100") )```
 
 	  
+	  Companies are identified with CIKs. A CIK can be used to retrieve a company
 
 	  
-Companies are identified with CIKs. A CIK can be used to retrieve a company
-
-	  
-
  Example - Walt Disney by CIK
 
 	    
@@ -137,12 +105,9 @@ import module namespace companies =
 companies:companies(1001039)```
 
 	  
-
-    
-Here too, you can pass sequences.
+    Here too, you can pass sequences.
 
 	  
-
  Example - American Express and Walt Disney by CIK
 
 	    
@@ -153,12 +118,9 @@ import module namespace companies =
 companies:companies((4962, 1001039))```
 
 	  
-
-    
-Companies by SIC (electronic and other electrical equipment, semiconductors and related devices).
+    Companies by SIC (electronic and other electrical equipment, semiconductors and related devices).
 
 	  
-
  Example - American Express and Walt Disney by CIK
 
 	    
@@ -169,9 +131,7 @@ import module namespace companies =
 companies:companies-for-SIC(("3600", "3674"))```
 
 	  
-
 	  
-
  Example - Companies by sector (electronic)
 
       
@@ -184,9 +144,7 @@ companies:companies-for-sector(
 )```
 
 	  
-
 	  
-
  Example - JPMorgan and Walmart by ticker
 
 	    
@@ -197,13 +155,10 @@ import module namespace companies =
 companies:companies-for-tickers(("jpm", "wmt"))```
 
 	  
-
-    
-Using FLWOR expressions, you can build many interesting queries just with companies. For example, this
+    Using FLWOR expressions, you can build many interesting queries just with companies. For example, this
 groups company names by sector, using the Sector and CompanyName fields in the SEC Profile.
 
     
-
  Example - All company names grouped by sector
 
       
@@ -220,25 +175,17 @@ return {
 }```
 
     
-
 	
-
   
-
-    
-##Querying Companies
-
-    
-In the former section, we showed how to query indices. But which indices are available? Even if there were no documentation, the answer lies at
+    ##Querying Companies
+    In the former section, we showed how to query indices. But which indices are available? Even if there were no documentation, the answer lies at
 your fingertips.
-
 
 One of the provided pieces of information for a company is the Tags field, which we use to stamp companies with indices. Using navigation syntax (the dot
 navigates deep into an object, double square brackets with an integer into an array, empty square brackets extract the entire array)
       as well as the distinct-values builtin function, it is very easy to discover, in real time, all indices currently used over the entire database:
 
     
-
  Example - Discovering all indices in half a second's time
 
       
@@ -249,162 +196,88 @@ import module namespace entities =
 distinct-values(entities:entities().Profiles.SEC.Tags[])```
 
     
+    Having done so, you will discover that the following indices are available.
 
     
-Having done so, you will discover that the following indices are available.
-
+      ##Available indices
+      
+        
+        
+        
+          
+            Index
+            Tag
+          
+        
+        
+          
+            S&P 500
+            SP500
+          
+          
+            Dow 30
+            DOW30
+          
+          
+            Fortune 100
+            FORTUNE100
+          
+          
+            Providence Journal's Impact 50
+            PJI
+          
+        
+      
     
-
-      
-##Available indices
-
-      
-
-        
-
-
-        
-
-
-        
-
-          
-
-            
-Index
-
-            
-Tag
-
-          
-
-        
-
-        
-
-          
-
-            
-S&P 500
-
-            
-SP500
-
-          
-
-          
-
-            
-Dow 30
-
-            
-DOW30
-
-          
-
-          
-
-            
-Fortune 100
-
-            
-FORTUNE100
-
-          
-
-          
-
-            
-Providence Journal's Impact 50
-
-            
-PJI
-
-          
-
-        
-
-      
-
-    
-
   
-
   
+    ##The SECXBRL.info REST API for companies
+    For people without developer background, we provide a REST API that allows you to look up companies and, say, import them into an Excel
+      spreadsheet. The API is documented here
 
     
-##The SECXBRL.info REST API for companies
-
-    
-For people without developer background, we provide a REST API that allows you to look up companies and, say, import them into an Excel
-      spreadsheet. The API is documented 
-here
-
-    
+      ###Retrieve a company
+      You can retrieve:
 
       
-###Retrieve a company
+                *
+            All companies with [http://secxbrl.xbrl.io/api/entities.jq](http://secxbrl.xbrl.io/api/entities.jq)
 
-      
-You can retrieve:
+                  *
+            One or several companies by CIK with the cik parameter, like so:
+[http://secxbrl.xbrl.io/api/entities.jq?cik=1412090&cik=4962](http://secxbrl.xbrl.io/api/entities.jq?cik=1412090&cik=4962)
 
-      
+                  *
+            Companies by (one or several) tag with the tag parameter, like so:
+[http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30)
 
-        
-        *
-            All companies with 
-[http://secxbrl.xbrl.io/api/entities.jq](http://secxbrl.xbrl.io/api/entities.jq)
-          
-        *
-            One or several companies by CIK with the 
-cik
- parameter, like so:[http://secxbrl.xbrl.io/api/entities.jq?cik=1412090&cik=4962](http://secxbrl.xbrl.io/api/entities.jq?cik=1412090&cik=4962)
-          
-        *
-            Companies by (one or several) tag with the 
-tag
- parameter, like so:[http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30)
-          
-        *
-            One or several companies by ticker with the 
-ticker
- parameter, like so:[http://secxbrl.xbrl.io/api/entities.jq?ticker=AAPL&ticker=GOOG](http://secxbrl.xbrl.io/api/entities.jq?ticker=AAPL&ticker=GOOG)
-          
+                  *
+            One or several companies by ticker with the ticker parameter, like so:
+[http://secxbrl.xbrl.io/api/entities.jq?ticker=AAPL&ticker=GOOG](http://secxbrl.xbrl.io/api/entities.jq?ticker=AAPL&ticker=GOOG)
 
+          
       
 
     
-
     
+      ###Select a format
+      You can choose the format in which you would like to retrieve company information. By default, JSON will be output.
 
       
-###Select a format
+                *
+            In JSON with the json parameter, like so:
+[http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=json](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=json)
 
-      
-You can choose the format in which you would like to retrieve company information. By default, JSON will be output.
+                  *
+            In XML with the xml parameter, like so:
+[http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=xml](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=xml)
 
-      
+                  *
+            In CSV (comma-separated values, which you can open in good old Excel) with the csv parameter, like so:
+[http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=csv](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=csv)
 
-        
-        *
-            In JSON with the 
-json
- parameter, like so:[http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=json](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=json)
           
-        *
-            In XML with the 
-xml
- parameter, like so:[http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=xml](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=xml)
-          
-        *
-            In CSV (comma-separated values, which you can open in good old Excel) with the 
-csv
- parameter, like so:[http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=csv](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=csv)
-          
-
       
 
     
-
   
-

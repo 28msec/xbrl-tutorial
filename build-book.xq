@@ -50,8 +50,9 @@ declare function local:docbook-to-markdown($element as node(), $level as xs:inte
 " || $element/text() || "```
 "
    case text() return string($element)
-   default return string-join(for $child in $element/node() return local:docbook-to-markdown($child, $level), "
-")
+   case element(para) return string-join(for $child in $element/node() return local:docbook-to-markdown($child, $level), "") || "
+"
+   default return string-join(for $child in $element/node() return local:docbook-to-markdown($child, $level), "")
 };
 
 let $book := doc($base || "SECTutorial.xml")/book
