@@ -1,12 +1,12 @@
 CACHE MANIFEST
-# Revision 1400593858135
+# Revision 1400594052496
 
 CACHE:
 index.html
 gitbook/chap-BizQLTutorial-Companies.html
 gitbook/chap-BizQLTutorial-DesignYourOwnRESTAPI.html
-gitbook/chap-BizQLTutorial-FactTables.html
 gitbook/chap-BizQLTutorial-Filings.html
+gitbook/chap-BizQLTutorial-FactTables.html
 gitbook/chap-BizQLTutorial-Hypercubes.html
 gitbook/chap-BizQLTutorial-Introduction.html
 gitbook/chap-BizQLTutorial-Networks.html
@@ -47,8 +47,8 @@ gitbook/jsrepl/sandbox.html
 gitbook/jsrepl/sandbox.js
 gitbook/print.css
 gitbook/style.css
-gitbook/plugins/gitbook-plugin-mixpanel/plugin.js
 gitbook/plugins/gitbook-plugin-mathjax/plugin.js
+gitbook/plugins/gitbook-plugin-mixpanel/plugin.js
 
 NETWORK:
 *
