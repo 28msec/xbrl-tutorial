@@ -75,8 +75,8 @@ return switch(true)
 The above query reacts on the method and on whether companies are found to demonstrate a few of the available features:
 
 
-    1. If the method is GET and facts are found, it returns them as JSON. GET [http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG](http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG)
-    2. If the method is GET and no facts are found, it returns a 404 NOT FOUND. GET [http://project-name.xbrl.io/rest/more-methods.jq?t=dummy](http://project-name.xbrl.io/rest/more-methods.jq?t=dummy)
-    3. If the method is different, it returns a message in plain text. DELETE [http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG](http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG)##That's it for now!
+1. If the method is GET and facts are found, it returns them as JSON. GET [http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG](http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG)
+2. If the method is GET and no facts are found, it returns a 404 NOT FOUND. GET [http://project-name.xbrl.io/rest/more-methods.jq?t=dummy](http://project-name.xbrl.io/rest/more-methods.jq?t=dummy)
+3. If the method is different, it returns a message in plain text. DELETE [http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG](http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG)##That's it for now!
 With these building blocks, and together with the 28.io platform and modules documentation, you are all set! Do not hesitate to ask questions on our Zendesk support platform. We'll be very happy to assist you.
 
