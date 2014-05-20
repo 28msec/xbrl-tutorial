@@ -120,13 +120,13 @@ We also provide a REST API that allows you to look up fact tables and, say, impo
 You can retrieve the fact table of a components using thecidparameter.
 
 
-[http://secxbrl.xbrl.io/api/facttable-for-component.jq?cid=66887390-ee56-44a7-a897-62eefe944476](http://secxbrl.xbrl.io/api/facttable-for-component.jq?cid=66887390-ee56-44a7-a897-62eefe944476)
+ [http://secxbrl.xbrl.io/api/facttable-for-component.jq?cid=66887390-ee56-44a7-a897-62eefe944476](http://secxbrl.xbrl.io/api/facttable-for-component.jq?cid=66887390-ee56-44a7-a897-62eefe944476)
 
 
 You can also use the parameters from the components API: For example, the fact table for Coca Cola's balance sheet for FY 2012 can be retrieved with
 
 
-[http://secxbrl.xbrl.io/api/facttable-for-component.jq?](http://secxbrl.xbrl.io/api/facttable-for-component.jq?)[_method=POST&format=xml&cik=21344&fiscalYear=2012](_method=POST&format=xml&cik=21344&fiscalYear=2012)[&fiscalPeriod=FY&disclosure=BalanceSheet](&fiscalPeriod=FY&disclosure=BalanceSheet)
+ [http://secxbrl.xbrl.io/api/facttable-for-component.jq?](http://secxbrl.xbrl.io/api/facttable-for-component.jq?) [_method=POST&format=xml&cik=21344&fiscalYear=2012](_method=POST&format=xml&cik=21344&fiscalYear=2012) [&fiscalPeriod=FY&disclosure=BalanceSheet](&fiscalPeriod=FY&disclosure=BalanceSheet)
 
 
 The format parameter is also available as usual.

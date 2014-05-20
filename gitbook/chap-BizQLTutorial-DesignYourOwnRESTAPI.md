@@ -10,19 +10,19 @@ We now explain how to do a simple API for just retrieve a company with its ticke
 The first thing you need to know is that, whenever you write a public query, its results becomes available through a REST call.
 
 
-[http://project-name.xbrl.io/my-query.jq](http://project-name.xbrl.io/my-query.jq)
+ [http://project-name.xbrl.io/my-query.jq](http://project-name.xbrl.io/my-query.jq)
 
 
 For example, you can call the query returning all entities with the following URI:
 
 
-[http://project-name.xbrl.io/companies/all.jq](http://project-name.xbrl.io/companies/all.jq)
+ [http://project-name.xbrl.io/companies/all.jq](http://project-name.xbrl.io/companies/all.jq)
 
 
 For more elaborate queries though, the following endpoint is better suited:
 
 
-[http://project-name.xbrl.io/v1/_queries/public/companies/all.jq](http://project-name.xbrl.io/v1/_queries/public/companies/all.jq)
+ [http://project-name.xbrl.io/v1/_queries/public/companies/all.jq](http://project-name.xbrl.io/v1/_queries/public/companies/all.jq)
 
 
 However, it is more strict, meaning that it will complain if the query has side effects and if the method is GET -- you have to use POST for side-effecting queries.
@@ -52,7 +52,7 @@ return companies:companies-for-tickers($tickers)```
 Here is a possible way to invoke this query via the REST API:
 
 
-GET[http://project-name.xbrl.io/rest-api/query-string-parameter.jq?t=wmt&t=GOOG](http://project-name.xbrl.io/rest-api/query-string-parameter.jq?t=wmt&t=GOOG)
+GET [http://project-name.xbrl.io/rest-api/query-string-parameter.jq?t=wmt&t=GOOG](http://project-name.xbrl.io/rest-api/query-string-parameter.jq?t=wmt&t=GOOG)
 
 
 There are a few more useful functions. For example,request:method-get(),method-post(), etc, return a boolean and allow you to know which method the consumer used.
@@ -95,19 +95,19 @@ The above query reacts on the method and on whether companies are found to demon
 If the method is GET and facts are found, it returns them as JSON.
 
 
-GET[http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG](http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG)
+GET [http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG](http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG)
 
     *
 If the method is GET and no facts are found, it returns a 404 NOT FOUND.
 
 
-GET[http://project-name.xbrl.io/rest/more-methods.jq?t=dummy](http://project-name.xbrl.io/rest/more-methods.jq?t=dummy)
+GET [http://project-name.xbrl.io/rest/more-methods.jq?t=dummy](http://project-name.xbrl.io/rest/more-methods.jq?t=dummy)
 
     *
 If the method is different, it returns a message in plain text.
 
 
-DELETE[http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG](http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG)
+DELETE [http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG](http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG)
 
 ##That's it for now!
 

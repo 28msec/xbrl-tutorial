@@ -224,7 +224,7 @@ We also provide a REST API that allows you to look up filings and, say, import t
 You can retrieve a filing given the CIKs of (one or several) companies with thecikparameter like so:
 
 
-[http://secxbrl.xbrl.io/api/filings.jq?cik=320193&cik=1288776](http://secxbrl.xbrl.io/api/filings.jq?cik=320193&cik=1288776)
+ [http://secxbrl.xbrl.io/api/filings.jq?cik=320193&cik=1288776](http://secxbrl.xbrl.io/api/filings.jq?cik=320193&cik=1288776)
 
 
 If you do not know the CIK of the company you are looking for, you can also use thetagortickerparameter like in the entities API. Or you can use the entities REST API, explained in the former chapter.
@@ -233,7 +233,7 @@ If you do not know the CIK of the company you are looking for, you can also use 
 You can retrieve specify a fiscal period or year with thefiscalPeriodandfiscalYearparameters like so:
 
 
-[http://secxbrl.xbrl.io/api/filings.jq?cik=320193&fiscalYear=2012&fiscalPeriod=Q1&fiscalPeriod=Q2](http://secxbrl.xbrl.io/api/filings.jq?cik=320193&fiscalYear=2012&fiscalPeriod=Q1&fiscalPeriod=Q2)
+ [http://secxbrl.xbrl.io/api/filings.jq?cik=320193&fiscalYear=2012&fiscalPeriod=Q1&fiscalPeriod=Q2](http://secxbrl.xbrl.io/api/filings.jq?cik=320193&fiscalYear=2012&fiscalPeriod=Q1&fiscalPeriod=Q2)
 
 
 You can use fiscalYear=LATEST to retrieve the latest year.
@@ -246,5 +246,5 @@ You can also choose the format in which you would like to retrieve filing inform
 For example, for Excel:
 
 
-[http://secxbrl.xbrl.io/api/filings.jq?cik=320193&cik=1288776&format=csv](http://secxbrl.xbrl.io/api/filings.jq?cik=320193&cik=1288776&format=csv)
+ [http://secxbrl.xbrl.io/api/filings.jq?cik=320193&cik=1288776&format=csv](http://secxbrl.xbrl.io/api/filings.jq?cik=320193&cik=1288776&format=csv)
 

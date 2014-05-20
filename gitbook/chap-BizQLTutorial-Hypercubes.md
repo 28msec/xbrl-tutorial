@@ -107,14 +107,14 @@ You can build your own hypercube by using dimension names as fields in the query
 For the entity dimension, for convenience, you can use the same parameters as in the companies API: cik, ticker, tag, etc -- instead of "xbrl:Entity".
 
 
-For the concept dimension, use the more convenient "concept" parameter name. For example:[http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:Goodwill&cik=4962](http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:Goodwill&cik=4962)
+For the concept dimension, use the more convenient "concept" parameter name. For example: [http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:Goodwill&cik=4962](http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:Goodwill&cik=4962)
 
 
-For requiring a dimension, without restriction, use a value of "ALL". For example:[http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:DividendsCommonStock&tag=DOW30&us-gaap:StatementEquityComponentsAxis=ALL](http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:DividendsCommonStock&tag=DOW30&us-gaap:StatementEquityComponentsAxis=ALL)
+For requiring a dimension, without restriction, use a value of "ALL". For example: [http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:DividendsCommonStock&tag=DOW30&us-gaap:StatementEquityComponentsAxis=ALL](http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:DividendsCommonStock&tag=DOW30&us-gaap:StatementEquityComponentsAxis=ALL)
 
 
-You can specify a default dimension value using "dimensionname:default", like so:[http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:DividendsCommonStock&tag=DOW30&us-gaap:StatementEquityComponentsAxis=ALL&us-gaap:StatementEquityComponentsAxis:default=sec:myDefault](http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:DividendsCommonStock&tag=DOW30&us-gaap:StatementEquityComponentsAxis=ALL&us-gaap:StatementEquityComponentsAxis:default=sec:myDefault)
+You can specify a default dimension value using "dimensionname:default", like so: [http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:DividendsCommonStock&tag=DOW30&us-gaap:StatementEquityComponentsAxis=ALL&us-gaap:StatementEquityComponentsAxis:default=sec:myDefault](http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:DividendsCommonStock&tag=DOW30&us-gaap:StatementEquityComponentsAxis=ALL&us-gaap:StatementEquityComponentsAxis:default=sec:myDefault)
 
 
-The last query in the former section corresponds to[http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:DividendsCommonStock&tag=DOW30&us-gaap:StatementEquityComponentsAxis=us-gaap:CommonStockMember&fiscalYear=2012&fiscalPeriod=FY](http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:DividendsCommonStock&tag=DOW30&us-gaap:StatementEquityComponentsAxis=us-gaap:CommonStockMember&fiscalYear=2012&fiscalPeriod=FY)
+The last query in the former section corresponds to [http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:DividendsCommonStock&tag=DOW30&us-gaap:StatementEquityComponentsAxis=us-gaap:CommonStockMember&fiscalYear=2012&fiscalPeriod=FY](http://secxbrl.xbrl.io/api/facts.jq?concept=us-gaap:DividendsCommonStock&tag=DOW30&us-gaap:StatementEquityComponentsAxis=us-gaap:CommonStockMember&fiscalYear=2012&fiscalPeriod=FY)
 

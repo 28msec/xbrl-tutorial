@@ -18,7 +18,7 @@ By default, your project contains no report schema. In this tutorial, we provide
 Querying across multiple filings, even across companies, is not easy. This is because companies might not report their data in the same way. The Fundamental Accounting Concepts report schema provides an easy way to do so.
 
 
-The report schema module is named[http://xbrl.io/modules/bizql/report-schemas](http://xbrl.io/modules/bizql/report-schemas)
+The report schema module is named [http://xbrl.io/modules/bizql/report-schemas](http://xbrl.io/modules/bizql/report-schemas)
 
 
  Example - Asking for the FAC report schema
@@ -126,5 +126,5 @@ We also provide a REST API that allows you to look up mapped concepts and, say, 
 You can use a concept map with the facts API using themapparameter, together with the name of the containing report schema, like so:
 
 
-[http://secxbrl.xbrl.io/api/facts.jq?concept=fac:Assets](http://secxbrl.xbrl.io/api/facts.jq?concept=fac:Assets)[&tag=DOW30&map=FundamentalAccountingConcepts](&tag=DOW30&map=FundamentalAccountingConcepts)
+ [http://secxbrl.xbrl.io/api/facts.jq?concept=fac:Assets](http://secxbrl.xbrl.io/api/facts.jq?concept=fac:Assets) [&tag=DOW30&map=FundamentalAccountingConcepts](&tag=DOW30&map=FundamentalAccountingConcepts)
 

@@ -17,14 +17,14 @@ With NoSQL technologies, XBRL can be stored in an way that is optimized for hype
 
 ##The JSONiq language
 
-JSONiq is the language used by 28msec's flagship platform, 28.io. It is a NoSQL query language that deals with heterogeneous, arborescent data. It extends JSONiq with a number of modules that make it convenient to access, simultaneously, many data sources (MongoDB databases, traditional relational databases, S3 storage on Amazon, Graph Databases, Cloudant and many more) and combine them seamlessly to extract information. This tutorial assumes that the user is, or will make himself, familiar with JSONiq. A JSONiq tutorial as well as a complete reference can be found on[http://www.jsoniq.org/](http://www.jsoniq.org/). JSONiq queries can be executed for free on the 28.io platform.
+JSONiq is the language used by 28msec's flagship platform, 28.io. It is a NoSQL query language that deals with heterogeneous, arborescent data. It extends JSONiq with a number of modules that make it convenient to access, simultaneously, many data sources (MongoDB databases, traditional relational databases, S3 storage on Amazon, Graph Databases, Cloudant and many more) and combine them seamlessly to extract information. This tutorial assumes that the user is, or will make himself, familiar with JSONiq. A JSONiq tutorial as well as a complete reference can be found on [http://www.jsoniq.org/](http://www.jsoniq.org/). JSONiq queries can be executed for free on the 28.io platform.
 
 ##The XBRL data sources
 
 We provide various data sources (SEC for various subsets of companies, FINREP, etc) available on the 28.io platform. These data sources expose to you the XBRL data stored in a NoSQL database (currently MongoDB), leveraging the NoLAP paradigm. Access to the data is done through the XBRL connector, which consists of JSONiq modules.
 
 
-Documentation about these modules can be found at[http://www.28.io/documentation/latest/modules/bizql](http://www.28.io/documentation/latest/modules/bizql).
+Documentation about these modules can be found at [http://www.28.io/documentation/latest/modules/bizql](http://www.28.io/documentation/latest/modules/bizql).
 
 ##How to run the queries
 
@@ -34,95 +34,95 @@ All queries shown in this tutorial can be run on our platform. You can register 
 The following instructions should help you get started.
 
     -
-Go to the 28.io Platform Web site,[http://28.io/](http://28.io/)
+Go to the 28.io Platform Web site, [http://28.io/](http://28.io/)
 
 
-![images/1homepage.png](images/1homepage.png)
+![images/1homepage.png](tutorial/en-US/images/1homepage.png)
 
     -
 Click on Signup.
 
 
-![images/2signup.png](images/2signup.png)
+![images/2signup.png](tutorial/en-US/images/2signup.png)
 
     -
 Enter your information as well as desired credentials, and confirm.
 
 
-![images/3email.png](images/3email.png)
+![images/3email.png](tutorial/en-US/images/3email.png)
 
     -
 Check your e-mail (including spam folder) and validate your e-mail address.
 
 
-![images/4signin.png](images/4signin.png)
+![images/4signin.png](tutorial/en-US/images/4signin.png)
 
     -
 Login using your chosen credentials.
 
 
-![images/5datasources.png](images/5datasources.png)
+![images/5datasources.png](tutorial/en-US/images/5datasources.png)
 
     -
 Click onData Sourcesto view the list of data sources to which you can subscribe.
 
 
-![images/6subscribedow30.png](images/6subscribedow30.png)
+![images/6subscribedow30.png](tutorial/en-US/images/6subscribedow30.png)
 
     -
 Confirm your billing information (DOW30 is for free). Then go to the projects page.
 
 
-![images/7projects.png](images/7projects.png)
+![images/7projects.png](tutorial/en-US/images/7projects.png)
 
     -
 Create a new project by picking a name.
 
 
-![images/8importqueries.png](images/8importqueries.png)
+![images/8importqueries.png](tutorial/en-US/images/8importqueries.png)
 
     -
 Pick a query name, ending with .jq (for JSONiq).
 
 
-![images/9importedqueries.png](images/9importedqueries.png)
+![images/9importedqueries.png](tutorial/en-US/images/9importedqueries.png)
 
     -
 Enter the URL of a github repository from which to import queries. The URL of this tutorial's repository can be entered by simply clicking the example link. Then click "Import Queries."
 
 
-![images/9importedqueries.png](images/9importedqueries.png)
+![images/9importedqueries.png](tutorial/en-US/images/9importedqueries.png)
 
     -
 Click on "+" next to Data Sources to add a data source to this project.
 
 
-![images/10datasources.png](images/10datasources.png)
+![images/10datasources.png](tutorial/en-US/images/10datasources.png)
 
     -
 Click on DOW30 (This is the data source that you have subscribed to earlier).
 
 
-![images/11adddatasource.png](images/11adddatasource.png)
+![images/11adddatasource.png](tutorial/en-US/images/11adddatasource.png)
 
     -
 Type "xbrl" in the text box (this is very important, as the XBRL connector specifically connects to the data source identified by this name in your project) and click "Add Data Source".
 
 
-![images/12addeddatasource.png](images/12addeddatasource.png)
+![images/12addeddatasource.png](tutorial/en-US/images/12addeddatasource.png)
 
     -
 Select a query. The code appears on the right. Click on the white arrow on a green background to execute it. The results appear below the source code.
 
 
-![images/13query.png](images/13query.png)
+![images/13query.png](tutorial/en-US/images/13query.png)
 
     -
 Type your query, and click on the white triangle on a green background to execute it.
 
 ##The queries in this tutorial
 
-All queries shown in this tutorial are available as an xbrl.io project on[https://github.com/28msec/project-xbrl-tutorial-queries](https://github.com/28msec/project-xbrl-tutorial-queries). If you make changes to the project and would like to save them in your own github repository, or if you would like to import another repository, you can use the 28 command line tool (available at[https://github.com/28msec/28](https://github.com/28msec/28)).
+All queries shown in this tutorial are available as an xbrl.io project on [https://github.com/28msec/project-xbrl-tutorial-queries](https://github.com/28msec/project-xbrl-tutorial-queries). If you make changes to the project and would like to save them in your own github repository, or if you would like to import another repository, you can use the 28 command line tool (available at [https://github.com/28msec/28](https://github.com/28msec/28)).
 
 ##Organization of the tutorial
 

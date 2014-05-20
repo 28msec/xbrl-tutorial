@@ -176,25 +176,25 @@ You can retrieve:
 
 
         *
-All companies with[http://secxbrl.xbrl.io/api/entities.jq](http://secxbrl.xbrl.io/api/entities.jq)
+All companies with [http://secxbrl.xbrl.io/api/entities.jq](http://secxbrl.xbrl.io/api/entities.jq)
 
         *
 One or several companies by CIK with thecikparameter, like so:
 
 
-[http://secxbrl.xbrl.io/api/entities.jq?cik=1412090&cik=4962](http://secxbrl.xbrl.io/api/entities.jq?cik=1412090&cik=4962)
+ [http://secxbrl.xbrl.io/api/entities.jq?cik=1412090&cik=4962](http://secxbrl.xbrl.io/api/entities.jq?cik=1412090&cik=4962)
 
         *
 Companies by (one or several) tag with thetagparameter, like so:
 
 
-[http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30)
+ [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30)
 
         *
 One or several companies by ticker with thetickerparameter, like so:
 
 
-[http://secxbrl.xbrl.io/api/entities.jq?ticker=AAPL&ticker=GOOG](http://secxbrl.xbrl.io/api/entities.jq?ticker=AAPL&ticker=GOOG)
+ [http://secxbrl.xbrl.io/api/entities.jq?ticker=AAPL&ticker=GOOG](http://secxbrl.xbrl.io/api/entities.jq?ticker=AAPL&ticker=GOOG)
 
 
 
@@ -207,19 +207,19 @@ You can choose the format in which you would like to retrieve company informatio
 In JSON with thejsonparameter, like so:
 
 
-[http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=json](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=json)
+ [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=json](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=json)
 
         *
 In XML with thexmlparameter, like so:
 
 
-[http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=xml](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=xml)
+ [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=xml](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=xml)
 
         *
 In CSV (comma-separated values, which you can open in good old Excel) with thecsvparameter, like so:
 
 
-[http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=csv](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=csv)
+ [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=csv](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=csv)
 
 
 

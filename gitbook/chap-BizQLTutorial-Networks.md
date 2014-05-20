@@ -155,7 +155,7 @@ We also provide a REST API that allows you to look up networks and, say, import 
 You can retrieve the networks (components) in a filing using theaidparameter, like so:
 
 
-[http://secxbrl.xbrl.io/api/components.jq?aid=0000021344-13-000017](http://secxbrl.xbrl.io/api/components.jq?aid=0000021344-13-000017)
+ [http://secxbrl.xbrl.io/api/components.jq?aid=0000021344-13-000017](http://secxbrl.xbrl.io/api/components.jq?aid=0000021344-13-000017)
 
 
 If you do not know the AIDs of the filings, you can use the same parameters as in the filings API (cik,tag,ticker,fiscalYear,fiscalPeriod), or use the filings REST API to retrieve it.
@@ -168,5 +168,5 @@ You can also choose the format in which you would like to retrieve network infor
 For example, for Excel:
 
 
-[http://secxbrl.xbrl.io/api/components.jq?aid=0000021344-13-000017&format=csv](http://secxbrl.xbrl.io/api/components.jq?aid=0000021344-13-000017&format=csv)
+ [http://secxbrl.xbrl.io/api/components.jq?aid=0000021344-13-000017&format=csv](http://secxbrl.xbrl.io/api/components.jq?aid=0000021344-13-000017&format=csv)
 
