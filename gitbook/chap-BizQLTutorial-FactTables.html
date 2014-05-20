@@ -1,0 +1,380 @@
+<!DOCTYPE HTML>
+<html lang="en-US" manifest="../manifest.appcache">
+    <head prefix="og: http://ogp.me/ns# book: http://ogp.me/ns/book#">
+        
+        <meta charset="UTF-8">
+        <title>Fact tables | XBRL Tutorial</title>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="28msec">
+        <meta name="description" content="This tutorial is up-to-date against the 3.4 Irvine release, published on May 20th, 2014.">
+        <meta name="keywords" content="gitbook,github" >
+        <meta name="generator" content="www.gitbook.io">
+
+        
+        <link rel="next" href="../gitbook/chap-BizQLTutorial-Hypercubes.html" />
+        
+        
+        <link rel="prev" href="../gitbook/chap-BizQLTutorial-Networks.html" />
+        
+
+        <meta property="og:title" content="Fact tables | XBRL Tutorial">
+        <meta property="og:site_name" content="XBRL Tutorial">
+        <meta property="og:type" content="book">
+        <meta property="og:locale" content="en_US">
+
+        <meta property="book:author" content="https://github.com/28msec">
+        <meta property="book:tag" content="GitBook">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    </head>
+    <body>
+        
+
+        <link rel="stylesheet" href="../gitbook/style.css">
+        
+
+
+        
+    <div class="book" data-github="28msec/xbrl-tutorial" data-level="5" data-basepath=".." data-revision="1400591090993">
+    <div class="book-header">
+    <!-- Actions Left -->
+    
+    <a href="https://github.com/28msec/xbrl-tutorial" target="_blank" class="btn pull-left home-bookmark" aria-label="GitHub home"><i class="fa fa-bookmark-o"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    <span id="font-settings-wrapper">
+        <a href="#" class="btn pull-left toggle-font-settings" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="btn-group btn-block">
+        <button id="reduce-font-size" class="btn btn-default">A</button>
+        <button id="enlarge-font-size" class="btn btn-default">A</button>
+    </div>
+
+    <ul class="list-group font-family-list">
+        <li class="list-group-item" data-font="0">Serif</li>
+        <li class="list-group-item" data-font="1">Sans</li>
+    </ul>
+
+    <div class="btn-group btn-group-xs btn-block color-theme-list">
+        <button type="button" class="btn btn-default" id="color-theme-preview-0" data-theme="0">White</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-1" data-theme="1">Sepia</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-2" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </span>
+
+    <!-- Actions Right -->
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+
+    
+    <a href="https://github.com/28msec/xbrl-tutorial/stargazers" target="_blank" class="btn pull-right count-star hidden-xs"><i class="fa fa-star-o"></i> Star (<span>-</span>)</a>
+    <a href="https://github.com/28msec/xbrl-tutorial/watchers" target="_blank" class="btn pull-right count-watch hidden-xs"><i class="fa fa-eye"></i> Watch (<span>-</span>)</a>
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-spinner fa-spin"></i>
+        <a href="../" >XBRL Tutorial</a>
+    </h1>
+</div>
+
+    <div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        <li>
+            <a href="https://github.com/28msec" target="blank" class="author-link">About the author</a>
+        </li>
+        
+
+        
+        <li>
+            <a href="https://github.com/28msec/xbrl-tutorial/issues" target="blank"class="issues-link">Questions and Issues</a>
+        </li>
+        
+
+        
+        <li>
+            <a href="https://github.com/28msec/xbrl-tutorial/edit/master/gitbook/chap-BizQLTutorial-FactTables.md" target="blank" class="contribute-link">Edit and Contribute</a>
+        </li>
+        
+
+        
+
+        <li data-level="0" data-path="index.html">
+            <a href="../"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+            <li class="chapter " data-level="1" data-path="gitbook/chap-BizQLTutorial-Introduction.html">
+                
+                <a href="../gitbook/chap-BizQLTutorial-Introduction.html">
+                    <i class="fa fa-check"></i> <b>1.</b> Introduction
+                </a>
+                
+                
+            </li>
+        
+            <li class="chapter " data-level="2" data-path="gitbook/chap-BizQLTutorial-Companies.html">
+                
+                <a href="../gitbook/chap-BizQLTutorial-Companies.html">
+                    <i class="fa fa-check"></i> <b>2.</b> Companies
+                </a>
+                
+                
+            </li>
+        
+            <li class="chapter " data-level="3" data-path="gitbook/chap-BizQLTutorial-Filings.html">
+                
+                <a href="../gitbook/chap-BizQLTutorial-Filings.html">
+                    <i class="fa fa-check"></i> <b>3.</b> Filings
+                </a>
+                
+                
+            </li>
+        
+            <li class="chapter " data-level="4" data-path="gitbook/chap-BizQLTutorial-Networks.html">
+                
+                <a href="../gitbook/chap-BizQLTutorial-Networks.html">
+                    <i class="fa fa-check"></i> <b>4.</b> Networks
+                </a>
+                
+                
+            </li>
+        
+            <li class="chapter " data-level="5" data-path="gitbook/chap-BizQLTutorial-FactTables.html">
+                
+                <a href="../gitbook/chap-BizQLTutorial-FactTables.html">
+                    <i class="fa fa-check"></i> <b>5.</b> Fact tables
+                </a>
+                
+                
+            </li>
+        
+            <li class="chapter " data-level="6" data-path="gitbook/chap-BizQLTutorial-Hypercubes.html">
+                
+                <a href="../gitbook/chap-BizQLTutorial-Hypercubes.html">
+                    <i class="fa fa-check"></i> <b>6.</b> Hypercube Querying
+                </a>
+                
+                
+            </li>
+        
+            <li class="chapter " data-level="7" data-path="gitbook/chap-BizQLTutorial-ReportSchemas.html">
+                
+                <a href="../gitbook/chap-BizQLTutorial-ReportSchemas.html">
+                    <i class="fa fa-check"></i> <b>7.</b> Report schemas
+                </a>
+                
+                
+            </li>
+        
+            <li class="chapter " data-level="8" data-path="gitbook/chap-BizQLTutorial-DesignYourOwnRESTAPI.html">
+                
+                <a href="../gitbook/chap-BizQLTutorial-DesignYourOwnRESTAPI.html">
+                    <i class="fa fa-check"></i> <b>8.</b> Design Your Own REST API
+                </a>
+                
+                
+            </li>
+        
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Generated using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 62.5%;min-width: 50%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="../index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="../gitbook/chap-BizQLTutorial-Introduction.html" title="Introduction" class="chapter done new-chapter" data-progress="1" style="left: 12.5%;"></a>
+    
+        <a href="../gitbook/chap-BizQLTutorial-Companies.html" title="Companies" class="chapter done new-chapter" data-progress="2" style="left: 25%;"></a>
+    
+        <a href="../gitbook/chap-BizQLTutorial-Filings.html" title="Filings" class="chapter done new-chapter" data-progress="3" style="left: 37.5%;"></a>
+    
+        <a href="../gitbook/chap-BizQLTutorial-Networks.html" title="Networks" class="chapter done new-chapter" data-progress="4" style="left: 50%;"></a>
+    
+        <a href="../gitbook/chap-BizQLTutorial-FactTables.html" title="Fact tables" class="chapter done new-chapter" data-progress="5" style="left: 62.5%;"></a>
+    
+        <a href="../gitbook/chap-BizQLTutorial-Hypercubes.html" title="Hypercube Querying" class="chapter  new-chapter" data-progress="6" style="left: 75%;"></a>
+    
+        <a href="../gitbook/chap-BizQLTutorial-ReportSchemas.html" title="Report schemas" class="chapter  new-chapter" data-progress="7" style="left: 87.5%;"></a>
+    
+        <a href="../gitbook/chap-BizQLTutorial-DesignYourOwnRESTAPI.html" title="Design Your Own REST API" class="chapter  new-chapter" data-progress="8" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_4">
+                    
+                        <h1 id="fact-tables">Fact tables</h1>
+<p>When you have a network, you can ask for all facts that it contains. This is called a fact table.</p>
+<p>Once you have your hands on a network, it&#39;s very easy to ask for the fact table, with the sec-networks:facts() function.</p>
+<h2 id="facts">Facts</h2>
+<p>XBRL is about reporting facts. A fact is a reporting atom, meaning that it&#39;s the smallest chunk that can be reported. For example, a fact can be that Apricot Inc. owns 30 billion dollars in assets on december 31st, 2012, that a HAL stock was worth 31.41$ on this day, or that Mr. Sugarmountain lived in Palo Alto between 2004 and 2012.</p>
+<p>A fact has a certain number of properties:</p>
+<ol>
+<li>A value: the meat of the fact. It can a string, a number, etc.</li>
+<li>A concept: it&#39;s <em>what</em> this fact is about. For example: assets, or revenues, etc.</li>
+<li>A unit: it&#39;s <em>of what</em> if it is a number (example: USD/share for a dividend, etc)</li>
+<li>An entity: it&#39;s <em>who</em> reported this fact. For example, Apricot Inc.</li>
+<li>A period: it&#39;s <em>when</em> this fact applies. A period can be an instance (like May 4th, 2013) or a duration (January 1st thru December 31st, 2013).</li>
+<li>A number of further characterizing dimensions, such as a region of the world, a company department, etc.</li>
+</ol>
+<h2 id="looking-up-a-fact-table-for-an-sec-network">Looking up a fact table for an SEC network</h2>
+<p>As we said earlier, facts are not alone: in the wild, they live in tables. Let us get back to the balance sheet of Coca Cola for FY 2012, and ask for the fact table.</p>
+<p> Example - The fact table for a balance sheet by Coca Cola</p>
+<pre><code class="lang-jsoniq">import module namespace fiscal =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/fiscal/core&quot;;
+import module namespace sec-networks =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/networks&quot;;
+
+let $filing :=
+    fiscal:filings-for-entities-and-fiscal-periods-and-years(
+      21344,
+      &quot;FY&quot;,
+      2012
+    )
+let $network :=
+    sec-networks:networks-for-filings-and-disclosures(
+      $filing,
+      $sec-networks:BALANCE_SHEET
+    )
+return sec-networks:facts($network)
+</code></pre>
+<p>Below is an example of fact.</p>
+<p> Example - The fact object format</p>
+<pre><code class="lang-jsoniq">{
+  &quot;Archive&quot; : &quot;0000021344-13-000007&quot;, 
+  &quot;_id&quot; : &quot;68a552aa-ff68-4fb0-be34-c4507b1fbc00&quot;, 
+  &quot;IsInDefaultHypercube&quot; : true, 
+  &quot;Aspects&quot; : {
+    &quot;xbrl:Concept&quot; : &quot;ko:AvailableForSaleSecuritiesAndCostMethod
+Investments&quot;, 
+    &quot;xbrl:Entity&quot; : &quot;http://www.sec.gov/CIK 0000021344&quot;, 
+    &quot;xbrl:Period&quot; : &quot;2012-12-31&quot;, 
+    &quot;xbrl:Unit&quot; : &quot;iso4217:USD&quot;, 
+    &quot;us-gaap:StatementScenarioAxis&quot; : &quot;us-gaap:ScenarioUnspecifi
+edDomain&quot;
+  }, 
+  &quot;Profiles&quot; : {
+    &quot;SEC&quot; : {
+      &quot;Name&quot; : &quot;SEC&quot;, 
+      &quot;Fiscal&quot; : {
+        &quot;Period&quot; : &quot;FY&quot;, 
+        &quot;Year&quot; : 2012
+      }, 
+      &quot;DocEndDate&quot; : &quot;2012-12-31&quot;, 
+      &quot;Accepted&quot; : &quot;20130227122203&quot;, 
+      &quot;IsExtension&quot; : true
+    }
+  }, 
+  &quot;Type&quot; : &quot;NumericValue&quot;, 
+  &quot;Value&quot; : 1232000000, 
+  &quot;Decimals&quot; : -6, 
+  &quot;AuditTrails&quot; : [ {
+    &quot;Data&quot; : {
+      &quot;Dimension&quot; : &quot;us-gaap:StatementScenarioAxis&quot;, 
+      &quot;Member&quot; : &quot;us-gaap:ScenarioUnspecifiedDomain&quot;
+    }, 
+    &quot;Type&quot; : &quot;hypercubes:dimension-default&quot;, 
+    &quot;Label&quot; : &quot;Default dimension value&quot;
+    }
+  ]
+}
+</code></pre>
+<p>Note the Profiles.SEC section which also exists for facts, like companies, filings and networks. This section mostly contains the fiscal period and year against which the yearly or quaterly report was reported, as well as the end date of the report, the acceptance date by SEC, and a boolean that indicates whether the concept exists for all companies (often prefixed with us-gaap:), or was made up by the company reporting this fact.</p>
+<p>The fact also contains an audit trail, that we will detail more in the hypercube section.</p>
+<h2 id="the-secxbrl-info-rest-api-for-fact-tables">The SECXBRL.info REST API for fact tables</h2>
+<p>We also provide a REST API that allows you to look up fact tables and, say, import them into an Excel spreadsheet. The API is documentedhere</p>
+<h3 id="retrieve-the-fact-table-associated-with-a-network">Retrieve the fact table associated with a network</h3>
+<p>You can retrieve the fact table of a components using thecidparameter.</p>
+<p> <a href="http://secxbrl.xbrl.io/api/facttable-for-component.jq?cid=66887390-ee56-44a7-a897-62eefe944476" target="_blank">http://secxbrl.xbrl.io/api/facttable-for-component.jq?cid=66887390-ee56-44a7-a897-62eefe944476</a></p>
+<p>You can also use the parameters from the components API: For example, the fact table for Coca Cola&#39;s balance sheet for FY 2012 can be retrieved with</p>
+<p> <a href="http://secxbrl.xbrl.io/api/facttable-for-component.jq?" target="_blank">http://secxbrl.xbrl.io/api/facttable-for-component.jq?</a> <a href="_method=POST&amp;format=xml&amp;cik=21344&amp;fiscalYear=2012">_method=POST&amp;format=xml&amp;cik=21344&amp;fiscalYear=2012</a> <a href="&amp;fiscalPeriod=FY&amp;disclosure=BalanceSheet">&amp;fiscalPeriod=FY&amp;disclosure=BalanceSheet</a></p>
+<p>The format parameter is also available as usual.</p>
+
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../gitbook/chap-BizQLTutorial-Networks.html" class="navigation navigation-prev " aria-label="Previous page: Networks"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../gitbook/chap-BizQLTutorial-Hypercubes.html" class="navigation navigation-next " aria-label="Next page: Hypercube Querying"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/mode-javascript.js"></script>
+        <script src="../gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+        <script src="../gitbook/app.js"></script>
+        
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-mixpanel/plugin.js"></script>
+    
+
+    
+    <script src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {};
+    gitbook.start(config);
+});
+</script>
+
+    </body>
+</html>
