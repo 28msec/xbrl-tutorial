@@ -6,7 +6,7 @@ Just a few years ago, most companies were generating internal or external report
 In business life, standardization matters more than perfection. While XBRL is not perfect, it is now a standard, and it does a fine job doing what it was designed for.
 
 
-While this is a cost-sinking revolution, it is also a revolution about access to information: using latest database technologies, XBRL reports can be made*queryable*. In particular, it is possible to*validate*that the reports do not contain a certain number of errors, to*impute*non-submitted information, but also to*derive*new information using data at an unprecedented scale (across potentially all XBRL reports in the world, and much beyond).
+While this is a cost-sinking revolution, it is also a revolution about access to information: using latest database technologies, XBRL reports can be made *queryable* . In particular, it is possible to *validate* that the reports do not contain a certain number of errors, to *impute* non-submitted information, but also to *derive* new information using data at an unprecedented scale (across potentially all XBRL reports in the world, and much beyond).
 
 ##NoSQL technologies
 
@@ -126,10 +126,10 @@ All queries shown in this tutorial are available as an xbrl.io project on[https:
 
 ##Organization of the tutorial
 
-XBRL is about submitting*facts*. Facts are reported by companies, which are introduced in.
+XBRL is about submitting *facts* . Facts are reported by companies, which are introduced in.
 
 
-In real life though, facts are not reported one by one, but are submitted to an authority like the SEC in*archives*. A bit like you don't buy pop corn one chunk at a time, but in a pop corn package.
+In real life though, facts are not reported one by one, but are submitted to an authority like the SEC in *archives* . A bit like you don't buy pop corn one chunk at a time, but in a pop corn package.
 
 
 A filing is made of facts, but also contains metainformation on these facts. This metainformation is called taxonomy in the XBRL world, while the factual part is called an XBRL instance. It contains, from an abstract perspective (we don't go into the low-level details of networks, etc):    *

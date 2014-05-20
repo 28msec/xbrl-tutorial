@@ -4,7 +4,7 @@ In the former section, we showed how to get the fact table associated with an SE
 
 ##Hypercubes
 
-Concepts, entities, periods, units, as well as further dimensions are called*aspects*. It is possible to organize facts along*hypercubes*, the dimensions of which are these aspects. Usually, there will be either zero or one fact for each possible tuple of aspects. If there is more, it often indicates an inconsistency in the submission.
+Concepts, entities, periods, units, as well as further dimensions are called *aspects* . It is possible to organize facts along *hypercubes* , the dimensions of which are these aspects. Usually, there will be either zero or one fact for each possible tuple of aspects. If there is more, it often indicates an inconsistency in the submission.
 
 
 For example, if we stick to the USD unit, you can imagine a cube whose width represents concepts (Assets, Revenues), the height of which represents entities (Amex, Disney) and the depth of which represents periods (year 2012, year 2013, year 2014). This hypercube potentially contains 2 x 2 x 3 = 12 facts.

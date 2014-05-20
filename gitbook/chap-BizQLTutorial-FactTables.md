@@ -17,16 +17,16 @@ A fact has a certain number of properties:
 A value: the meat of the fact. It can a string, a number, etc.
 
     *
-A concept: it's*what*this fact is about. For example: assets, or revenues, etc.
+A concept: it's *what* this fact is about. For example: assets, or revenues, etc.
 
     *
-A unit: it's*of what*if it is a number (example: USD/share for a dividend, etc)
+A unit: it's *of what* if it is a number (example: USD/share for a dividend, etc)
 
     *
-An entity: it's*who*reported this fact. For example, Apricot Inc.
+An entity: it's *who* reported this fact. For example, Apricot Inc.
 
     *
-A period: it's*when*this fact applies. A period can be an instance (like May 4th, 2013) or a duration (January 1st thru December 31st, 2013).
+A period: it's *when* this fact applies. A period can be an instance (like May 4th, 2013) or a duration (January 1st thru December 31st, 2013).
 
     *
 A number of further characterizing dimensions, such as a region of the world, a company department, etc.

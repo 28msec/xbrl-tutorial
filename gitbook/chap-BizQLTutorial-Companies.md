@@ -3,7 +3,7 @@
 Companies submit filings to the SEC via the Edgar system.
 
 
-In the XBRL world, companies correspond to reporting*entities.*
+In the XBRL world, companies correspond to reporting *entities.* 
 
 
 The XBRL connector provides two modules for working with companies. One of them is generic, the other one offers functionality that is specific to the SEC. Modules are identified with URIs (they look very much like Web site addresses), in this case:
