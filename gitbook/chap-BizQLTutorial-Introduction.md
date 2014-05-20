@@ -23,63 +23,63 @@ All queries shown in this tutorial can be run on our platform. You can register 
 
 The following instructions should help you get started.
 
-    -Go to the 28.io Platform Web site, [http://28.io/](http://28.io/)
+    - Go to the 28.io Platform Web site, [http://28.io/](http://28.io/)
 
 ![images/1homepage.png](../tutorial/en-US/images/1homepage.png)
 
-    -Click on Signup.
+    - Click on Signup.
 
 ![images/2signup.png](../tutorial/en-US/images/2signup.png)
 
-    -Enter your information as well as desired credentials, and confirm.
+    - Enter your information as well as desired credentials, and confirm.
 
 ![images/3email.png](../tutorial/en-US/images/3email.png)
 
-    -Check your e-mail (including spam folder) and validate your e-mail address.
+    - Check your e-mail (including spam folder) and validate your e-mail address.
 
 ![images/4signin.png](../tutorial/en-US/images/4signin.png)
 
-    -Login using your chosen credentials.
+    - Login using your chosen credentials.
 
 ![images/5datasources.png](../tutorial/en-US/images/5datasources.png)
 
-    -Click onData Sourcesto view the list of data sources to which you can subscribe.
+    - Click onData Sourcesto view the list of data sources to which you can subscribe.
 
 ![images/6subscribedow30.png](../tutorial/en-US/images/6subscribedow30.png)
 
-    -Confirm your billing information (DOW30 is for free). Then go to the projects page.
+    - Confirm your billing information (DOW30 is for free). Then go to the projects page.
 
 ![images/7projects.png](../tutorial/en-US/images/7projects.png)
 
-    -Create a new project by picking a name.
+    - Create a new project by picking a name.
 
 ![images/8importqueries.png](../tutorial/en-US/images/8importqueries.png)
 
-    -Pick a query name, ending with .jq (for JSONiq).
+    - Pick a query name, ending with .jq (for JSONiq).
 
 ![images/9importedqueries.png](../tutorial/en-US/images/9importedqueries.png)
 
-    -Enter the URL of a github repository from which to import queries. The URL of this tutorial's repository can be entered by simply clicking the example link. Then click "Import Queries."
+    - Enter the URL of a github repository from which to import queries. The URL of this tutorial's repository can be entered by simply clicking the example link. Then click "Import Queries."
 
 ![images/9importedqueries.png](../tutorial/en-US/images/9importedqueries.png)
 
-    -Click on "+" next to Data Sources to add a data source to this project.
+    - Click on "+" next to Data Sources to add a data source to this project.
 
 ![images/10datasources.png](../tutorial/en-US/images/10datasources.png)
 
-    -Click on DOW30 (This is the data source that you have subscribed to earlier).
+    - Click on DOW30 (This is the data source that you have subscribed to earlier).
 
 ![images/11adddatasource.png](../tutorial/en-US/images/11adddatasource.png)
 
-    -Type "xbrl" in the text box (this is very important, as the XBRL connector specifically connects to the data source identified by this name in your project) and click "Add Data Source".
+    - Type "xbrl" in the text box (this is very important, as the XBRL connector specifically connects to the data source identified by this name in your project) and click "Add Data Source".
 
 ![images/12addeddatasource.png](../tutorial/en-US/images/12addeddatasource.png)
 
-    -Select a query. The code appears on the right. Click on the white arrow on a green background to execute it. The results appear below the source code.
+    - Select a query. The code appears on the right. Click on the white arrow on a green background to execute it. The results appear below the source code.
 
 ![images/13query.png](../tutorial/en-US/images/13query.png)
 
-    -Type your query, and click on the white triangle on a green background to execute it.
+    - Type your query, and click on the white triangle on a green background to execute it.
 
 ##The queries in this tutorial
 All queries shown in this tutorial are available as an xbrl.io project on [https://github.com/28msec/project-xbrl-tutorial-queries](https://github.com/28msec/project-xbrl-tutorial-queries). If you make changes to the project and would like to save them in your own github repository, or if you would like to import another repository, you can use the 28 command line tool (available at [https://github.com/28msec/28](https://github.com/28msec/28)).
@@ -89,15 +89,15 @@ XBRL is about submitting *facts* . Facts are reported by companies, which are in
 
 In real life though, facts are not reported one by one, but are submitted to an authority like the SEC in *archives* . A bit like you don't buy pop corn one chunk at a time, but in a pop corn package.
 
-A filing is made of facts, but also contains metainformation on these facts. This metainformation is called taxonomy in the XBRL world, while the factual part is called an XBRL instance. It contains, from an abstract perspective (we don't go into the low-level details of networks, etc):    *Concept declarations: this is a description of the terminology used by the facts.
+A filing is made of facts, but also contains metainformation on these facts. This metainformation is called taxonomy in the XBRL world, while the factual part is called an XBRL instance. It contains, from an abstract perspective (we don't go into the low-level details of networks, etc):    * Concept declarations: this is a description of the terminology used by the facts.
 
-    *User-friendly labels for the concepts, which can be used for fancy front-ends and editors, as well as human-readable documentation on the concepts.
+    * User-friendly labels for the concepts, which can be used for fancy front-ends and editors, as well as human-readable documentation on the concepts.
 
-    *Hypercube declarations, and their dimensions (dimensions also have fancy labels, etc).
+    * Hypercube declarations, and their dimensions (dimensions also have fancy labels, etc).
 
-    *Structures, like hierarchies of concepts that can be used on a fancy front-end as well to nicely display the facts.
+    * Structures, like hierarchies of concepts that can be used on a fancy front-end as well to nicely display the facts.
 
-    *Formulas, that can be used to either validate the reported facts (example: the assets match the equities and liabilities) or to compute new, non reported facts.
+    * Formulas, that can be used to either validate the reported facts (example: the assets match the equities and liabilities) or to compute new, non reported facts.
 
 
 

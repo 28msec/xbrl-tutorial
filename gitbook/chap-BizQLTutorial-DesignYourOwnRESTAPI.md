@@ -74,15 +74,15 @@ return switch(true)
 ```
 The above query reacts on the method and on whether companies are found to demonstrate a few of the available features:
 
-    *If the method is GET and facts are found, it returns them as JSON.
+    * If the method is GET and facts are found, it returns them as JSON.
 
 GET [http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG](http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG)
 
-    *If the method is GET and no facts are found, it returns a 404 NOT FOUND.
+    * If the method is GET and no facts are found, it returns a 404 NOT FOUND.
 
 GET [http://project-name.xbrl.io/rest/more-methods.jq?t=dummy](http://project-name.xbrl.io/rest/more-methods.jq?t=dummy)
 
-    *If the method is different, it returns a message in plain text.
+    * If the method is different, it returns a message in plain text.
 
 DELETE [http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG](http://project-name.xbrl.io/rest/more-methods.jq?t=wmt&t=GOOG)
 

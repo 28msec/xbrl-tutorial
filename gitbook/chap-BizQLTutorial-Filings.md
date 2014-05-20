@@ -152,7 +152,7 @@ fiscal:filings-for-entities-and-fiscal-periods-and-years(
 ##Diving into a filing
 Once you have one or more filing objects, you can query them. There are two main ways to do it:
 
-    *Using JSONiq navigation (with dots and square brackets).
+    * Using JSONiq navigation (with dots and square brackets).
 
 Using functions.
 
