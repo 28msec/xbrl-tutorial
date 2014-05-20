@@ -3,7 +3,7 @@ import module namespace http-client =
 
 let $schema := parse-json(http-client:get-text(
     "http://facs.28.io/process-report-schema.jq"
-).body.content)
+)("body")("content"))
 return
 if(is-available-collection("reportschemas"))
 then {
