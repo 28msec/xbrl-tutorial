@@ -46,7 +46,8 @@ declare function local:docbook-to-markdown($element as node(), $level as xs:inte
    case element(example) return "
  Example - " || $element/title/text() || "
 " || string-join(for $child in $element/node()[local-name(.) != 'title'] return local:docbook-to-markdown($child, $level), "")
-   case element(programlisting) return "```jsoniq
+   case element(programlisting) return "
+```jsoniq
 " || $element/text() || "```
 "
    case text() return string($element)
