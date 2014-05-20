@@ -9,7 +9,8 @@ an income statement, some generic information about the filing, etc. In the SEC 
   The XBRL connector provides two modules for working with SEC networks. One of them is generic, the other one
     offers functionality that is specific to the SEC. In this
     case:
-  ```jsoniq
+  
+```jsoniq
 http://xbrl.io/modules/bizql/components
 http://xbrl.io/modules/bizql/profiles/sec/networks```
 
@@ -26,7 +27,8 @@ http://xbrl.io/modules/bizql/profiles/sec/networks```
  Example - The various components in Coca Cola's Q1 2012 filing.
 
       
-      ```jsoniq
+      
+```jsoniq
 import module namespace fiscal =
     "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
 import module namespace sec-networks =
@@ -51,7 +53,8 @@ presentation networks, etc). Normally, you do not need to look into it, apart ma
 sheet in the above filing.
 
     
-      ```jsoniq
+      
+```jsoniq
 import module namespace fiscal =
     "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
 import module namespace sec-networks =
@@ -79,7 +82,8 @@ return sec-networks:networks-for-filings-and-disclosures(
   
     ##The Model Structure
     
-      ```jsoniq
+      
+```jsoniq
 import module namespace fiscal =
     "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
 import module namespace sec-networks =
@@ -103,7 +107,8 @@ return sec-networks:model-structures($balance-sheet)
     A model structure is just a hierarchy of so-called `SEC report elements` of different kinds. In that case:
 
     
-      ```jsoniq
+      
+```jsoniq
 {
   "Kind" : "Abstract", 
   "Name" : "us-gaap:StatementOfFinancialPositionAbstract", 

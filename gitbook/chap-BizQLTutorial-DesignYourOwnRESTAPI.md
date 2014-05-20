@@ -39,7 +39,8 @@
  Example - Read a parameter's value(s) from the query string
 
       
-      ```jsoniq
+      
+```jsoniq
 import module namespace companies =
     "http://xbrl.io/modules/bizql/profiles/sec/companies";
 import module namespace request =
@@ -63,7 +64,8 @@ you to know which method the consumer used.
  Example - Read a parameter's value(s) from the query string
 
       
-      ```jsoniq
+      
+```jsoniq
 import module namespace companies =
     "http://xbrl.io/modules/bizql/profiles/sec/companies";
 import module namespace request =

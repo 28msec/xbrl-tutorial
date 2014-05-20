@@ -34,7 +34,8 @@
  Example - The dimensionless hypercube
 
       
-    ```jsoniq
+    
+```jsoniq
 ```
 
     
@@ -44,7 +45,8 @@
  Example - The object format of hypercubes
 
       
-      ```jsoniq
+      
+```jsoniq
 {
   "Name" : "xbrl:DimensionlessHypercube", 
   "Label" : "Dimensionless Hypercube", 
@@ -82,7 +84,8 @@
  Example - Retrieving the facts in the dimensionless hypercube for some filings
 
       
-      ```jsoniq
+      
+```jsoniq
 ```
 
     
@@ -90,7 +93,8 @@
       In order to do so, you need to modify the dimensionless hypercube add filter on these two concepts.
       There are over 70k such facts.
 
-    ```jsoniq
+    
+```jsoniq
 ```
 
     You can also build your own hypercube. To restrict a dimension, just add
@@ -98,7 +102,8 @@
       Below we show you how to make a restriction on DOW30 companies with just a small modification
       of the dimensionless hypercube function call.
 
-    ```jsoniq
+    
+```jsoniq
 ```
 
     If you begin to query across archives, and attempt to filter on periods, you will very soon notice
@@ -107,7 +112,8 @@
       Profiles.SEC.Fiscal part that annotates objects using the second parameter of sec:facts-for-hypercube.
       For example, here is how to get all assets and equities (no extra dimensions) for FY 2012 (6847 of them)
 
-    ```jsoniq
+    
+```jsoniq
 ```
 
     What was done for the basic four dimensions (like xbrl:Equity) applies to extra dimensions as well. There is
@@ -117,7 +123,8 @@
       with a dimension us-gaap:StatementEquityComponentsAxis restricted on a value
       of us-gaap:CommonStockMember. There are 513 of them.
 
-    ```jsoniq
+    
+```jsoniq
 ```
 
     Finally, you can combine extra dimensions, restricting several dimensions, filtering on fiscal years,
@@ -127,7 +134,8 @@
       of us-gaap:CommonStockMember.
       There's only one and it's Walt Disney. And it takes less than one second to ask for this.
 
-    ```jsoniq
+    
+```jsoniq
 ```
 
     The SEC modules provide many functions that just wrap these queries in nicer code,

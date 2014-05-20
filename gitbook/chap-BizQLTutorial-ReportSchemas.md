@@ -10,7 +10,8 @@
  Example - Download the report schema with the Fundamental Accounting Concepts.
 
     
-    ```jsoniq
+    
+```jsoniq
 ```
 
   
@@ -27,7 +28,8 @@ The Fundamental Accounting Concepts report schema provides an easy way to do so.
  Example - Asking for the FAC report schema
 
       
-      ```jsoniq
+      
+```jsoniq
 import module namespace report-schemas =
     "http://xbrl.io/modules/bizql/report-schemas";
 
@@ -41,7 +43,8 @@ report-schemas:report-schemas("FundamentalAccountingConcepts")
  Example - Asking for the FAC report schema
 
       
-      ```jsoniq
+      
+```jsoniq
 import module namespace report-schemas = "http://xbrl.io/modules/bizql/report-schemas";
 import module namespace sec-networks =
     "http://xbrl.io/modules/bizql/profiles/sec/networks";
@@ -58,7 +61,8 @@ concept map.
  Example - Asking for American Express's assets with the mapped fac:Assets concept
 
       
-      ```jsoniq
+      
+```jsoniq
 import module namespace hypercubes =
     "http://xbrl.io/modules/bizql/hypercubes";
 import module namespace sec =
@@ -91,7 +95,8 @@ return sec:facts-for-archives-and-concepts(
  Example - Asking for Amex' FACs
 
       
-      ```jsoniq
+      
+```jsoniq
 import module namespace sec =
     "http://xbrl.io/modules/bizql/profiles/sec/core";
 import module namespace fiscal =
@@ -115,7 +120,8 @@ return sec:facts-for-schema(
  Example - Asking for the FACs of Amex and Disney
 
       
-      ```jsoniq
+      
+```jsoniq
 import module namespace sec =
     "http://xbrl.io/modules/bizql/profiles/sec/core";
 import module namespace fiscal =

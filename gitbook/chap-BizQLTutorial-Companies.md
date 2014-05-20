@@ -7,7 +7,8 @@
   The XBRL connector provides two modules for working with companies. One of them is generic, the other one
     offers functionality that is specific to the SEC. Modules are identified with URIs (they look
     very much like Web site addresses), in this
-    case:```jsoniq
+    case:
+```jsoniq
 http://xbrl.io/modules/bizql/entities
 http://xbrl.io/modules/bizql/profiles/sec/companies```
 
@@ -22,7 +23,8 @@ http://xbrl.io/modules/bizql/profiles/sec/companies```
  Example - All companies
 
 	    
-	    ```jsoniq
+	    
+```jsoniq
 import module namespace entities =
     "http://xbrl.io/modules/bizql/entities";
 
@@ -38,7 +40,8 @@ entities:entities()```
  Example - A company in JSON format
 
 	    
-	    ```jsoniq
+	    
+```jsoniq
 {
   "_id" : "http://www.sec.gov/CIK 0000320193", 
   "Profiles" : {
@@ -71,7 +74,8 @@ see in other parts of the tutorial, that the Profiles.SEC subobject is not restr
  Example - All Dow 30 companies
 
 	    
-	    ```jsoniq
+	    
+```jsoniq
 import module namespace companies =
     "http://xbrl.io/modules/bizql/profiles/sec/companies";
 
@@ -85,7 +89,8 @@ in a single call. Mind the double parenthesis: you are passing one single sequen
  Example - All Dow 30 and Fortune 100 companies (companies in both indices will be returned twice)
 
 	    
-	    ```jsoniq
+	    
+```jsoniq
 import module namespace companies =
     "http://xbrl.io/modules/bizql/profiles/sec/companies";
 
@@ -98,7 +103,8 @@ companies:companies-for-tags( ("DOW30", "FORTUNE100") )```
  Example - Walt Disney by CIK
 
 	    
-	    ```jsoniq
+	    
+```jsoniq
 import module namespace companies =
     "http://xbrl.io/modules/bizql/profiles/sec/companies";
 
@@ -111,7 +117,8 @@ companies:companies(1001039)```
  Example - American Express and Walt Disney by CIK
 
 	    
-	    ```jsoniq
+	    
+```jsoniq
 import module namespace companies =
     "http://xbrl.io/modules/bizql/profiles/sec/companies";
 
@@ -124,7 +131,8 @@ companies:companies((4962, 1001039))```
  Example - American Express and Walt Disney by CIK
 
 	    
-	    ```jsoniq
+	    
+```jsoniq
 import module namespace companies =
     "http://xbrl.io/modules/bizql/profiles/sec/companies";
 
@@ -135,7 +143,8 @@ companies:companies-for-SIC(("3600", "3674"))```
  Example - Companies by sector (electronic)
 
       
-	    ```jsoniq
+	    
+```jsoniq
 import module namespace companies =
     "http://xbrl.io/modules/bizql/profiles/sec/companies";
 
@@ -148,7 +157,8 @@ companies:companies-for-sector(
  Example - JPMorgan and Walmart by ticker
 
 	    
-	    ```jsoniq
+	    
+```jsoniq
 import module namespace companies =
     "http://xbrl.io/modules/bizql/profiles/sec/companies";
 
@@ -162,7 +172,8 @@ groups company names by sector, using the Sector and CompanyName fields in the S
  Example - All company names grouped by sector
 
       
-      ```jsoniq
+      
+```jsoniq
 import module namespace entities =
     "http://xbrl.io/modules/bizql/entities";
 
@@ -189,7 +200,8 @@ navigates deep into an object, double square brackets with an integer into an ar
  Example - Discovering all indices in half a second's time
 
       
-      ```jsoniq
+      
+```jsoniq
 import module namespace entities =
     "http://xbrl.io/modules/bizql/entities";
 

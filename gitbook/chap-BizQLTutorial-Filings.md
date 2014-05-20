@@ -8,7 +8,8 @@
 
   The XBRL connector provides two modules for working with filings. One of them is generic, the other one
     offers functionality that is specific to the SEC. In this
-    case:```jsoniq
+    case:
+```jsoniq
 http://xbrl.io/modules/bizql/archives
 http://xbrl.io/modules/bizql/profiles/sec/filings```
 
@@ -24,7 +25,8 @@ http://xbrl.io/modules/bizql/profiles/sec/filings```
  Example - All filings
 
       
-      ```jsoniq
+      
+```jsoniq
 import module namespace archives =
     "http://xbrl.io/modules/bizql/archives";
 archives:archives()```
@@ -36,7 +38,8 @@ archives:archives()```
  Example - A filing in JSON format
 
       
-      ```jsoniq
+      
+```jsoniq
 {
   "_id" : "0000021344-13-000017", 
   "Entity" : "http://www.sec.gov/CIK 0000021344", 
@@ -118,7 +121,8 @@ the SEC form type, the filing date, the reported fiscal period, etc. There are a
  Example - American Express's filings
 
       
-      ```jsoniq
+      
+```jsoniq
 import module namespace companies =
     "http://xbrl.io/modules/bizql/profiles/sec/companies";
 import module namespace filings =
@@ -134,7 +138,8 @@ return filings:filings-for-companies($amex)```
  Example - All filings by American Express and Walt Disney
 
     
-      ```jsoniq
+      
+```jsoniq
 import module namespace companies =
     "http://xbrl.io/modules/bizql/profiles/sec/companies";
 import module namespace filings =
@@ -152,7 +157,8 @@ return filings:filings-for-companies( ($amex, $disney) )```
  Example - Filings by Amex and Disney in a single call
 
       
-      ```jsoniq
+      
+```jsoniq
 import module namespace filings =
     "http://xbrl.io/modules/bizql/profiles/sec/filings";
 
@@ -165,7 +171,8 @@ filings:filings-for-companies( (4962, 1001039) )```
  Example - Filings by Amex and Disney, FY 2011 and FY 2012
 
       
-      ```jsoniq
+      
+```jsoniq
 import module namespace fiscal =
     "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
 
@@ -192,7 +199,8 @@ fiscal:filings-for-entities-and-fiscal-periods-and-years(
     For example, if you would like to use the statistics to count the facts in FY 2011 and 2012 filings by Apple and Google:
 
     
-      ```jsoniq
+      
+```jsoniq
 import module namespace fiscal =
     "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
 
@@ -212,7 +220,8 @@ return sum($filings.Statistics.NumFacts)
  Example - Discover Amex's filings by fiscal year and period
 
       
-      ```jsoniq
+      
+```jsoniq
 import module namespace archives =
     "http://xbrl.io/modules/bizql/archives";
 

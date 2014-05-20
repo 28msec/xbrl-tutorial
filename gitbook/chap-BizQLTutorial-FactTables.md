@@ -54,7 +54,8 @@ Let us get back to the balance sheet of Coca Cola for FY 2012, and ask for the f
  Example - The fact table for a balance sheet by Coca Cola
 
       
-      ```jsoniq
+      
+```jsoniq
 import module namespace fiscal =
     "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
 import module namespace sec-networks =
@@ -81,7 +82,8 @@ return sec-networks:facts($network)
  Example - The fact object format
 
       
-      ```jsoniq
+      
+```jsoniq
 {
   "Archive" : "0000021344-13-000007", 
   "_id" : "68a552aa-ff68-4fb0-be34-c4507b1fbc00", 
