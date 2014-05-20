@@ -41,7 +41,7 @@ declare function local:docbook-to-markdown($element as node(), $level as xs:inte
    case element(emphasis) return " *" || string-join(for $child in $element/node() return local:docbook-to-markdown($child, $level), "") || "* "
    case element(uri) return " [" || $element/text() || "](" || $element/text() || ")"
    case element(section) return for $child in $element/node() return local:docbook-to-markdown($child, $level + 1)
-   case element(inlinegraphic) return "![" || $element/@fileref || "](tutorial/en-US/" || $element/@fileref || ")"
+   case element(inlinegraphic) return "![" || $element/@fileref || "](../tutorial/en-US/" || $element/@fileref || ")"
    case element(orderedlist) return for $item in $element/listitem return string-join(((1 to ($level - 1)) ! "    "), "") || "-" || string-join(for $child in $item/node() return local:docbook-to-markdown($child, $level + 1), "")
    case element(itemizedlist) return for $item in $element/listitem return string-join(((1 to ($level - 1)) ! "    "), "") || "*" || string-join(for $child in $item/node() return local:docbook-to-markdown($child, $level + 1), "")
    case element(example) return "
@@ -52,8 +52,7 @@ declare function local:docbook-to-markdown($element as node(), $level as xs:inte
 " || $element/text() || "```
 "
    case text() return normalize-space(string($element))
-   case element(para) return "
-" || string-join(for $child in $element/node() return local:docbook-to-markdown($child, $level), "") || "
+   case element(para) return string-join(for $child in $element/node() return local:docbook-to-markdown($child, $level), "") || "
 
 "
    default return string-join(for $child in $element/node() return local:docbook-to-markdown($child, $level), "")

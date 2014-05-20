@@ -1,13 +1,9 @@
 #Filings
-
 In the former chapter, we explained how to deal with companies. We now go into the details of the filings that these companies submitted to the SEC.
-
 
 Physically, companies submit XBRL instances, possibly together with an extension taxonomy.
 
-
 The XBRL connector abstracts from this by grouping the instance and the DTS (us-gaap taxonomy + extension) into what is called an archive.
-
 
 The XBRL connector provides two modules for working with filings. One of them is generic, the other one offers functionality that is specific to the SEC. In this case:
 ```jsoniq
@@ -16,7 +12,6 @@ http://xbrl.io/modules/bizql/profiles/sec/filings```
 
 
 ##Looking Up Filings
-
 Let us begin with a very simple query that just lists the SEC filings. It is generic, so it uses the archives module:
 
 
@@ -26,7 +21,6 @@ Let us begin with a very simple query that just lists the SEC filings. It is gen
 import module namespace archives =
     "http://xbrl.io/modules/bizql/archives";
 archives:archives()```
-
 In the XBRL connector, a filing is represented by a JSON object, like so (in this case, Coca Cola's report for Q1 2013):
 
 
@@ -100,12 +94,9 @@ In the XBRL connector, a filing is represented by a JSON object, like so (in thi
     "NumComponents" : 53
   }
 }```
-
 Some of the information in here is not specific to the SEC: the reporting entity, the URL to the physical XBRL instance, the namespaces to which prefixes (used in facts) correspond, and some statistics (number of facts, of hypercubes, etc).
 
-
 Just like companies, filing objects also have SEC-specific information that is embedded in a Profiles.SEC subobject. It contains, for example, the SEC form type, the filing date, the reported fiscal period, etc. There are also SEC-specific statistics.
-
 
 You can ask the filings submitted by a given company with thefilings:filings-for-companiesfunction:
 
@@ -120,7 +111,6 @@ import module namespace filings =
 
 let $amex := companies:companies(4962)
 return filings:filings-for-companies($amex)```
-
 As always, any sequence is accepted as input:
 
 
@@ -135,7 +125,6 @@ import module namespace filings =
 let $amex := companies:companies(4962)
 let $disney := companies:companies(1001039)
 return filings:filings-for-companies( ($amex, $disney) )```
-
 For convenience, you can always pass a CIK instead of the company object, which greatly simplifies the query. This applies to all functions taking a sequence of companies as a parameter.
 
 
@@ -146,7 +135,6 @@ import module namespace filings =
     "http://xbrl.io/modules/bizql/profiles/sec/filings";
 
 filings:filings-for-companies( (4962, 1001039) )```
-
 If you are looking for a specific fiscal period or year, the fiscal module can help.
 
 
@@ -162,18 +150,13 @@ fiscal:filings-for-entities-and-fiscal-periods-and-years(
     (2011, 2012)
 )```
 ##Diving into a filing
-
 Once you have one or more filing objects, you can query them. There are two main ways to do it:
 
-    *
-Using JSONiq navigation (with dots and square brackets).
-
+    *Using JSONiq navigation (with dots and square brackets).
 
 Using functions.
 
-
 For example, if you would like to use the statistics to count the facts in FY 2011 and 2012 filings by Apple and Google:
-
 
 
 ```jsoniq
@@ -187,7 +170,6 @@ let $filings :=
       (2011, 2012) )
 return sum($filings.Statistics.NumFacts)
 ```
-
 
 
 Some of the fields are available, for convenience, with functions (in this case, the archive ID as well as the fiscal period and year):
@@ -216,35 +198,25 @@ return {
 }
 ```
 ##The SECXBRL.info REST API for filings
-
 We also provide a REST API that allows you to look up filings and, say, import them into an Excel spreadsheet. The API is documentedhere
 
 ###Retrieve a filing
-
 You can retrieve a filing given the CIKs of (one or several) companies with thecikparameter like so:
-
 
  [http://secxbrl.xbrl.io/api/filings.jq?cik=320193&cik=1288776](http://secxbrl.xbrl.io/api/filings.jq?cik=320193&cik=1288776)
 
-
 If you do not know the CIK of the company you are looking for, you can also use thetagortickerparameter like in the entities API. Or you can use the entities REST API, explained in the former chapter.
-
 
 You can retrieve specify a fiscal period or year with thefiscalPeriodandfiscalYearparameters like so:
 
-
  [http://secxbrl.xbrl.io/api/filings.jq?cik=320193&fiscalYear=2012&fiscalPeriod=Q1&fiscalPeriod=Q2](http://secxbrl.xbrl.io/api/filings.jq?cik=320193&fiscalYear=2012&fiscalPeriod=Q1&fiscalPeriod=Q2)
-
 
 You can use fiscalYear=LATEST to retrieve the latest year.
 
 ###Select a format
-
 You can also choose the format in which you would like to retrieve filing information, like in the entities API.
 
-
 For example, for Excel:
-
 
  [http://secxbrl.xbrl.io/api/filings.jq?cik=320193&cik=1288776&format=csv](http://secxbrl.xbrl.io/api/filings.jq?cik=320193&cik=1288776&format=csv)
 
