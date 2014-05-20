@@ -156,36 +156,10 @@ For people without developer background, we provide a REST API that allows you t
 ###Retrieve a company
 You can retrieve:
 
-        * All companies with [http://secxbrl.xbrl.io/api/entities.jq](http://secxbrl.xbrl.io/api/entities.jq)
-
-        * One or several companies by CIK with thecikparameter, like so:
-
- [http://secxbrl.xbrl.io/api/entities.jq?cik=1412090&cik=4962](http://secxbrl.xbrl.io/api/entities.jq?cik=1412090&cik=4962)
-
-        * Companies by (one or several) tag with thetagparameter, like so:
-
- [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30)
-
-        * One or several companies by ticker with thetickerparameter, like so:
-
- [http://secxbrl.xbrl.io/api/entities.jq?ticker=AAPL&ticker=GOOG](http://secxbrl.xbrl.io/api/entities.jq?ticker=AAPL&ticker=GOOG)
-
-
+        * All companies with [http://secxbrl.xbrl.io/api/entities.jq](http://secxbrl.xbrl.io/api/entities.jq)        * One or several companies by CIK with thecikparameter, like so: [http://secxbrl.xbrl.io/api/entities.jq?cik=1412090&cik=4962](http://secxbrl.xbrl.io/api/entities.jq?cik=1412090&cik=4962)        * Companies by (one or several) tag with thetagparameter, like so: [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30)        * One or several companies by ticker with thetickerparameter, like so: [http://secxbrl.xbrl.io/api/entities.jq?ticker=AAPL&ticker=GOOG](http://secxbrl.xbrl.io/api/entities.jq?ticker=AAPL&ticker=GOOG)
 
 ###Select a format
 You can choose the format in which you would like to retrieve company information. By default, JSON will be output.
 
-        * In JSON with thejsonparameter, like so:
-
- [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=json](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=json)
-
-        * In XML with thexmlparameter, like so:
-
- [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=xml](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=xml)
-
-        * In CSV (comma-separated values, which you can open in good old Excel) with thecsvparameter, like so:
-
- [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=csv](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=csv)
-
-
+        * In JSON with thejsonparameter, like so: [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=json](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=json)        * In XML with thexmlparameter, like so: [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=xml](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=xml)        * In CSV (comma-separated values, which you can open in good old Excel) with thecsvparameter, like so: [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=csv](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=csv)
 

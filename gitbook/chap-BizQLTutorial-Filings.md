@@ -152,11 +152,7 @@ fiscal:filings-for-entities-and-fiscal-periods-and-years(
 ##Diving into a filing
 Once you have one or more filing objects, you can query them. There are two main ways to do it:
 
-    * Using JSONiq navigation (with dots and square brackets).
-
-Using functions.
-
-For example, if you would like to use the statistics to count the facts in FY 2011 and 2012 filings by Apple and Google:
+    * Using JSONiq navigation (with dots and square brackets). Using functions.For example, if you would like to use the statistics to count the facts in FY 2011 and 2012 filings by Apple and Google:
 
 
 ```jsoniq
