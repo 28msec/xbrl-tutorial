@@ -36,7 +36,8 @@ declare function local:docbook-to-markdown($element as element()) as xs:string {
 
 declare function local:docbook-to-markdown($element as node(), $level as xs:integer) as xs:string* {
    typeswitch($element)
-   case element(title) return string-join((1 to $level) ! "#", "") || $element/text()
+   case element(title) return string-join((1 to $level) ! "#", "") || $element/text() || "
+"
    case element(emphasis) return "`" || string-join(for $child in $element/node() return local:docbook-to-markdown($child, $level), "") || "`"
    case element(uri) return "[" || $element/text() || "](" || $element/text() || ")"
    case element(section) return for $child in $element/node() return local:docbook-to-markdown($child, $level + 1)
@@ -50,8 +51,10 @@ declare function local:docbook-to-markdown($element as node(), $level as xs:inte
 ```jsoniq
 " || $element/text() || "```
 "
-   case text() return string($element)
-   case element(para) return string-join(for $child in $element/node() return local:docbook-to-markdown($child, $level), "") || "
+   case text() return normalize-space(string($element))
+   case element(para) return "
+" || string-join(for $child in $element/node() return local:docbook-to-markdown($child, $level), "") || "
+
 "
    default return string-join(for $child in $element/node() return local:docbook-to-markdown($child, $level), "")
 };
