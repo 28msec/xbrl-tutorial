@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
-<!ENTITY % BOOK_ENTITIES SYSTEM "BizQLTutorial.ent">
+<!ENTITY % BOOK_ENTITIES SYSTEM "SECTutorial.ent">
 %BOOK_ENTITIES;
 ]>
 <chapter id="chap-BizQLTutorial-FactTables">
@@ -131,7 +131,9 @@ edDomain"
       <para>You can retrieve the fact table of a components using the <code>cid</code> parameter.</para>
       <para><uri>http://secxbrl.xbrl.io/api/facttable-for-component.jq?cid=66887390-ee56-44a7-a897-62eefe944476</uri></para>
       <para>You can also use the parameters from the components API: For example, the fact table for Coca Cola's balance sheet for FY 2012 can be retrieved with</para>
-      <para><uri>http://secxbrl.xbrl.io/api/facttable-for-component.jq?_method=POST&amp;format=xml&amp;cik=21344&amp;fiscalYear=2012&amp;fiscalPeriod=FY&amp;disclosure=BalanceSheet</uri></para>
+      <para><uri>http://secxbrl.xbrl.io/api/facttable-for-component.jq?</uri>
+        <uri>_method=POST&amp;format=xml&amp;cik=21344&amp;fiscalYear=2012</uri>
+        <uri>&amp;fiscalPeriod=FY&amp;disclosure=BalanceSheet</uri></para>
       <para>The format parameter is also available as usual.</para>
     </section>
   </section>

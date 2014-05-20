@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
-<!ENTITY % BOOK_ENTITIES SYSTEM "BizQLTutorial.ent">
+<!ENTITY % BOOK_ENTITIES SYSTEM "SECTutorial.ent">
 %BOOK_ENTITIES;
 ]>
 <chapter id="chap-BizQLTutorial-Filings">
@@ -102,8 +102,10 @@ the SEC form type, the filing date, the reported fiscal period, etc. There are a
     <para>You can ask the filings submitted by a given company with the <code>filings:filings-for-companies</code> function:</para>
     <example>
       <title>American Express's filings</title>
-      <programlisting>import module namespace companies = "http://xbrl.io/modules/bizql/profiles/sec/companies";
-import module namespace filings = "http://xbrl.io/modules/bizql/profiles/sec/filings";
+      <programlisting>import module namespace companies =
+    "http://xbrl.io/modules/bizql/profiles/sec/companies";
+import module namespace filings =
+    "http://xbrl.io/modules/bizql/profiles/sec/filings";
 
 let $amex := companies:companies(4962)
 return filings:filings-for-companies($amex)</programlisting>
@@ -124,16 +126,22 @@ return filings:filings-for-companies( ($amex, $disney) )</programlisting>
       taking a sequence of companies as a parameter.</para>
     <example>
       <title>Filings by Amex and Disney in a single call</title>
-      <programlisting>import module namespace filings = "http://xbrl.io/modules/bizql/profiles/sec/filings";
+      <programlisting>import module namespace filings =
+    "http://xbrl.io/modules/bizql/profiles/sec/filings";
 
 filings:filings-for-companies( (4962, 1001039) )</programlisting>
     </example>
     <para>If you are looking for a specific fiscal period or year, the fiscal module can help.</para>
     <example>
       <title>Filings by Amex and Disney, FY 2011 and FY 2012</title>
-      <programlisting>import module namespace fiscal = "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
+      <programlisting>import module namespace fiscal =
+    "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
 
-fiscal:filings-for-entities-and-fiscal-periods-and-years( (4962, 1001039), "FY", (2011, 2012) )</programlisting>
+fiscal:filings-for-entities-and-fiscal-periods-and-years(
+    (4962, 1001039),
+    "FY",
+    (2011, 2012)
+)</programlisting>
     </example>
   </section>
 
@@ -149,9 +157,14 @@ fiscal:filings-for-entities-and-fiscal-periods-and-years( (4962, 1001039), "FY",
     </itemizedlist>
     <para>For example, if you would like to use the statistics to count the facts in FY 2011 and 2012 filings by Apple and Google:</para>
     <para>
-      <programlisting>import module namespace fiscal = "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
+      <programlisting>import module namespace fiscal =
+    "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
 
-let $filings := fiscal:filings-for-entities-and-fiscal-periods-and-years( (4962, 1001039), "FY", (2011, 2012) )
+let $filings :=
+  fiscal:filings-for-entities-and-fiscal-periods-and-years(
+      (4962, 1001039),
+      "FY",
+      (2011, 2012) )
 return sum($filings.Statistics.NumFacts)
 </programlisting>
     </para>
