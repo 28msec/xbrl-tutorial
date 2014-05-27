@@ -1,12 +1,9 @@
-import module namespace hypercubes =
-    "http://xbrl.io/modules/bizql/hypercubes";
-
 import module namespace sec =
     "http://xbrl.io/modules/bizql/profiles/sec/core";
 import module namespace companies =
     "http://xbrl.io/modules/bizql/profiles/sec/companies";
 
-let $hypercube := hypercubes:dimensionless-hypercube({
+let $hypercube := sec:dimensionless-hypercube({
   Concepts: [ "us-gaap:Assets", "us-gaap:Equity" ],
   Entities: [ companies:companies-for-tags("DOW30")._id ]
 })
