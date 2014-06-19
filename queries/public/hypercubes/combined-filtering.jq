@@ -8,15 +8,18 @@ import module namespace companies =
 
 let $hypercube := sec:user-defined-hypercube({
   "xbrl:Entity" : {
+    Type: "string",
     Domain: [  companies:companies-for-tags("DOW30")._id ]
   }, 
   "us-gaap:StatementEquityComponentsAxis" : {
     Domain: [ "us-gaap:CommonStockMember" ]
   },
   "sec:FiscalPeriod" : {
+    Type: "string",
     Domain: [ "FY" ]
   },
   "sec:FiscalYear" : {
+    Type: "integer",
     Domain: [ 2012 ]
   }
 })

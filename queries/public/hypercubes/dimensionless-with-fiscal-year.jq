@@ -6,9 +6,11 @@ let $hypercube := sec:user-defined-hypercube({
       Domain: [ "us-gaap:Assets", "us-gaap:Equity" ]
     },
     "sec:FiscalPeriod" : {
+        Type: "string",
         Domain: [ "FY" ]
     },
     "sec:FiscalYear" : {
+        Type: "integer",
         Domain: [ 2012 ]
     }
 }

@@ -14,6 +14,7 @@ let $filing :=
   )
 let $hypercube := sec:user-defined-hypercube({
     "sec:Archive" : {
+        Type: "string",
         Domain: [ archives:aid($filing) ]
     }
 })
