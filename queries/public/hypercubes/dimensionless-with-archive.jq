@@ -1,6 +1,3 @@
-import module namespace hypercubes =
-    "http://xbrl.io/modules/bizql/hypercubes";
-
 import module namespace archives =
     "http://xbrl.io/modules/bizql/archives";
 
@@ -9,18 +6,16 @@ import module namespace sec =
 import module namespace fiscal =
     "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
 
-let $hypercube := hypercubes:dimensionless-hypercube()
 let $filing :=
   fiscal:filings-for-entities-and-fiscal-periods-and-years(
     (4962, 1001039),
     "FY",
     (2011, 2012)
   )
-return count(sec:facts-for-hypercube(
-  $hypercube,
-  {
-    Filter: {
-      Archive: archives:aid($filing)
+let $hypercube := sec:user-defined-hypercube({
+    "sec:Archive" : {
+        Type: "string",
+        Domain: [ archives:aid($filing) ]
     }
-  }
-))
+})
+return count(sec:facts-for-hypercube($hypercube))
