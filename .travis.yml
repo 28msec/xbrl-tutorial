@@ -9,8 +9,6 @@ before_script:
 - sudo apt-get install -qq zorba
 - git config --global user.email "w@28.io"
 - git config --global user.name "William Candillon"
-- git config credential.helper "store --file=.git/credentials"
-- echo "https://${GH_TOKEN}:@github.com" > .git/credentials
 script:
 - grunt
 env:
