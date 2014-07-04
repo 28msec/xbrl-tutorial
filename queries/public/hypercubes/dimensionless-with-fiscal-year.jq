@@ -1,24 +1,18 @@
-import module namespace hypercubes =
-    "http://xbrl.io/modules/bizql/hypercubes";
-
 import module namespace sec =
     "http://xbrl.io/modules/bizql/profiles/sec/core";
 
-let $hypercube := hypercubes:dimensionless-hypercube({
-  Concepts: [ "us-gaap:Assets", "us-gaap:Equity" ]
-})
-return count(sec:facts-for-hypercube(
-    $hypercube,
-    {
-        Filter: {
-            Profiles: {
-                SEC: {
-                    Fiscal: {
-                        Period: "FY",
-                        Year: 2012
-                    }
-                }
-            }
-        }
+let $hypercube := sec:user-defined-hypercube({
+    "xbrl:Concept": {
+      Domain: [ "us-gaap:Assets", "us-gaap:Equity" ]
+    },
+    "sec:FiscalPeriod" : {
+        Type: "string",
+        Domain: [ "FY" ]
+    },
+    "sec:FiscalYear" : {
+        Type: "integer",
+        Domain: [ 2012 ]
     }
-))
+}
+)
+return count(sec:facts-for-hypercube($hypercube))

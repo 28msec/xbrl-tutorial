@@ -30,8 +30,20 @@ module.exports = function (grunt) {
                 src: 'queries'
             },
             dist: {}
+        },
+        branch_run: {
+            options:{
+                master: ['gh-pages']
+            }
+        },
+        shell: {
+            listFolders: {
+                options: {
+                    stderr: false
+                },
+                command: 'zorba -q build-book.xq -f'
+            }
         }
     });
-    grunt.registerTask('test', ['xqlint', 'gitbook']);
-    grunt.registerTask('default', ['xqlint', 'gitbook', 'gh-pages']);
+    grunt.registerTask('default', ['xqlint', 'gitbook', 'gh-pages', 'branch_run']);
 };

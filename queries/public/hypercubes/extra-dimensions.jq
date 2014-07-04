@@ -1,10 +1,7 @@
-import module namespace hypercubes =
-    "http://xbrl.io/modules/bizql/hypercubes";
-
 import module namespace sec =
     "http://xbrl.io/modules/bizql/profiles/sec/core";
 
-let $hypercube := hypercubes:user-defined-hypercube({
+let $hypercube := sec:user-defined-hypercube({
   "xbrl:Concept" : {
     Domain: [ "us-gaap:DividendsCommonStock" ]
   },

@@ -68,5 +68,5 @@ return {
     local:build-summary($book);
     for $chapter in $book/chapter
     return local:build-chapter($chapter);
-    $book
+    "Done"
 }
