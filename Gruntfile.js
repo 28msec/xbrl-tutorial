@@ -41,9 +41,9 @@ module.exports = function (grunt) {
                 options: {
                     stderr: false
                 },
-                command: 'zorba -q build-book.xq -f'
+                command: '/opt/local/bin/zorba -q build-book.xq -f'
             }
         }
     });
-    grunt.registerTask('default', ['xqlint', 'gitbook', 'gh-pages', 'branch_run']);
+    grunt.registerTask('default', ['xqlint', 'gitbook', 'shell', 'gh-pages', 'branch_run']);
 };

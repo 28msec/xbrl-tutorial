@@ -4,7 +4,7 @@
 %BOOK_ENTITIES;
 ]>
 <chapter id="chap-BizQLTutorial-Companies">
-	<title>Companies</title>
+	<title>Companies 2</title>
 	<para> Companies submit filings to the SEC via the Edgar system.</para>
   <para>In the XBRL world, companies correspond to reporting <emphasis role="bold"
       >entities.</emphasis></para>
