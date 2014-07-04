@@ -13,7 +13,9 @@ module.exports = function (grunt) {
             docs: {
                 src: '**/*',
                 options: {
-                    base: '_book'
+                    base: '_book',
+                    repo: 'https://' + process.env.GH_TOKEN + '@github.com/28msec/xbrl-tutorial.git',
+                    silent: true
                 }
             }
         }, 
@@ -33,7 +35,7 @@ module.exports = function (grunt) {
         },
         branch_run: {
             options: {
-                master: ['gh-pages']
+                HEAD: ['gh-pages']
             },
             dist: {}
         },
@@ -42,7 +44,7 @@ module.exports = function (grunt) {
                 options: {
                     stderr: false
                 },
-                command: '/opt/local/bin/zorba -q build-book.xq -f'
+                command: 'zorba -q build-book.xq -f'
             }
         }
     });
