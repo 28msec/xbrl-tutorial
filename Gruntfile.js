@@ -32,12 +32,13 @@ module.exports = function (grunt) {
             dist: {}
         },
         branch_run: {
-            options:{
+            options: {
                 master: ['gh-pages']
-            }
+            },
+            dist: {}
         },
         shell: {
-            listFolders: {
+            zorba: {
                 options: {
                     stderr: false
                 },
@@ -45,5 +46,5 @@ module.exports = function (grunt) {
             }
         }
     });
-    grunt.registerTask('default', ['xqlint', 'gitbook', 'shell', 'gh-pages', 'branch_run']);
+    grunt.registerTask('default', ['xqlint', 'shell', 'gitbook', 'branch_run']);
 };
