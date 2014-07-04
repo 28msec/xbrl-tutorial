@@ -35,7 +35,7 @@ module.exports = function (grunt) {
         },
         branch_run: {
             options: {
-                HEAD: ['gh-pages']
+                master: ['gh-pages']
             },
             dist: {}
         },

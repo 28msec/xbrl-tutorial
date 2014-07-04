@@ -26,7 +26,7 @@
     "load-grunt-tasks": "~0.4.0",
     "grunt-gh-pages": "~0.9.1",
     "grunt-xqlint": "~0.1.0",
-    "grunt-branch-run": "~0.1.2",
+    "grunt-branch-run": "~0.2.0",
     "grunt-shell": "~0.7.0"
   }
 }
