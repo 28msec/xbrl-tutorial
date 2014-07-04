@@ -13,7 +13,9 @@ module.exports = function (grunt) {
             docs: {
                 src: '**/*',
                 options: {
-                    base: '_book'
+                    base: '_book',
+                    repo: 'https://' + process.env.GH_TOKEN + '@github.com/28msec/xbrl-tutorial.git',
+                    silent: true
                 }
             }
         }, 
