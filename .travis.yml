@@ -14,3 +14,6 @@ script:
 env:
   global:
     secure: NFD4O6dJZdpIMURBCzh80HCMqOb1WCWQznQyq1EX6GEuKl2JQ1HyKeIqovYSAMCYYG7ZZcJhduUDxUmXWB7M/knqDX+aEY1R/LZQOSIkgdkUPbZ1oCkHX5pk9lq0o+vKCdpNNCGrbxO1i7IMHnelYTyi1OXzQgcf82ywyFJEwMk=
+branches:
+  only:
+    - master
