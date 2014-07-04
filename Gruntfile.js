@@ -33,7 +33,7 @@ module.exports = function (grunt) {
         },
         branch_run: {
             options: {
-                master: ['gh-pages']
+                HEAD: ['gh-pages']
             },
             dist: {}
         },
