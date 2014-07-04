@@ -32,9 +32,10 @@ module.exports = function (grunt) {
             dist: {}
         },
         branch_run: {
-            options:{
+            options: {
                 master: ['gh-pages']
-            }
+            },
+            dist: {}
         },
         shell: {
             zorba: {
