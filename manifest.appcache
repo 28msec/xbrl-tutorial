@@ -1,8 +1,16 @@
 CACHE MANIFEST
-# Revision 1404546598897
+# Revision 1404546982481
 
 CACHE:
 index.html
+gitbook/chap-BizQLTutorial-Companies.html
+gitbook/chap-BizQLTutorial-DesignYourOwnRESTAPI.html
+gitbook/chap-BizQLTutorial-FactTables.html
+gitbook/chap-BizQLTutorial-Filings.html
+gitbook/chap-BizQLTutorial-Hypercubes.html
+gitbook/chap-BizQLTutorial-Introduction.html
+gitbook/chap-BizQLTutorial-Networks.html
+gitbook/chap-BizQLTutorial-ReportSchemas.html
 gitbook/app.js
 gitbook/fonts/anonymouspro/400.woff
 gitbook/fonts/anonymouspro/400i.woff

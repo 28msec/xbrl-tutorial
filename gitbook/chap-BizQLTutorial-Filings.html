@@ -1,0 +1,485 @@
+<!DOCTYPE HTML>
+<html lang="en-US" manifest="../manifest.appcache">
+    
+    <head prefix="og: http://ogp.me/ns# book: http://ogp.me/ns/book#">
+        
+        
+        <meta charset="UTF-8">
+        <title>Filings | XBRL Tutorial</title>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="28msec">
+        <meta name="description" content="Build Status">
+        <meta name="keywords" content="gitbook,github" >
+        <meta name="generator" content="www.gitbook.io">
+
+        
+        <link rel="next" href="../gitbook/chap-BizQLTutorial-Networks.html" />
+        
+        
+        <link rel="prev" href="../gitbook/chap-BizQLTutorial-Companies.html" />
+        
+
+        <meta property="og:title" content="Filings | XBRL Tutorial">
+        <meta property="og:site_name" content="XBRL Tutorial">
+        <meta property="og:type" content="book">
+        <meta property="og:locale" content="en_US">
+
+        <meta property="book:author" content="https://github.com/28msec">
+        <meta property="book:tag" content="GitBook">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+        
+    </head>
+    <body>
+        
+        
+
+        <link rel="stylesheet" href="../gitbook/style.css">
+        
+
+
+        
+    <div class="book" data-github="28msec/xbrl-tutorial" data-level="3" data-basepath=".." data-revision="1404546982480">
+    <div class="book-header">
+    <!-- Actions Left -->
+    <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
+    
+    <a href="https://github.com/28msec/xbrl-tutorial" target="_blank" class="btn pull-left home-bookmark" aria-label="GitHub home"><i class="fa fa-bookmark-o"></i></a>
+    
+    <a href="#" class="btn pull-left toggle-search" aria-label="Toggle search"><i class="fa fa-search"></i></a>
+    <span id="font-settings-wrapper">
+        <a href="#" class="btn pull-left toggle-font-settings" aria-label="Toggle font settings"><i class="fa fa-font"></i>
+        </a>
+        <div class="dropdown-menu font-settings">
+    <div class="dropdown-caret">
+        <span class="caret-outer"></span>
+        <span class="caret-inner"></span>
+    </div>
+
+    <div class="btn-group btn-block">
+        <button id="reduce-font-size" class="btn btn-default">A</button>
+        <button id="enlarge-font-size" class="btn btn-default">A</button>
+    </div>
+
+    <ul class="list-group font-family-list">
+        <li class="list-group-item" data-font="0">Serif</li>
+        <li class="list-group-item" data-font="1">Sans</li>
+    </ul>
+
+    <div class="btn-group btn-group-xs btn-block color-theme-list">
+        <button type="button" class="btn btn-default" id="color-theme-preview-0" data-theme="0">White</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-1" data-theme="1">Sepia</button>
+        <button type="button" class="btn btn-default" id="color-theme-preview-2" data-theme="2">Night</button>
+    </div>
+</div>
+
+    </span>
+
+    <!-- Actions Right -->
+    
+    <a href="#" target="_blank" class="btn pull-right google-plus-sharing-link sharing-link" data-sharing="google-plus" aria-label="Share on Google Plus"><i class="fa fa-google-plus"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right facebook-sharing-link sharing-link" data-sharing="facebook" aria-label="Share on Facebook"><i class="fa fa-facebook"></i></a>
+    
+    
+    <a href="#" target="_blank" class="btn pull-right twitter-sharing-link sharing-link" data-sharing="twitter" aria-label="Share on Twitter"><i class="fa fa-twitter"></i></a>
+    
+
+    
+    <a href="https://github.com/28msec/xbrl-tutorial/stargazers" target="_blank" class="btn pull-right count-star hidden-xs"><i class="fa fa-star-o"></i> Star (<span>-</span>)</a>
+    <a href="https://github.com/28msec/xbrl-tutorial/watchers" target="_blank" class="btn pull-right count-watch hidden-xs"><i class="fa fa-eye"></i> Watch (<span>-</span>)</a>
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-spinner fa-spin"></i>
+        <a href="../" >XBRL Tutorial</a>
+    </h1>
+</div>
+
+    
+
+<div class="book-summary">
+    <div class="book-search">
+        <input type="text" placeholder="Search" class="form-control" />
+    </div>
+    <ul class="summary">
+        
+        
+        
+        <li>
+            <a href="https://github.com/28msec" target="blank" class="author-link">About the author</a>
+        </li>
+        
+
+        
+        
+        <li>
+            <a href="https://github.com/28msec/xbrl-tutorial/issues" target="blank"class="issues-link">Questions and Issues</a>
+        </li>
+        
+
+        
+        
+        <li>
+            <a href="https://github.com/28msec/xbrl-tutorial/edit/master/gitbook/chap-BizQLTutorial-Filings.md" target="blank" class="contribute-link">Edit and Contribute</a>
+        </li>
+        
+
+        
+        <li class="divider"></li>
+        
+
+        <li data-level="0" data-path="index.html">
+            <a href="../"><i class="fa fa-check"></i> Introduction</a>
+        </li>
+        
+    
+        <li class="chapter " data-level="1" data-path="gitbook/chap-BizQLTutorial-Introduction.html">
+            
+            <a href="../gitbook/chap-BizQLTutorial-Introduction.html">
+                <i class="fa fa-check"></i> <b>1.</b> Introduction
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="gitbook/chap-BizQLTutorial-Companies.html">
+            
+            <a href="../gitbook/chap-BizQLTutorial-Companies.html">
+                <i class="fa fa-check"></i> <b>2.</b> Companies
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="gitbook/chap-BizQLTutorial-Filings.html">
+            
+            <a href="../gitbook/chap-BizQLTutorial-Filings.html">
+                <i class="fa fa-check"></i> <b>3.</b> Filings
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="gitbook/chap-BizQLTutorial-Networks.html">
+            
+            <a href="../gitbook/chap-BizQLTutorial-Networks.html">
+                <i class="fa fa-check"></i> <b>4.</b> Networks
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="gitbook/chap-BizQLTutorial-FactTables.html">
+            
+            <a href="../gitbook/chap-BizQLTutorial-FactTables.html">
+                <i class="fa fa-check"></i> <b>5.</b> Fact tables
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="gitbook/chap-BizQLTutorial-Hypercubes.html">
+            
+            <a href="../gitbook/chap-BizQLTutorial-Hypercubes.html">
+                <i class="fa fa-check"></i> <b>6.</b> Hypercube Querying
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="gitbook/chap-BizQLTutorial-ReportSchemas.html">
+            
+            <a href="../gitbook/chap-BizQLTutorial-ReportSchemas.html">
+                <i class="fa fa-check"></i> <b>7.</b> Report schemas
+            </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="gitbook/chap-BizQLTutorial-DesignYourOwnRESTAPI.html">
+            
+            <a href="../gitbook/chap-BizQLTutorial-DesignYourOwnRESTAPI.html">
+                <i class="fa fa-check"></i> <b>8.</b> Design Your Own REST API
+            </a>
+            
+            
+        </li>
+    
+
+
+        
+        <li class="divider"></li>
+        <li>
+            <a href="http://www.gitbook.io/" target="blank" class="gitbook-link">Generated using GitBook</a>
+        </li>
+        
+    </ul>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="page-wrapper" tabindex="-1">
+                <div class="book-progress">
+    <div class="bar">
+        <div class="inner" style="width: 37.5%;min-width: 25%;"></div>
+    </div>
+    <div class="chapters">
+    
+        <a href="../index.html" title="Introduction" class="chapter done new-chapter" data-progress="0" style="left: 0%;"></a>
+    
+        <a href="../gitbook/chap-BizQLTutorial-Introduction.html" title="Introduction" class="chapter done new-chapter" data-progress="1" style="left: 12.5%;"></a>
+    
+        <a href="../gitbook/chap-BizQLTutorial-Companies.html" title="Companies" class="chapter done new-chapter" data-progress="2" style="left: 25%;"></a>
+    
+        <a href="../gitbook/chap-BizQLTutorial-Filings.html" title="Filings" class="chapter done new-chapter" data-progress="3" style="left: 37.5%;"></a>
+    
+        <a href="../gitbook/chap-BizQLTutorial-Networks.html" title="Networks" class="chapter  new-chapter" data-progress="4" style="left: 50%;"></a>
+    
+        <a href="../gitbook/chap-BizQLTutorial-FactTables.html" title="Fact tables" class="chapter  new-chapter" data-progress="5" style="left: 62.5%;"></a>
+    
+        <a href="../gitbook/chap-BizQLTutorial-Hypercubes.html" title="Hypercube Querying" class="chapter  new-chapter" data-progress="6" style="left: 75%;"></a>
+    
+        <a href="../gitbook/chap-BizQLTutorial-ReportSchemas.html" title="Report schemas" class="chapter  new-chapter" data-progress="7" style="left: 87.5%;"></a>
+    
+        <a href="../gitbook/chap-BizQLTutorial-DesignYourOwnRESTAPI.html" title="Design Your Own REST API" class="chapter  new-chapter" data-progress="8" style="left: 100%;"></a>
+    
+    </div>
+</div>
+
+                <div class="page-inner">
+                
+                    <section class="normal" id="section-gitbook_5">
+                    
+                        <h1 id="filings">Filings</h1>
+<p>In the former chapter, we explained how to deal with companies. We now go into the details of the filings that these companies submitted to the SEC.</p>
+<p>Physically, companies submit XBRL instances, possibly together with an extension taxonomy.</p>
+<p>The XBRL connector abstracts from this by grouping the instance and the DTS (us-gaap taxonomy + extension) into what is called an archive.</p>
+<p>The XBRL connector provides two modules for working with filings. One of them is generic, the other one offers functionality that is specific to the SEC. In this case:</p>
+<pre><code class="lang-jsoniq">http://xbrl.io/modules/bizql/archives
+http://xbrl.io/modules/bizql/profiles/sec/filings
+</code></pre>
+<h2 id="looking-up-filings">Looking Up Filings</h2>
+<p>Let us begin with a very simple query that just lists the SEC filings. It is generic, so it uses the archives module:</p>
+<p> Example - All filings</p>
+<pre><code class="lang-jsoniq">import module namespace archives =
+    &quot;http://xbrl.io/modules/bizql/archives&quot;;
+archives:archives()
+</code></pre>
+<p>In the XBRL connector, a filing is represented by a JSON object, like so (in this case, Coca Cola&#39;s report for Q1 2013):</p>
+<p> Example - A filing in JSON format</p>
+<pre><code class="lang-jsoniq">{
+  &quot;_id&quot; : &quot;0000021344-13-000017&quot;, 
+  &quot;Entity&quot; : &quot;http://www.sec.gov/CIK 0000021344&quot;, 
+  &quot;InstanceURL&quot; : &quot;http://www.sec.gov/Archives/edgar/data/21344/
+000002134413000017/ko-20130329.xml&quot;, 
+  &quot;Profiles&quot; : {
+    &quot;SEC&quot; : {
+      &quot;Name&quot; : &quot;SEC&quot;, 
+      &quot;FormType&quot; : &quot;10-Q&quot;, 
+      &quot;FilingDate&quot; : &quot;04/25/2013&quot;, 
+      &quot;FileNumber&quot; : &quot;001-02217&quot;, 
+      &quot;AcceptanceDatetime&quot; : &quot;20130425115725&quot;, 
+      &quot;Period&quot; : &quot;20130329&quot;, 
+      &quot;AssistantDirector&quot; : &quot;9&quot;, 
+      &quot;SECFilingPage&quot; : &quot;http://www.sec.gov/Archives/edgar/data/
+21344/000002134413000017/0000021344-13-000017-index.htm&quot;, 
+      &quot;DocumentPeriodEndDate&quot; : &quot;2013-03-29&quot;, 
+      &quot;Fiscal&quot; : {
+        &quot;DocumentFiscalPeriodFocus&quot; : &quot;Q1&quot;, 
+        &quot;DocumentFiscalYearFocus&quot; : 2013
+      }, 
+      &quot;Generator&quot; : &quot;WebFilings&quot;
+    }
+  }, 
+  &quot;Namespaces&quot; : {
+    &quot;link&quot; : &quot;http://www.xbrl.org/2003/linkbase&quot;, 
+    &quot;ko&quot; : &quot;http://www.thecoca-colacompany.com/20130329&quot;, 
+    &quot;xbrli&quot; : &quot;http://www.xbrl.org/2003/instance&quot;, 
+    &quot;xs&quot; : &quot;http://www.w3.org/2001/XMLSchema&quot;, 
+    &quot;us-gaap&quot; : &quot;http://fasb.org/us-gaap/2012-01-31&quot;, 
+    &quot;nonnum&quot; : &quot;http://www.xbrl.org/dtr/type/non-numeric&quot;, 
+    &quot;xbrldt&quot; : &quot;http://xbrl.org/2005/xbrldt&quot;, 
+    &quot;num&quot; : &quot;http://www.xbrl.org/dtr/type/numeric&quot;, 
+    &quot;dei&quot; : &quot;http://xbrl.sec.gov/dei/2012-01-31&quot;, 
+    &quot;iso4217&quot; : &quot;http://www.xbrl.org/2003/iso4217&quot;
+  }, 
+  &quot;Statistics&quot; : {
+    &quot;NumHypercubes&quot; : 25, 
+    &quot;NumNetworks&quot; : 86, 
+    &quot;NumDistinctExplicitDimensions&quot; : 21, 
+    &quot;NumDistinctDomains&quot; : 22, 
+    &quot;NumDistinctMembers&quot; : 93, 
+    &quot;NumDistinctConcretePrimaryItemsInHypercubes&quot; : 244, 
+    &quot;NumDistinctAbstractPrimaryItemsInHypercubes&quot; : 58, 
+    &quot;NumDistinctConcretePrimaryItemsNotInHypercubes&quot; : 60, 
+    &quot;NumDistinctAbstractPrimaryItemsNotInHypercubes&quot; : 160, 
+    &quot;Profiles&quot; : {
+      &quot;SEC&quot; : {
+        &quot;Name&quot; : &quot;SEC&quot;, 
+        &quot;NumExtensionConcepts&quot; : 73, 
+        &quot;NumExtensionAbstracts&quot; : 80, 
+        &quot;NumDistinctReportElementNamesEndingWithTable&quot; : 17, 
+        &quot;NumDistinctReportElementNamesEndingWithAxis&quot; : 21, 
+        &quot;NumDistinctReportElementNamesEndingWithDomain&quot; : 22, 
+        &quot;NumDistinctReportElementNamesEndingWithMember&quot; : 71, 
+        &quot;NumDistinctReportElementNamesEndingWithLineItems&quot; : 19, 
+        &quot;NumDistinctReportElementNamesEndingWithAbstract&quot; : 53, 
+        &quot;NumDistinctReportElementNamesEndingWithAnythingElse&quot; : 
+319, 
+        &quot;NumExtensionFacts&quot; : 217
+      }
+    }, 
+    &quot;NumFacts&quot; : 990, 
+    &quot;NumFootnotes&quot; : 1, 
+    &quot;NumComponents&quot; : 53
+  }
+}
+</code></pre>
+<p>Some of the information in here is not specific to the SEC: the reporting entity, the URL to the physical XBRL instance, the namespaces to which prefixes (used in facts) correspond, and some statistics (number of facts, of hypercubes, etc).</p>
+<p>Just like companies, filing objects also have SEC-specific information that is embedded in a Profiles.SEC subobject. It contains, for example, the SEC form type, the filing date, the reported fiscal period, etc. There are also SEC-specific statistics.</p>
+<p>You can ask the filings submitted by a given company with thefilings:filings-for-companiesfunction:</p>
+<p> Example - American Express&#39;s filings</p>
+<pre><code class="lang-jsoniq">import module namespace companies =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/companies&quot;;
+import module namespace filings =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/filings&quot;;
+
+let $amex := companies:companies(4962)
+return filings:filings-for-companies($amex)
+</code></pre>
+<p>As always, any sequence is accepted as input:</p>
+<p> Example - All filings by American Express and Walt Disney</p>
+<pre><code class="lang-jsoniq">import module namespace companies =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/companies&quot;;
+import module namespace filings =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/filings&quot;;
+
+let $amex := companies:companies(4962)
+let $disney := companies:companies(1001039)
+return filings:filings-for-companies( ($amex, $disney) )
+</code></pre>
+<p>For convenience, you can always pass a CIK instead of the company object, which greatly simplifies the query. This applies to all functions taking a sequence of companies as a parameter.</p>
+<p> Example - Filings by Amex and Disney in a single call</p>
+<pre><code class="lang-jsoniq">import module namespace filings =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/filings&quot;;
+
+filings:filings-for-companies( (4962, 1001039) )
+</code></pre>
+<p>If you are looking for a specific fiscal period or year, the fiscal module can help.</p>
+<p> Example - Filings by Amex and Disney, FY 2011 and FY 2012</p>
+<pre><code class="lang-jsoniq">import module namespace fiscal =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/fiscal/core&quot;;
+
+fiscal:filings-for-entities-and-fiscal-periods-and-years(
+    (4962, 1001039),
+    &quot;FY&quot;,
+    (2011, 2012)
+)
+</code></pre>
+<h2 id="diving-into-a-filing">Diving into a filing</h2>
+<p>Once you have one or more filing objects, you can query them. There are two main ways to do it:</p>
+<ol>
+<li>Using JSONiq navigation (with dots and square brackets). Using functions.For example, if you would like to use the statistics to count the facts in FY 2011 and 2012 filings by Apple and Google:</li>
+</ol>
+<pre><code class="lang-jsoniq">import module namespace fiscal =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/fiscal/core&quot;;
+
+let $filings :=
+  fiscal:filings-for-entities-and-fiscal-periods-and-years(
+      (4962, 1001039),
+      &quot;FY&quot;,
+      (2011, 2012) )
+return sum($filings.Statistics.NumFacts)
+</code></pre>
+<p>Some of the fields are available, for convenience, with functions (in this case, the archive ID as well as the fiscal period and year):</p>
+<p> Example - Discover Amex&#39;s filings by fiscal year and period</p>
+<pre><code class="lang-jsoniq">import module namespace archives =
+    &quot;http://xbrl.io/modules/bizql/archives&quot;;
+
+import module namespace companies =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/companies&quot;;
+import module namespace filings =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/filings&quot;;
+
+import module namespace fiscal =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/fiscal/core&quot;;
+
+let $amex := companies:companies(4962)
+for $filing in filings:filings-for-companies($amex)
+return {
+  AID: archives:aid($filing),
+  Period: fiscal:fiscal-period($filing),
+  Year: fiscal:fiscal-year($filing)
+}
+</code></pre>
+<h2 id="the-secxbrl-info-rest-api-for-filings">The SECXBRL.info REST API for filings</h2>
+<p>We also provide a REST API that allows you to look up filings and, say, import them into an Excel spreadsheet. The API is documentedhere</p>
+<h3 id="retrieve-a-filing">Retrieve a filing</h3>
+<p>You can retrieve a filing given the CIKs of (one or several) companies with thecikparameter like so:</p>
+<p> <a href="http://secxbrl.xbrl.io/api/filings.jq?cik=320193&amp;cik=1288776" target="_blank">http://secxbrl.xbrl.io/api/filings.jq?cik=320193&amp;cik=1288776</a></p>
+<p>If you do not know the CIK of the company you are looking for, you can also use thetagortickerparameter like in the entities API. Or you can use the entities REST API, explained in the former chapter.</p>
+<p>You can retrieve specify a fiscal period or year with thefiscalPeriodandfiscalYearparameters like so:</p>
+<p> <a href="http://secxbrl.xbrl.io/api/filings.jq?cik=320193&amp;fiscalYear=2012&amp;fiscalPeriod=Q1&amp;fiscalPeriod=Q2" target="_blank">http://secxbrl.xbrl.io/api/filings.jq?cik=320193&amp;fiscalYear=2012&amp;fiscalPeriod=Q1&amp;fiscalPeriod=Q2</a></p>
+<p>You can use fiscalYear=LATEST to retrieve the latest year.</p>
+<h3 id="select-a-format">Select a format</h3>
+<p>You can also choose the format in which you would like to retrieve filing information, like in the entities API.</p>
+<p>For example, for Excel:</p>
+<p> <a href="http://secxbrl.xbrl.io/api/filings.jq?cik=320193&amp;cik=1288776&amp;format=csv" target="_blank">http://secxbrl.xbrl.io/api/filings.jq?cik=320193&amp;cik=1288776&amp;format=csv</a></p>
+
+                    
+                    </section>
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../gitbook/chap-BizQLTutorial-Companies.html" class="navigation navigation-prev " aria-label="Previous page: Companies"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../gitbook/chap-BizQLTutorial-Networks.html" class="navigation navigation-next " aria-label="Next page: Networks"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/mode-javascript.js"></script>
+        <script src="../gitbook/jsrepl/jsrepl.js" id="jsrepl-script"></script>
+        <script src="../gitbook/app.js"></script>
+        
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-mixpanel/plugin.js"></script>
+    
+
+    
+    <script src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-mathjax/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
