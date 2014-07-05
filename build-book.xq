@@ -65,6 +65,7 @@ declare function local:docbook-to-markdown($element as node(), $level as xs:inte
 let $book := doc($base || "SECTutorial.xml")/book
 let $book := local:expand($book)
 return {
+    file:create-directory("delete");
     file:create-directory("gitbook");
     local:build-summary($book);
     for $chapter in $book/chapter
