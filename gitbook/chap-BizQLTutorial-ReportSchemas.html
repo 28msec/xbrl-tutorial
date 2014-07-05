@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="28msec/xbrl-tutorial" data-level="7" data-basepath=".." data-revision="1404547590115">
+    <div class="book" data-github="28msec/xbrl-tutorial" data-level="7" data-basepath=".." data-revision="1404547779982">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -264,7 +264,7 @@
 <p>For convenience, there are report schemas which provide convenient querying hypercubes, and more.</p>
 <p>By default, your project contains no report schema. In this tutorial, we provide one that you can download under<a href="http://facs.28.io/process-report-schema.jq" target="_blank">http://facs.28.io/process-report-schema.jq</a>. JSONiq is powerful enough to do this for you with just one click (to 28.io, the Web is nothing but yet another data source...).</p>
 <p> Example - Download the report schema with the Fundamental Accounting Concepts.</p>
-<pre><code class="lang-jsoniq">import module namespace http-client =
+<pre><code class="lang-xquery">import module namespace http-client =
     &quot;http://zorba.io/modules/http-client&quot;;
 
 let $schema := parse-json(http-client:get-text(
@@ -286,14 +286,14 @@ else
 <p>Querying across multiple filings, even across companies, is not easy. This is because companies might not report their data in the same way. The Fundamental Accounting Concepts report schema provides an easy way to do so.</p>
 <p>The report schema module is named <a href="http://xbrl.io/modules/bizql/report-schemas" target="_blank">http://xbrl.io/modules/bizql/report-schemas</a></p>
 <p> Example - Asking for the FAC report schema</p>
-<pre><code class="lang-jsoniq">import module namespace report-schemas =
+<pre><code class="lang-xquery">import module namespace report-schemas =
     &quot;http://xbrl.io/modules/bizql/report-schemas&quot;;
 
 report-schemas:report-schemas(&quot;FundamentalAccountingConcepts&quot;)
 </code></pre>
 <p>A report schema looks very much like a network, except that it is not bound to any filing. In particular, it also has a model structure.</p>
 <p> Example - Asking for the FAC report schema</p>
-<pre><code class="lang-jsoniq">import module namespace report-schemas = &quot;http://xbrl.io/modules/bizql/report-schemas&quot;;
+<pre><code class="lang-xquery">import module namespace report-schemas = &quot;http://xbrl.io/modules/bizql/report-schemas&quot;;
 import module namespace sec-networks =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/networks&quot;;
 
@@ -302,7 +302,7 @@ return sec-networks:model-structures($schema)
 </code></pre>
 <p>But they have more than that. They may define their own concepts (beginning with thefac:prefix) and map them to real concepts with a so-calledconcept map.</p>
 <p> Example - Asking for American Express&#39;s assets with the mapped fac:Assets concept</p>
-<pre><code class="lang-jsoniq">import module namespace hypercubes =
+<pre><code class="lang-xquery">import module namespace hypercubes =
     &quot;http://xbrl.io/modules/bizql/hypercubes&quot;;
 import module namespace sec =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/core&quot;;
@@ -326,7 +326,7 @@ return sec:facts-for-archives-and-concepts(
 </code></pre>
 <p>For convenience, if you directly would like to retrieve all facts for a schema, you can usesec:facts-for-schemawith the name of the desired schema, and the archive for which you would like the facts.</p>
 <p> Example - Asking for Amex&#39; FACs</p>
-<pre><code class="lang-jsoniq">import module namespace sec =
+<pre><code class="lang-xquery">import module namespace sec =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/core&quot;;
 import module namespace fiscal =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/fiscal/core&quot;;
@@ -343,7 +343,7 @@ return sec:facts-for-schema(
 </code></pre>
 <p>You can also ask for them across several archives.</p>
 <p> Example - Asking for the FACs of Amex and Disney</p>
-<pre><code class="lang-jsoniq">import module namespace sec =
+<pre><code class="lang-xquery">import module namespace sec =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/core&quot;;
 import module namespace fiscal =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/fiscal/core&quot;;

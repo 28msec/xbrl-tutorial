@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="28msec/xbrl-tutorial" data-level="4" data-basepath=".." data-revision="1404547590115">
+    <div class="book" data-github="28msec/xbrl-tutorial" data-level="4" data-basepath=".." data-revision="1404547779982">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -264,14 +264,14 @@
 <p>A filing contains a lot of information. It makes sense to split this information in smaller components. For example a quarterly report has a balanced sheet, an income statement, some generic information about the filing, etc. In the SEC world, these are called <em>networks</em> .</p>
 <p>Physically, companies submit XBRL instances, possibly together with an extension taxonomy.</p>
 <p>The XBRL connector provides two modules for working with SEC networks. One of them is generic, the other one offers functionality that is specific to the SEC. In this case:</p>
-<pre><code class="lang-jsoniq">http://xbrl.io/modules/bizql/components
+<pre><code class="lang-xquery">http://xbrl.io/modules/bizql/components
 http://xbrl.io/modules/bizql/profiles/sec/networks
 </code></pre>
 <p>However, the networks module is the most useful for working with SEC data, because of all the specificities of Edgar filings.</p>
 <h2 id="looking-up-networks">Looking Up Networks</h2>
 <p>Let us begin with a very simple query that just lists the SEC networks contained in a filing, say, Coca Cola&#39;s Q1 for 2012.</p>
 <p> Example - The various components in Coca Cola&#39;s Q1 2012 filing.</p>
-<pre><code class="lang-jsoniq">import module namespace fiscal =
+<pre><code class="lang-xquery">import module namespace fiscal =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/fiscal/core&quot;;
 import module namespace sec-networks =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/networks&quot;;
@@ -287,7 +287,7 @@ return sec-networks:networks-for-filings($filing)
 <p>In the XBRL connector, a network is represented by a JSON object. This object contains complex XBRL machinery to deal with factual structures (XBRL hypercubes, presentation networks, etc). Normally, you do not need to look into it, apart maybe from the statistics section that is similar to those of filings.</p>
 <p>A much more useful, SEC-specific representation of the network is called the model structure and we explain later how to access it.</p>
 <p>A certain number of networks are common to all filings, and stamped with a disclosure. Here is, for example, how to retrieve the balance sheet in the above filing.</p>
-<pre><code class="lang-jsoniq">import module namespace fiscal =
+<pre><code class="lang-xquery">import module namespace fiscal =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/fiscal/core&quot;;
 import module namespace sec-networks =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/networks&quot;;
@@ -305,7 +305,7 @@ return sec-networks:networks-for-filings-and-disclosures(
 </code></pre>
 <p>Other examples of available disclosures include the balance sheet, the income statement, the cash flow statement, document and entity information.</p>
 <h2 id="the-model-structure">The Model Structure</h2>
-<pre><code class="lang-jsoniq">import module namespace fiscal =
+<pre><code class="lang-xquery">import module namespace fiscal =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/fiscal/core&quot;;
 import module namespace sec-networks =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/networks&quot;;
@@ -323,7 +323,7 @@ let $balance-sheet := sec-networks:networks-for-filings-and-disclosures(
 return sec-networks:model-structures($balance-sheet)
 </code></pre>
 <p>A model structure is just a hierarchy of so-called <em>SEC report elements</em> of different kinds. In that case:</p>
-<pre><code class="lang-jsoniq">{
+<pre><code class="lang-xquery">{
   &quot;Kind&quot; : &quot;Abstract&quot;, 
   &quot;Name&quot; : &quot;us-gaap:StatementOfFinancialPositionAbstract&quot;, 
   &quot;Label&quot; : &quot;Statement of Financial Position [Abstract]&quot;, 

@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="28msec/xbrl-tutorial" data-level="3" data-basepath=".." data-revision="1404547590115">
+    <div class="book" data-github="28msec/xbrl-tutorial" data-level="3" data-basepath=".." data-revision="1404547779982">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -265,19 +265,19 @@
 <p>Physically, companies submit XBRL instances, possibly together with an extension taxonomy.</p>
 <p>The XBRL connector abstracts from this by grouping the instance and the DTS (us-gaap taxonomy + extension) into what is called an archive.</p>
 <p>The XBRL connector provides two modules for working with filings. One of them is generic, the other one offers functionality that is specific to the SEC. In this case:</p>
-<pre><code class="lang-jsoniq">http://xbrl.io/modules/bizql/archives
+<pre><code class="lang-xquery">http://xbrl.io/modules/bizql/archives
 http://xbrl.io/modules/bizql/profiles/sec/filings
 </code></pre>
 <h2 id="looking-up-filings">Looking Up Filings</h2>
 <p>Let us begin with a very simple query that just lists the SEC filings. It is generic, so it uses the archives module:</p>
 <p> Example - All filings</p>
-<pre><code class="lang-jsoniq">import module namespace archives =
+<pre><code class="lang-xquery">import module namespace archives =
     &quot;http://xbrl.io/modules/bizql/archives&quot;;
 archives:archives()
 </code></pre>
 <p>In the XBRL connector, a filing is represented by a JSON object, like so (in this case, Coca Cola&#39;s report for Q1 2013):</p>
 <p> Example - A filing in JSON format</p>
-<pre><code class="lang-jsoniq">{
+<pre><code class="lang-xquery">{
   &quot;_id&quot; : &quot;0000021344-13-000017&quot;, 
   &quot;Entity&quot; : &quot;http://www.sec.gov/CIK 0000021344&quot;, 
   &quot;InstanceURL&quot; : &quot;http://www.sec.gov/Archives/edgar/data/21344/
@@ -349,7 +349,7 @@ archives:archives()
 <p>Just like companies, filing objects also have SEC-specific information that is embedded in a Profiles.SEC subobject. It contains, for example, the SEC form type, the filing date, the reported fiscal period, etc. There are also SEC-specific statistics.</p>
 <p>You can ask the filings submitted by a given company with thefilings:filings-for-companiesfunction:</p>
 <p> Example - American Express&#39;s filings</p>
-<pre><code class="lang-jsoniq">import module namespace companies =
+<pre><code class="lang-xquery">import module namespace companies =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/companies&quot;;
 import module namespace filings =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/filings&quot;;
@@ -359,7 +359,7 @@ return filings:filings-for-companies($amex)
 </code></pre>
 <p>As always, any sequence is accepted as input:</p>
 <p> Example - All filings by American Express and Walt Disney</p>
-<pre><code class="lang-jsoniq">import module namespace companies =
+<pre><code class="lang-xquery">import module namespace companies =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/companies&quot;;
 import module namespace filings =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/filings&quot;;
@@ -370,14 +370,14 @@ return filings:filings-for-companies( ($amex, $disney) )
 </code></pre>
 <p>For convenience, you can always pass a CIK instead of the company object, which greatly simplifies the query. This applies to all functions taking a sequence of companies as a parameter.</p>
 <p> Example - Filings by Amex and Disney in a single call</p>
-<pre><code class="lang-jsoniq">import module namespace filings =
+<pre><code class="lang-xquery">import module namespace filings =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/filings&quot;;
 
 filings:filings-for-companies( (4962, 1001039) )
 </code></pre>
 <p>If you are looking for a specific fiscal period or year, the fiscal module can help.</p>
 <p> Example - Filings by Amex and Disney, FY 2011 and FY 2012</p>
-<pre><code class="lang-jsoniq">import module namespace fiscal =
+<pre><code class="lang-xquery">import module namespace fiscal =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/fiscal/core&quot;;
 
 fiscal:filings-for-entities-and-fiscal-periods-and-years(
@@ -391,7 +391,7 @@ fiscal:filings-for-entities-and-fiscal-periods-and-years(
 <ol>
 <li>Using JSONiq navigation (with dots and square brackets). Using functions.For example, if you would like to use the statistics to count the facts in FY 2011 and 2012 filings by Apple and Google:</li>
 </ol>
-<pre><code class="lang-jsoniq">import module namespace fiscal =
+<pre><code class="lang-xquery">import module namespace fiscal =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/fiscal/core&quot;;
 
 let $filings :=
@@ -403,7 +403,7 @@ return sum($filings.Statistics.NumFacts)
 </code></pre>
 <p>Some of the fields are available, for convenience, with functions (in this case, the archive ID as well as the fiscal period and year):</p>
 <p> Example - Discover Amex&#39;s filings by fiscal year and period</p>
-<pre><code class="lang-jsoniq">import module namespace archives =
+<pre><code class="lang-xquery">import module namespace archives =
     &quot;http://xbrl.io/modules/bizql/archives&quot;;
 
 import module namespace companies =

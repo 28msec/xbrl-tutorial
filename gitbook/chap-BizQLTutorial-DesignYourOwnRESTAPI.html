@@ -44,7 +44,7 @@
 
 
         
-    <div class="book" data-github="28msec/xbrl-tutorial" data-level="8" data-basepath=".." data-revision="1404547590115">
+    <div class="book" data-github="28msec/xbrl-tutorial" data-level="8" data-basepath=".." data-revision="1404547779982">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -274,7 +274,7 @@
 <h2 id="useful-functions">Useful functions</h2>
 <p>You will need to read parameters from the query string. There is a function named parameter-values, which lives in the<a href="http://www.28msec.com/modules/http-requestnamespace" target="_blank">http://www.28msec.com/modules/http-requestnamespace</a>. It takes a parameter name, and returns the sequence of all its values (it may have several if it appears several times in the request URL).</p>
 <p> Example - Read a parameter&#39;s value(s) from the query string</p>
-<pre><code class="lang-jsoniq">import module namespace companies =
+<pre><code class="lang-xquery">import module namespace companies =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/companies&quot;;
 import module namespace request =
     &quot;http://www.28msec.com/modules/http/request&quot;;
@@ -287,7 +287,7 @@ return companies:companies-for-tickers($tickers)
 <p>There are a few more useful functions. For example,request:method-get(),method-post(), etc, return a boolean and allow you to know which method the consumer used.</p>
 <p>Until now, we used the request module. Likewise, there is a response module<a href="http://www.28msec.com/modules/http-response" target="_blank">http://www.28msec.com/modules/http-response</a>, with which you can tune the output (HTTP code, MIME type, etc).</p>
 <p> Example - Read a parameter&#39;s value(s) from the query string</p>
-<pre><code class="lang-jsoniq">import module namespace companies =
+<pre><code class="lang-xquery">import module namespace companies =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/companies&quot;;
 import module namespace request =
     &quot;http://www.28msec.com/modules/http-request&quot;;
