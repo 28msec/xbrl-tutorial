@@ -7,6 +7,22 @@ By default, your project contains no report schema. In this tutorial, we provide
  Example - Download the report schema with the Fundamental Accounting Concepts.
 
 ```jsoniq
+import module namespace http-client =
+    "http://zorba.io/modules/http-client";
+
+let $schema := parse-json(http-client:get-text(
+    "http://facs.28.io/process-report-schema.jq"
+)("body")("content"))
+return
+if(is-available-collection("reportschemas"))
+then {
+    truncate("reportschemas");
+    insert("reportschemas", $schema);
+}
+else
+    create("reportschemas", $schema);
+
+"Schema successfully added."
 ```
 (Yes, JSONiq can do updates and side effects, but, ssssshhhh! don't tell anybody we showed you that).
 

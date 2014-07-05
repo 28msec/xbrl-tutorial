@@ -15,6 +15,10 @@ The simplest hypercube you can imagine is made of four "standard" aspects: conce
  Example - The dimensionless hypercube
 
 ```jsoniq
+import module namespace hypercubes =
+    "http://xbrl.io/modules/bizql/hypercubes";
+
+hypercubes:dimensionless-hypercube()
 ```
 The result of this query shows you the object representation of a hypercube.
 
@@ -53,32 +57,127 @@ Let's count all those facts that are in a given archive (here 1423).
  Example - Retrieving the facts in the dimensionless hypercube for some filings
 
 ```jsoniq
+import module namespace archives =
+    "http://xbrl.io/modules/bizql/archives";
+
+import module namespace sec =
+    "http://xbrl.io/modules/bizql/profiles/sec/core";
+import module namespace fiscal =
+    "http://xbrl.io/modules/bizql/profiles/sec/fiscal/core";
+
+let $filing :=
+  fiscal:filings-for-entities-and-fiscal-periods-and-years(
+    (4962, 1001039),
+    "FY",
+    (2011, 2012)
+  )
+let $hypercube := sec:user-defined-hypercube({
+    "sec:Archive" : {
+        Type: "string",
+        Domain: [ archives:aid($filing) ]
+    }
+})
+return count(sec:facts-for-hypercube($hypercube))
 ```
 Instead of looking at a single archive, you can look across archives, for concepts likeus-gaap:Assetsandus-gaap:Equity. In order to do so, you need to modify the dimensionless hypercube add filter on these two concepts. There are over 70k such facts.
 
 
 ```jsoniq
+import module namespace sec =
+    "http://xbrl.io/modules/bizql/profiles/sec/core";
+
+let $hypercube := sec:dimensionless-hypercube({
+  Concepts: [ "us-gaap:Assets", "us-gaap:Equity" ]
+})
+return count(sec:facts-for-hypercube($hypercube))
 ```
 You can also build your own hypercube. To restrict a dimension, just add a field (One ofConcepts,Entities,Periods,Units) with an array of values. Below we show you how to make a restriction on DOW30 companies with just a small modification of the dimensionless hypercube function call.
 
 
 ```jsoniq
+import module namespace sec =
+    "http://xbrl.io/modules/bizql/profiles/sec/core";
+import module namespace companies =
+    "http://xbrl.io/modules/bizql/profiles/sec/companies";
+
+let $hypercube := sec:dimensionless-hypercube({
+  Concepts: [ "us-gaap:Assets", "us-gaap:Equity" ],
+  Entities: [ companies:companies-for-tags("DOW30")._id ]
+})
+return count(sec:facts-for-hypercube($hypercube))
 ```
 If you begin to query across archives, and attempt to filter on periods, you will very soon notice that it is hard, because fiscal years differ from company to company. Technically, fiscal years and periods (FY, Q1, Q2, Q3) are not hypercube dimensions, but you can still filter for them using this Profiles.SEC.Fiscal part that annotates objects using the second parameter ofsec:facts-for-hypercube. For example, here is how to get all assets and equities (no extra dimensions) for FY 2012 (6847 of them)
 
 
 ```jsoniq
+import module namespace sec =
+    "http://xbrl.io/modules/bizql/profiles/sec/core";
+
+let $hypercube := sec:user-defined-hypercube({
+    "xbrl:Concept": {
+      Domain: [ "us-gaap:Assets", "us-gaap:Equity" ]
+    },
+    "sec:FiscalPeriod" : {
+        Type: "string",
+        Domain: [ "FY" ]
+    },
+    "sec:FiscalYear" : {
+        Type: "integer",
+        Domain: [ 2012 ]
+    }
+}
+)
+return count(sec:facts-for-hypercube($hypercube))
 ```
 What was done for the basic four dimensions (like xbrl:Equity) applies to extra dimensions as well. There is a more elaborate version ofhypercubes:dimensionless-hypercubecalledhypercubes:user-defined-hypercubethat allows you to add any number of dimensions, as well as restrict on them or add default values. Here you can ask for facts reported against theus-gaap:DividendsCommonStockconcept, with a dimensionus-gaap:StatementEquityComponentsAxisrestricted on a value ofus-gaap:CommonStockMember. There are 513 of them.
 
 
 ```jsoniq
+import module namespace sec =
+    "http://xbrl.io/modules/bizql/profiles/sec/core";
+
+let $hypercube := sec:user-defined-hypercube({
+  "xbrl:Concept" : {
+    Domain: [ "us-gaap:DividendsCommonStock" ]
+  },
+  "us-gaap:StatementEquityComponentsAxis" : {
+    Domain: [ "us-gaap:CommonStockMember" ]
+  }
+})
+return count(sec:facts-for-hypercube($hypercube))
 ```
 Finally, you can combine extra dimensions, restricting several dimensions, filtering on fiscal years, etc. Let's ask for the companies that submitted, for FY 2011, a fact against theus-gaap:DividendsCommonStockconcept, with a dimensionus-gaap:StatementEquityComponentsAxisthat has a value ofus-gaap:CommonStockMember. There's only one and it's Walt Disney. And it takes less than one second to ask for this.
 
 
 ```jsoniq
-```
+import module namespace facts =
+    "http://xbrl.io/modules/bizql/facts";
+
+import module namespace sec =
+    "http://xbrl.io/modules/bizql/profiles/sec/core";
+import module namespace companies =
+    "http://xbrl.io/modules/bizql/profiles/sec/companies";
+
+let $hypercube := sec:user-defined-hypercube({
+  "xbrl:Entity" : {
+    Type: "string",
+    Domain: [  companies:companies-for-tags("DOW30")._id ]
+  }, 
+  "us-gaap:StatementEquityComponentsAxis" : {
+    Domain: [ "us-gaap:CommonStockMember" ]
+  },
+  "sec:FiscalPeriod" : {
+    Type: "string",
+    Domain: [ "FY" ]
+  },
+  "sec:FiscalYear" : {
+    Type: "integer",
+    Domain: [ 2012 ]
+  }
+})
+let $fact := sec:facts-for-hypercube($hypercube)
+return companies:companies($fact ! facts:entity-for-fact($$))
+    .Profiles.SEC.CompanyName```
 The SEC modules provide many functions that just wrap these queries in nicer code, and there are more to come. The documentation is there for you to find them.
 
 ##The SECXBRL.info REST API for user-defined hypercubes
