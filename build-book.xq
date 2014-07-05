@@ -7,13 +7,13 @@ declare namespace an = "http://zorba.io/annotations";
 
 declare variable $base := "tutorial/en-US/";
 
-declare function local:expand($book as element()) as element() {
+declare %an:nondeterministic function local:expand($book as element()) as element() {
    copy $expanded := $book
    modify for $include in $expanded//xi:include
           return replace node $include with if(ends-with($include/@href, ".xml")) then
                                                 local:expand(doc($base || $include/@href)/*)
                                             else
-                                                <programlisting>{{unparsed-text($base || $include/@href)}}</programlisting>
+                                                <programlisting>{file:read-text($base || $include/@href, 'utf-8')}</programlisting>
    return $expanded
 };
 
