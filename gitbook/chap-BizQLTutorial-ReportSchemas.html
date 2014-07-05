@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="28msec/xbrl-tutorial" data-level="7" data-basepath=".." data-revision="1404547203479">
+    <div class="book" data-github="28msec/xbrl-tutorial" data-level="7" data-basepath=".." data-revision="1404547590115">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -264,19 +264,29 @@
 <p>For convenience, there are report schemas which provide convenient querying hypercubes, and more.</p>
 <p>By default, your project contains no report schema. In this tutorial, we provide one that you can download under<a href="http://facs.28.io/process-report-schema.jq" target="_blank">http://facs.28.io/process-report-schema.jq</a>. JSONiq is powerful enough to do this for you with just one click (to 28.io, the Web is nothing but yet another data source...).</p>
 <p> Example - Download the report schema with the Fundamental Accounting Concepts.</p>
-<pre><code class="lang-jsoniq">```
-(Yes, JSONiq can do updates and side effects, but, ssssshhhh! don&#39;t tell anybody we showed you that).
+<pre><code class="lang-jsoniq">import module namespace http-client =
+    &quot;http://zorba.io/modules/http-client&quot;;
 
-##Fundamental Accounting Concepts
-Querying across multiple filings, even across companies, is not easy. This is because companies might not report their data in the same way. The Fundamental Accounting Concepts report schema provides an easy way to do so.
+let $schema := parse-json(http-client:get-text(
+    &quot;http://facs.28.io/process-report-schema.jq&quot;
+)(&quot;body&quot;)(&quot;content&quot;))
+return
+if(is-available-collection(&quot;reportschemas&quot;))
+then {
+    truncate(&quot;reportschemas&quot;);
+    insert(&quot;reportschemas&quot;, $schema);
+}
+else
+    create(&quot;reportschemas&quot;, $schema);
 
-The report schema module is named [http://xbrl.io/modules/bizql/report-schemas](http://xbrl.io/modules/bizql/report-schemas)
-
-
- Example - Asking for the FAC report schema
-
-```jsoniq
-import module namespace report-schemas =
+&quot;Schema successfully added.&quot;
+</code></pre>
+<p>(Yes, JSONiq can do updates and side effects, but, ssssshhhh! don&#39;t tell anybody we showed you that).</p>
+<h2 id="fundamental-accounting-concepts">Fundamental Accounting Concepts</h2>
+<p>Querying across multiple filings, even across companies, is not easy. This is because companies might not report their data in the same way. The Fundamental Accounting Concepts report schema provides an easy way to do so.</p>
+<p>The report schema module is named <a href="http://xbrl.io/modules/bizql/report-schemas" target="_blank">http://xbrl.io/modules/bizql/report-schemas</a></p>
+<p> Example - Asking for the FAC report schema</p>
+<pre><code class="lang-jsoniq">import module namespace report-schemas =
     &quot;http://xbrl.io/modules/bizql/report-schemas&quot;;
 
 report-schemas:report-schemas(&quot;FundamentalAccountingConcepts&quot;)

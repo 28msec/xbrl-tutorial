@@ -53,7 +53,7 @@ declare function local:docbook-to-markdown($element as node(), $level as xs:inte
 " || string-join(for $child in $element/node()[local-name(.) != 'title'] return local:docbook-to-markdown($child, $level), "")
    case element(programlisting) return "
 ```jsoniq
-" || $element/text() || "```
+" || $element/string() || "```
 "
    case text() return normalize-space(string($element))
    case element(para) return string-join(for $child in $element/node() return local:docbook-to-markdown($child, $level), "") || "

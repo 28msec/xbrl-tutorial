@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="28msec/xbrl-tutorial" data-level="6" data-basepath=".." data-revision="1404547203479">
+    <div class="book" data-github="28msec/xbrl-tutorial" data-level="6" data-basepath=".." data-revision="1404547590115">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -269,14 +269,14 @@
 <h2 id="building-your-own-hypercube">Building your own hypercube</h2>
 <p>The simplest hypercube you can imagine is made of four &quot;standard&quot; aspects: concept, entity, period and unit. It does not restrict the value of any of these aspects. It is called dimensionless, because in the XBRL universe, the four basic aspects are not considered XBRL dimensions.</p>
 <p> Example - The dimensionless hypercube</p>
-<pre><code class="lang-jsoniq">```
-The result of this query shows you the object representation of a hypercube.
+<pre><code class="lang-jsoniq">import module namespace hypercubes =
+    &quot;http://xbrl.io/modules/bizql/hypercubes&quot;;
 
-
- Example - The object format of hypercubes
-
-```jsoniq
-{
+hypercubes:dimensionless-hypercube()
+</code></pre>
+<p>The result of this query shows you the object representation of a hypercube.</p>
+<p> Example - The object format of hypercubes</p>
+<pre><code class="lang-jsoniq">{
   &quot;Name&quot; : &quot;xbrl:DimensionlessHypercube&quot;, 
   &quot;Label&quot; : &quot;Dimensionless Hypercube&quot;, 
   &quot;Aspects&quot; : {
@@ -303,25 +303,112 @@ The result of this query shows you the object representation of a hypercube.
 <p>The facts in a hypercube can be queried with the functionsec:facts-for-hypercube. There is a very high number of facts in this hypercube: all those without extra dimensions. Hundreds of thousands of them. Very often, when you query for facts against this dimensionless hypercube, you are asking for specifing archives. The function sec:facts-for-hypercube allows you to do so with its optional second parameter (the first being the hypercube).</p>
 <p>Let&#39;s count all those facts that are in a given archive (here 1423).</p>
 <p> Example - Retrieving the facts in the dimensionless hypercube for some filings</p>
-<pre><code class="lang-jsoniq">```
-Instead of looking at a single archive, you can look across archives, for concepts likeus-gaap:Assetsandus-gaap:Equity. In order to do so, you need to modify the dimensionless hypercube add filter on these two concepts. There are over 70k such facts.
+<pre><code class="lang-jsoniq">import module namespace archives =
+    &quot;http://xbrl.io/modules/bizql/archives&quot;;
 
+import module namespace sec =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/core&quot;;
+import module namespace fiscal =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/fiscal/core&quot;;
 
-```jsoniq
+let $filing :=
+  fiscal:filings-for-entities-and-fiscal-periods-and-years(
+    (4962, 1001039),
+    &quot;FY&quot;,
+    (2011, 2012)
+  )
+let $hypercube := sec:user-defined-hypercube({
+    &quot;sec:Archive&quot; : {
+        Type: &quot;string&quot;,
+        Domain: [ archives:aid($filing) ]
+    }
+})
+return count(sec:facts-for-hypercube($hypercube))
+</code></pre>
+<p>Instead of looking at a single archive, you can look across archives, for concepts likeus-gaap:Assetsandus-gaap:Equity. In order to do so, you need to modify the dimensionless hypercube add filter on these two concepts. There are over 70k such facts.</p>
+<pre><code class="lang-jsoniq">import module namespace sec =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/core&quot;;
+
+let $hypercube := sec:dimensionless-hypercube({
+  Concepts: [ &quot;us-gaap:Assets&quot;, &quot;us-gaap:Equity&quot; ]
+})
+return count(sec:facts-for-hypercube($hypercube))
 </code></pre>
 <p>You can also build your own hypercube. To restrict a dimension, just add a field (One ofConcepts,Entities,Periods,Units) with an array of values. Below we show you how to make a restriction on DOW30 companies with just a small modification of the dimensionless hypercube function call.</p>
-<pre><code class="lang-jsoniq">```
-If you begin to query across archives, and attempt to filter on periods, you will very soon notice that it is hard, because fiscal years differ from company to company. Technically, fiscal years and periods (FY, Q1, Q2, Q3) are not hypercube dimensions, but you can still filter for them using this Profiles.SEC.Fiscal part that annotates objects using the second parameter ofsec:facts-for-hypercube. For example, here is how to get all assets and equities (no extra dimensions) for FY 2012 (6847 of them)
+<pre><code class="lang-jsoniq">import module namespace sec =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/core&quot;;
+import module namespace companies =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/companies&quot;;
 
+let $hypercube := sec:dimensionless-hypercube({
+  Concepts: [ &quot;us-gaap:Assets&quot;, &quot;us-gaap:Equity&quot; ],
+  Entities: [ companies:companies-for-tags(&quot;DOW30&quot;)._id ]
+})
+return count(sec:facts-for-hypercube($hypercube))
+</code></pre>
+<p>If you begin to query across archives, and attempt to filter on periods, you will very soon notice that it is hard, because fiscal years differ from company to company. Technically, fiscal years and periods (FY, Q1, Q2, Q3) are not hypercube dimensions, but you can still filter for them using this Profiles.SEC.Fiscal part that annotates objects using the second parameter ofsec:facts-for-hypercube. For example, here is how to get all assets and equities (no extra dimensions) for FY 2012 (6847 of them)</p>
+<pre><code class="lang-jsoniq">import module namespace sec =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/core&quot;;
 
-```jsoniq
+let $hypercube := sec:user-defined-hypercube({
+    &quot;xbrl:Concept&quot;: {
+      Domain: [ &quot;us-gaap:Assets&quot;, &quot;us-gaap:Equity&quot; ]
+    },
+    &quot;sec:FiscalPeriod&quot; : {
+        Type: &quot;string&quot;,
+        Domain: [ &quot;FY&quot; ]
+    },
+    &quot;sec:FiscalYear&quot; : {
+        Type: &quot;integer&quot;,
+        Domain: [ 2012 ]
+    }
+}
+)
+return count(sec:facts-for-hypercube($hypercube))
 </code></pre>
 <p>What was done for the basic four dimensions (like xbrl:Equity) applies to extra dimensions as well. There is a more elaborate version ofhypercubes:dimensionless-hypercubecalledhypercubes:user-defined-hypercubethat allows you to add any number of dimensions, as well as restrict on them or add default values. Here you can ask for facts reported against theus-gaap:DividendsCommonStockconcept, with a dimensionus-gaap:StatementEquityComponentsAxisrestricted on a value ofus-gaap:CommonStockMember. There are 513 of them.</p>
-<pre><code class="lang-jsoniq">```
-Finally, you can combine extra dimensions, restricting several dimensions, filtering on fiscal years, etc. Let&#39;s ask for the companies that submitted, for FY 2011, a fact against theus-gaap:DividendsCommonStockconcept, with a dimensionus-gaap:StatementEquityComponentsAxisthat has a value ofus-gaap:CommonStockMember. There&#39;s only one and it&#39;s Walt Disney. And it takes less than one second to ask for this.
+<pre><code class="lang-jsoniq">import module namespace sec =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/core&quot;;
 
+let $hypercube := sec:user-defined-hypercube({
+  &quot;xbrl:Concept&quot; : {
+    Domain: [ &quot;us-gaap:DividendsCommonStock&quot; ]
+  },
+  &quot;us-gaap:StatementEquityComponentsAxis&quot; : {
+    Domain: [ &quot;us-gaap:CommonStockMember&quot; ]
+  }
+})
+return count(sec:facts-for-hypercube($hypercube))
+</code></pre>
+<p>Finally, you can combine extra dimensions, restricting several dimensions, filtering on fiscal years, etc. Let&#39;s ask for the companies that submitted, for FY 2011, a fact against theus-gaap:DividendsCommonStockconcept, with a dimensionus-gaap:StatementEquityComponentsAxisthat has a value ofus-gaap:CommonStockMember. There&#39;s only one and it&#39;s Walt Disney. And it takes less than one second to ask for this.</p>
+<pre><code class="lang-jsoniq">import module namespace facts =
+    &quot;http://xbrl.io/modules/bizql/facts&quot;;
 
-```jsoniq
+import module namespace sec =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/core&quot;;
+import module namespace companies =
+    &quot;http://xbrl.io/modules/bizql/profiles/sec/companies&quot;;
+
+let $hypercube := sec:user-defined-hypercube({
+  &quot;xbrl:Entity&quot; : {
+    Type: &quot;string&quot;,
+    Domain: [  companies:companies-for-tags(&quot;DOW30&quot;)._id ]
+  }, 
+  &quot;us-gaap:StatementEquityComponentsAxis&quot; : {
+    Domain: [ &quot;us-gaap:CommonStockMember&quot; ]
+  },
+  &quot;sec:FiscalPeriod&quot; : {
+    Type: &quot;string&quot;,
+    Domain: [ &quot;FY&quot; ]
+  },
+  &quot;sec:FiscalYear&quot; : {
+    Type: &quot;integer&quot;,
+    Domain: [ 2012 ]
+  }
+})
+let $fact := sec:facts-for-hypercube($hypercube)
+return companies:companies($fact ! facts:entity-for-fact($$))
+    .Profiles.SEC.CompanyName
 </code></pre>
 <p>The SEC modules provide many functions that just wrap these queries in nicer code, and there are more to come. The documentation is there for you to find them.</p>
 <h2 id="the-secxbrl-info-rest-api-for-user-defined-hypercubes">The SECXBRL.info REST API for user-defined hypercubes</h2>
