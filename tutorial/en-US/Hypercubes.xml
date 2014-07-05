@@ -35,7 +35,7 @@
     <example>
       <title>The dimensionless hypercube</title>
     <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-                                href="../../public/hypercubes/dimensionless-hypercube.jq"
+                                href="../../queries/public/hypercubes/dimensionless-hypercube.jq"
                                 parse="text"/></programlisting>
     </example>
     <para>The result of this query shows you the object representation of a hypercube.</para>
@@ -74,21 +74,21 @@
     <example>
       <title>Retrieving the facts in the dimensionless hypercube for some filings</title>
       <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-                                href="../../public/hypercubes/dimensionless-with-archive.jq"
+                                href="../../queries/public/hypercubes/dimensionless-with-archive.jq"
                                 parse="text"/></programlisting>
     </example>
     <para>Instead of looking at a single archive, you can look across archives, for concepts like <code>us-gaap:Assets</code> and <code>us-gaap:Equity</code>.
       In order to do so, you need to modify the dimensionless hypercube add filter on these two concepts.
       There are over 70k such facts.</para>
     <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-                                href="../../public/hypercubes/dimensionless-with-concepts.jq"
+                                href="../../queries/public/hypercubes/dimensionless-with-concepts.jq"
                                 parse="text"/></programlisting>
     <para>You can also build your own hypercube. To restrict a dimension, just add
       a field (One of <code>Concepts</code>, <code>Entities</code>, <code>Periods</code>, <code>Units</code>) with an array of values.
       Below we show you how to make a restriction on DOW30 companies with just a small modification
       of the dimensionless hypercube function call.</para>
     <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-                                href="../../public/hypercubes/dimensionless-with-concepts-and-entities.jq"
+                                href="../../queries/public/hypercubes/dimensionless-with-concepts-and-entities.jq"
                                 parse="text"/></programlisting>
     <para>If you begin to query across archives, and attempt to filter on periods, you will very soon notice
       that it is hard, because fiscal years differ from company to company. Technically, fiscal years and
@@ -96,7 +96,7 @@
       Profiles.SEC.Fiscal part that annotates objects using the second parameter of <code>sec:facts-for-hypercube</code>.
       For example, here is how to get all assets and equities (no extra dimensions) for FY 2012 (6847 of them)</para>
     <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-                                href="../../public/hypercubes/dimensionless-with-fiscal-year.jq"
+                                href="../../queries/public/hypercubes/dimensionless-with-fiscal-year.jq"
                                 parse="text"/></programlisting>
     <para>What was done for the basic four dimensions (like xbrl:Equity) applies to extra dimensions as well. There is
       a more elaborate version of <code>hypercubes:dimensionless-hypercube</code> called <code>hypercubes:user-defined-hypercube</code>
@@ -105,7 +105,7 @@
       with a dimension <code>us-gaap:StatementEquityComponentsAxis</code> restricted on a value
       of <code>us-gaap:CommonStockMember</code>. There are 513 of them.</para>
     <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-                                href="../../public/hypercubes/extra-dimensions.jq"
+                                href="../../queries/public/hypercubes/extra-dimensions.jq"
                                 parse="text"/></programlisting>
     <para>Finally, you can combine extra dimensions, restricting several dimensions, filtering on fiscal years,
       etc. Let's ask for the companies that submitted,
@@ -114,7 +114,7 @@
       of <code>us-gaap:CommonStockMember</code>.
       There's only one and it's Walt Disney. And it takes less than one second to ask for this.</para>
     <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-                                href="../../public/hypercubes/combined-filtering.jq"
+                                href="../../queries/public/hypercubes/combined-filtering.jq"
                                 parse="text"/></programlisting>
     <para>The SEC modules provide many functions that just wrap these queries in nicer code,
       and there are more to come. The documentation is there for you to find them.</para>

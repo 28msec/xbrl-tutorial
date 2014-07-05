@@ -12,7 +12,7 @@
   <example>
     <title>Download the report schema with the Fundamental Accounting Concepts.</title>
     <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
-                                href="../../public/report-schemas/download-facs.jq"
+                                href="../../queries/public/report-schemas/download-facs.xq"
                                 parse="text"/></programlisting>
   </example>
   <para>(Yes, JSONiq can do updates and side effects, but, ssssshhhh! don't tell anybody we showed you that).</para>

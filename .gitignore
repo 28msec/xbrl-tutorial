@@ -1,5 +1,6 @@
 *.swp
 *.swo
 _book
+gitbook
 node_modules
 .grunt
