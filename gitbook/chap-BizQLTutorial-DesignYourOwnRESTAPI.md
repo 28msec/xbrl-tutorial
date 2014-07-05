@@ -23,7 +23,7 @@ Finally, this more elaborate endpoint is stricter about types, meaning, you need
 For the sake of simplicity, we use the simpler endpoint in ths rest of this chapter.
 
 ##Useful functions
-You will need to read parameters from the query string. There is a function named parameter-values, which lives in thehttp://www.28msec.com/modules/http-requestnamespace. It takes a parameter name, and returns the sequence of all its values (it may have several if it appears several times in the request URL).
+You will need to read parameters from the query string. There is a function named parameter-values, which lives in the `http://www.28msec.com/modules/http-request` namespace. It takes a parameter name, and returns the sequence of all its values (it may have several if it appears several times in the request URL).
 
 
  Example - Read a parameter's value(s) from the query string
@@ -40,9 +40,9 @@ Here is a possible way to invoke this query via the REST API:
 
 GET [http://project-name.xbrl.io/rest-api/query-string-parameter.jq?t=wmt&t=GOOG](http://project-name.xbrl.io/rest-api/query-string-parameter.jq?t=wmt&t=GOOG)
 
-There are a few more useful functions. For example,request:method-get(),method-post(), etc, return a boolean and allow you to know which method the consumer used.
+There are a few more useful functions. For example, `request:method-get()` , `method-post()` , etc, return a boolean and allow you to know which method the consumer used.
 
-Until now, we used the request module. Likewise, there is a response modulehttp://www.28msec.com/modules/http-response, with which you can tune the output (HTTP code, MIME type, etc).
+Until now, we used the request module. Likewise, there is a response module `http://www.28msec.com/modules/http-response` , with which you can tune the output (HTTP code, MIME type, etc).
 
 
  Example - Read a parameter's value(s) from the query string

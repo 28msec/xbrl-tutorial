@@ -94,7 +94,7 @@ The fact also contains an audit trail, that we will detail more in the hypercube
 We also provide a REST API that allows you to look up fact tables and, say, import them into an Excel spreadsheet. The API is documentedhere
 
 ###Retrieve the fact table associated with a network
-You can retrieve the fact table of a components using thecidparameter.
+You can retrieve the fact table of a components using the `cid` parameter.
 
  [http://secxbrl.xbrl.io/api/facttable-for-component.jq?cid=66887390-ee56-44a7-a897-62eefe944476](http://secxbrl.xbrl.io/api/facttable-for-component.jq?cid=66887390-ee56-44a7-a897-62eefe944476)
 

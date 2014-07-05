@@ -29,7 +29,7 @@ The following instructions should help you get started.
 * Enter your information as well as desired credentials, and confirm. ![images/3email.png](../tutorial/en-US/images/3email.png)
 * Check your e-mail (including spam folder) and validate your e-mail address. ![images/4signin.png](../tutorial/en-US/images/4signin.png)
 * Login using your chosen credentials. ![images/5datasources.png](../tutorial/en-US/images/5datasources.png)
-* Click onData Sourcesto view the list of data sources to which you can subscribe. ![images/6subscribedow30.png](../tutorial/en-US/images/6subscribedow30.png)
+* Click on `Data Sources` to view the list of data sources to which you can subscribe. ![images/6subscribedow30.png](../tutorial/en-US/images/6subscribedow30.png)
 * Confirm your billing information (DOW30 is for free). Then go to the projects page. ![images/7projects.png](../tutorial/en-US/images/7projects.png)
 * Create a new project by picking a name. ![images/8importqueries.png](../tutorial/en-US/images/8importqueries.png)
 * Pick a query name, ending with .jq (for JSONiq). ![images/9importedqueries.png](../tutorial/en-US/images/9importedqueries.png)

@@ -20,7 +20,7 @@ import module namespace entities =
     "http://xbrl.io/modules/bizql/entities";
 
 entities:entities()```
-This query is just a function call. A function is identified with its prefix (hereentities:) and a name (hereentities). This function takes no parameters.
+This query is just a function call. A function is identified with its prefix (here `entities:` ) and a name (here `entities` ). This function takes no parameters.
 
 In the XBRL connector, a company is represented by a JSON object, like so:
 
@@ -50,7 +50,7 @@ ment",
 }```
 In the case of companies, most of the information is SEC-specific, and is embedded in a Profiles.SEC subobject. You will see in other parts of the tutorial, that the Profiles.SEC subobject is not restricted to companies, but also applies to all other objects.
 
-Companies can be retrieved by tags (for example, indices) using thecompanies-for-tagsfunction, in the companies module, like so:
+Companies can be retrieved by tags (for example, indices) using the `companies-for-tags` function, in the companies module, like so:
 
 
  Example - All Dow 30 companies
@@ -158,15 +158,15 @@ You can retrieve:
 
 
 1. All companies with [http://secxbrl.xbrl.io/api/entities.jq](http://secxbrl.xbrl.io/api/entities.jq)
-2. One or several companies by CIK with thecikparameter, like so: [http://secxbrl.xbrl.io/api/entities.jq?cik=1412090&cik=4962](http://secxbrl.xbrl.io/api/entities.jq?cik=1412090&cik=4962)
-3. Companies by (one or several) tag with thetagparameter, like so: [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30)
-4. One or several companies by ticker with thetickerparameter, like so: [http://secxbrl.xbrl.io/api/entities.jq?ticker=AAPL&ticker=GOOG](http://secxbrl.xbrl.io/api/entities.jq?ticker=AAPL&ticker=GOOG)
+2. One or several companies by CIK with the `cik` parameter, like so: [http://secxbrl.xbrl.io/api/entities.jq?cik=1412090&cik=4962](http://secxbrl.xbrl.io/api/entities.jq?cik=1412090&cik=4962)
+3. Companies by (one or several) tag with the `tag` parameter, like so: [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30)
+4. One or several companies by ticker with the `ticker` parameter, like so: [http://secxbrl.xbrl.io/api/entities.jq?ticker=AAPL&ticker=GOOG](http://secxbrl.xbrl.io/api/entities.jq?ticker=AAPL&ticker=GOOG)
 
 ###Select a format
 You can choose the format in which you would like to retrieve company information. By default, JSON will be output.
 
 
-1. In JSON with thejsonparameter, like so: [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=json](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=json)
-2. In XML with thexmlparameter, like so: [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=xml](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=xml)
-3. In CSV (comma-separated values, which you can open in good old Excel) with thecsvparameter, like so: [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=csv](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=csv)
+1. In JSON with the `json` parameter, like so: [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=json](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=json)
+2. In XML with the `xml` parameter, like so: [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=xml](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=xml)
+3. In CSV (comma-separated values, which you can open in good old Excel) with the `csv` parameter, like so: [http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=csv](http://secxbrl.xbrl.io/api/entities.jq?tag=DOW30&format=csv)
 

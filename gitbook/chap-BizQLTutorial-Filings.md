@@ -98,7 +98,7 @@ Some of the information in here is not specific to the SEC: the reporting entity
 
 Just like companies, filing objects also have SEC-specific information that is embedded in a Profiles.SEC subobject. It contains, for example, the SEC form type, the filing date, the reported fiscal period, etc. There are also SEC-specific statistics.
 
-You can ask the filings submitted by a given company with thefilings:filings-for-companiesfunction:
+You can ask the filings submitted by a given company with the `filings:filings-for-companies` function:
 
 
  Example - American Express's filings
@@ -198,13 +198,13 @@ return {
 We also provide a REST API that allows you to look up filings and, say, import them into an Excel spreadsheet. The API is documentedhere
 
 ###Retrieve a filing
-You can retrieve a filing given the CIKs of (one or several) companies with thecikparameter like so:
+You can retrieve a filing given the CIKs of (one or several) companies with the `cik` parameter like so:
 
  [http://secxbrl.xbrl.io/api/filings.jq?cik=320193&cik=1288776](http://secxbrl.xbrl.io/api/filings.jq?cik=320193&cik=1288776)
 
-If you do not know the CIK of the company you are looking for, you can also use thetagortickerparameter like in the entities API. Or you can use the entities REST API, explained in the former chapter.
+If you do not know the CIK of the company you are looking for, you can also use the `tag` or `ticker` parameter like in the entities API. Or you can use the entities REST API, explained in the former chapter.
 
-You can retrieve specify a fiscal period or year with thefiscalPeriodandfiscalYearparameters like so:
+You can retrieve specify a fiscal period or year with the `fiscalPeriod` and `fiscalYear` parameters like so:
 
  [http://secxbrl.xbrl.io/api/filings.jq?cik=320193&fiscalYear=2012&fiscalPeriod=Q1&fiscalPeriod=Q2](http://secxbrl.xbrl.io/api/filings.jq?cik=320193&fiscalYear=2012&fiscalPeriod=Q1&fiscalPeriod=Q2)
 

@@ -136,11 +136,11 @@ Report ElementWhat it isTableThis is a "container" for all facts in this compone
 We also provide a REST API that allows you to look up networks and, say, import them into an Excel spreadsheet. The API is documentedhere
 
 ###Retrieve a network
-You can retrieve the networks (components) in a filing using theaidparameter, like so:
+You can retrieve the networks (components) in a filing using the `aid` parameter, like so:
 
  [http://secxbrl.xbrl.io/api/components.jq?aid=0000021344-13-000017](http://secxbrl.xbrl.io/api/components.jq?aid=0000021344-13-000017)
 
-If you do not know the AIDs of the filings, you can use the same parameters as in the filings API (cik,tag,ticker,fiscalYear,fiscalPeriod), or use the filings REST API to retrieve it.
+If you do not know the AIDs of the filings, you can use the same parameters as in the filings API ( `cik` , `tag` , `ticker` , `fiscalYear` , `fiscalPeriod` ), or use the filings REST API to retrieve it.
 
 ###Select a format
 You can also choose the format in which you would like to retrieve network information, like in the entities and filings APIs.

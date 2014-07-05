@@ -49,7 +49,7 @@ The result of this query shows you the object representation of a hypercube.
     }
   }
 }```
-The facts in a hypercube can be queried with the functionsec:facts-for-hypercube. There is a very high number of facts in this hypercube: all those without extra dimensions. Hundreds of thousands of them. Very often, when you query for facts against this dimensionless hypercube, you are asking for specifing archives. The function sec:facts-for-hypercube allows you to do so with its optional second parameter (the first being the hypercube).
+The facts in a hypercube can be queried with the function `sec:facts-for-hypercube` . There is a very high number of facts in this hypercube: all those without extra dimensions. Hundreds of thousands of them. Very often, when you query for facts against this dimensionless hypercube, you are asking for specifing archives. The function sec:facts-for-hypercube allows you to do so with its optional second parameter (the first being the hypercube).
 
 Let's count all those facts that are in a given archive (here 1423).
 
@@ -79,7 +79,7 @@ let $hypercube := sec:user-defined-hypercube({
 })
 return count(sec:facts-for-hypercube($hypercube))
 ```
-Instead of looking at a single archive, you can look across archives, for concepts likeus-gaap:Assetsandus-gaap:Equity. In order to do so, you need to modify the dimensionless hypercube add filter on these two concepts. There are over 70k such facts.
+Instead of looking at a single archive, you can look across archives, for concepts like `us-gaap:Assets` and `us-gaap:Equity` . In order to do so, you need to modify the dimensionless hypercube add filter on these two concepts. There are over 70k such facts.
 
 
 ```jsoniq
@@ -91,7 +91,7 @@ let $hypercube := sec:dimensionless-hypercube({
 })
 return count(sec:facts-for-hypercube($hypercube))
 ```
-You can also build your own hypercube. To restrict a dimension, just add a field (One ofConcepts,Entities,Periods,Units) with an array of values. Below we show you how to make a restriction on DOW30 companies with just a small modification of the dimensionless hypercube function call.
+You can also build your own hypercube. To restrict a dimension, just add a field (One of `Concepts` , `Entities` , `Periods` , `Units` ) with an array of values. Below we show you how to make a restriction on DOW30 companies with just a small modification of the dimensionless hypercube function call.
 
 
 ```jsoniq
@@ -106,7 +106,7 @@ let $hypercube := sec:dimensionless-hypercube({
 })
 return count(sec:facts-for-hypercube($hypercube))
 ```
-If you begin to query across archives, and attempt to filter on periods, you will very soon notice that it is hard, because fiscal years differ from company to company. Technically, fiscal years and periods (FY, Q1, Q2, Q3) are not hypercube dimensions, but you can still filter for them using this Profiles.SEC.Fiscal part that annotates objects using the second parameter ofsec:facts-for-hypercube. For example, here is how to get all assets and equities (no extra dimensions) for FY 2012 (6847 of them)
+If you begin to query across archives, and attempt to filter on periods, you will very soon notice that it is hard, because fiscal years differ from company to company. Technically, fiscal years and periods (FY, Q1, Q2, Q3) are not hypercube dimensions, but you can still filter for them using this Profiles.SEC.Fiscal part that annotates objects using the second parameter of `sec:facts-for-hypercube` . For example, here is how to get all assets and equities (no extra dimensions) for FY 2012 (6847 of them)
 
 
 ```jsoniq
@@ -129,7 +129,7 @@ let $hypercube := sec:user-defined-hypercube({
 )
 return count(sec:facts-for-hypercube($hypercube))
 ```
-What was done for the basic four dimensions (like xbrl:Equity) applies to extra dimensions as well. There is a more elaborate version ofhypercubes:dimensionless-hypercubecalledhypercubes:user-defined-hypercubethat allows you to add any number of dimensions, as well as restrict on them or add default values. Here you can ask for facts reported against theus-gaap:DividendsCommonStockconcept, with a dimensionus-gaap:StatementEquityComponentsAxisrestricted on a value ofus-gaap:CommonStockMember. There are 513 of them.
+What was done for the basic four dimensions (like xbrl:Equity) applies to extra dimensions as well. There is a more elaborate version of `hypercubes:dimensionless-hypercube` called `hypercubes:user-defined-hypercube` that allows you to add any number of dimensions, as well as restrict on them or add default values. Here you can ask for facts reported against the `us-gaap:DividendsCommonStock` concept, with a dimension `us-gaap:StatementEquityComponentsAxis` restricted on a value of `us-gaap:CommonStockMember` . There are 513 of them.
 
 
 ```jsoniq
@@ -146,7 +146,7 @@ let $hypercube := sec:user-defined-hypercube({
 })
 return count(sec:facts-for-hypercube($hypercube))
 ```
-Finally, you can combine extra dimensions, restricting several dimensions, filtering on fiscal years, etc. Let's ask for the companies that submitted, for FY 2011, a fact against theus-gaap:DividendsCommonStockconcept, with a dimensionus-gaap:StatementEquityComponentsAxisthat has a value ofus-gaap:CommonStockMember. There's only one and it's Walt Disney. And it takes less than one second to ask for this.
+Finally, you can combine extra dimensions, restricting several dimensions, filtering on fiscal years, etc. Let's ask for the companies that submitted, for FY 2011, a fact against the `us-gaap:DividendsCommonStock` concept, with a dimension `us-gaap:StatementEquityComponentsAxis` that has a value of `us-gaap:CommonStockMember` . There's only one and it's Walt Disney. And it takes less than one second to ask for this.
 
 
 ```jsoniq
