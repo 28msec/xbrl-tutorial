@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="28msec/xbrl-tutorial" data-level="5" data-basepath=".." data-revision="1404547779982">
+    <div class="book" data-github="28msec/xbrl-tutorial" data-level="5" data-basepath=".." data-revision="1404580988447">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -277,7 +277,7 @@
 <h2 id="looking-up-a-fact-table-for-an-sec-network">Looking up a fact table for an SEC network</h2>
 <p>As we said earlier, facts are not alone: in the wild, they live in tables. Let us get back to the balance sheet of Coca Cola for FY 2012, and ask for the fact table.</p>
 <p> Example - The fact table for a balance sheet by Coca Cola</p>
-<pre><code class="lang-xquery">import module namespace fiscal =
+<pre><code class="lang-jsoniq">import module namespace fiscal =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/fiscal/core&quot;;
 import module namespace sec-networks =
     &quot;http://xbrl.io/modules/bizql/profiles/sec/networks&quot;;
@@ -297,7 +297,7 @@ return sec-networks:facts($network)
 </code></pre>
 <p>Below is an example of fact.</p>
 <p> Example - The fact object format</p>
-<pre><code class="lang-xquery">{
+<pre><code class="lang-jsoniq">{
   &quot;Archive&quot; : &quot;0000021344-13-000007&quot;, 
   &quot;_id&quot; : &quot;68a552aa-ff68-4fb0-be34-c4507b1fbc00&quot;, 
   &quot;IsInDefaultHypercube&quot; : true, 
@@ -341,7 +341,7 @@ edDomain&quot;
 <h2 id="the-secxbrl-info-rest-api-for-fact-tables">The SECXBRL.info REST API for fact tables</h2>
 <p>We also provide a REST API that allows you to look up fact tables and, say, import them into an Excel spreadsheet. The API is documentedhere</p>
 <h3 id="retrieve-the-fact-table-associated-with-a-network">Retrieve the fact table associated with a network</h3>
-<p>You can retrieve the fact table of a components using thecidparameter.</p>
+<p>You can retrieve the fact table of a components using the <code>cid</code> parameter.</p>
 <p> <a href="http://secxbrl.xbrl.io/api/facttable-for-component.jq?cid=66887390-ee56-44a7-a897-62eefe944476" target="_blank">http://secxbrl.xbrl.io/api/facttable-for-component.jq?cid=66887390-ee56-44a7-a897-62eefe944476</a></p>
 <p>You can also use the parameters from the components API: For example, the fact table for Coca Cola&#39;s balance sheet for FY 2012 can be retrieved with</p>
 <p> <a href="http://secxbrl.xbrl.io/api/facttable-for-component.jq?" target="_blank">http://secxbrl.xbrl.io/api/facttable-for-component.jq?</a> <a href="_method=POST&amp;format=xml&amp;cik=21344&amp;fiscalYear=2012">_method=POST&amp;format=xml&amp;cik=21344&amp;fiscalYear=2012</a> <a href="&amp;fiscalPeriod=FY&amp;disclosure=BalanceSheet">&amp;fiscalPeriod=FY&amp;disclosure=BalanceSheet</a></p>
