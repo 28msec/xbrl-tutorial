@@ -46,7 +46,7 @@
 
 
         
-    <div class="book" data-github="28msec/xbrl-tutorial" data-level="4" data-basepath=".." data-revision="1404580988447">
+    <div class="book" data-github="28msec/xbrl-tutorial" data-level="4" data-basepath=".." data-revision="1404747905810">
     <div class="book-header">
     <!-- Actions Left -->
     <a href="#" class="btn pull-left toggle-summary" aria-label="Toggle summary"><i class="fa fa-align-justify"></i></a>
@@ -368,9 +368,30 @@ return sec-networks:model-structures($balance-sheet)
 }
 </code></pre>
 <p>Here is a list of all reports elements (which form the model structure) used by SEC:</p>
-<h2 id="report-elements">Report elements</h2>
-<p>Report ElementWhat it isTableThis is a &quot;container&quot; for all facts in this component. While it is called table, <em>hypercube</em> would be a more precise terminology because it can have much more than two dimensions.LineItemsThis is the top-level element for the &quot;rows&quot; of the table.AbstractThese are virtual rows, i.e., no facts are reported against them. They help organize concepts.ConceptThese are rows against which facts get reported.AxisSeveral facts can be reported for the same concept, but in different contexts. Axes help organize this. For example, an axis can be used to delimit a region of the world to which the fact applies.MemberA member is an axis value. Members can be organized in hierarchies as well (which is easy to understand if you think of regions of the world for example).##The SECXBRL.info REST API for networks
-We also provide a REST API that allows you to look up networks and, say, import them into an Excel spreadsheet. The API is documentedhere</p>
+<table>
+<thead>
+<tr>
+<th>Report Element</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Table</td>
+<td>This is a &quot;container&quot; for all facts in this component. While it is called table, hypercube would be a more precise terminology because</td>
+</tr>
+</tbody>
+</table>
+<p>it can have much more than two dimensions.
+LineItems | This is the top-level element for the &quot;rows&quot; of the table.
+Abstract | These are virtual rows, i.e., no facts are reported against them. They help organize concepts.
+Concept | These are rows against which facts get reported.
+Axis | Several facts can be reported for the same concept, but in different contexts. Axes help organize this. For example, an axis
+can be used to delimit a region of the world to which the fact applies.
+Member | A member is an axis value. Members can be organized in hierarchies as well (which is easy to understand if you think of regions of the world
+for example).</p>
+<h2 id="the-secxbrl-info-rest-api-for-networks">The SECXBRL.info REST API for networks</h2>
+<p>We also provide a REST API that allows you to look up networks and, say, import them into an Excel spreadsheet. The API is documentedhere</p>
 <h3 id="retrieve-a-network">Retrieve a network</h3>
 <p>You can retrieve the networks (components) in a filing using the <code>aid</code> parameter, like so:</p>
 <p> <a href="http://secxbrl.xbrl.io/api/components.jq?aid=0000021344-13-000017" target="_blank">http://secxbrl.xbrl.io/api/components.jq?aid=0000021344-13-000017</a></p>
