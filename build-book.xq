@@ -60,6 +60,11 @@ declare function local:docbook-to-markdown($element as node(), $level as xs:inte
    case element(para) return string-join(for $child in $element/node() return local:docbook-to-markdown($child, $level), "") || "
 
 "
+   case element(table) return string-join($element/tgroup/thead//entry/string(), " | ") || "
+"  || string-join((1 to count($element/tgroup/thead//entry)) ! "---", " | ") || "
+" || string-join(for $row in $element/tgroup/tbody/row return string-join($row//entry/string(), " | "), "
+") || "
+"
    default return string-join(for $child in $element/node() return local:docbook-to-markdown($child, $level), "")
 };
 

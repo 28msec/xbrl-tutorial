@@ -149,8 +149,13 @@ import module namespace entities =
 distinct-values(entities:entities().Profiles.SEC.Tags[])```
 Having done so, you will discover that the following indices are available.
 
-##Available indices
-IndexTagS&P 500SP500Dow 30DOW30Fortune 100FORTUNE100Providence Journal's Impact 50PJI##The SECXBRL.info REST API for companies
+Index | Tag
+--- | ---
+S&P 500 | SP500
+Dow 30 | DOW30
+Fortune 100 | FORTUNE100
+Providence Journal's Impact 50 | PJI
+##The SECXBRL.info REST API for companies
 For people without developer background, we provide a REST API that allows you to look up companies and, say, import them into an Excel spreadsheet. The API is documentedhere
 
 ###Retrieve a company

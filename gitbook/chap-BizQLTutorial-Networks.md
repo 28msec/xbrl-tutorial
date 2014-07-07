@@ -131,8 +131,18 @@ A model structure is just a hierarchy of so-called *SEC report elements* of diff
 
 Here is a list of all reports elements (which form the model structure) used by SEC:
 
-##Report elements
-Report ElementWhat it isTableThis is a "container" for all facts in this component. While it is called table, *hypercube* would be a more precise terminology because it can have much more than two dimensions.LineItemsThis is the top-level element for the "rows" of the table.AbstractThese are virtual rows, i.e., no facts are reported against them. They help organize concepts.ConceptThese are rows against which facts get reported.AxisSeveral facts can be reported for the same concept, but in different contexts. Axes help organize this. For example, an axis can be used to delimit a region of the world to which the fact applies.MemberA member is an axis value. Members can be organized in hierarchies as well (which is easy to understand if you think of regions of the world for example).##The SECXBRL.info REST API for networks
+Report Element | What it is
+--- | ---
+Table | This is a "container" for all facts in this component. While it is called table, hypercube would be a more precise terminology because
+it can have much more than two dimensions.
+LineItems | This is the top-level element for the "rows" of the table.
+Abstract | These are virtual rows, i.e., no facts are reported against them. They help organize concepts.
+Concept | These are rows against which facts get reported.
+Axis | Several facts can be reported for the same concept, but in different contexts. Axes help organize this. For example, an axis
+can be used to delimit a region of the world to which the fact applies.
+Member | A member is an axis value. Members can be organized in hierarchies as well (which is easy to understand if you think of regions of the world
+for example).
+##The SECXBRL.info REST API for networks
 We also provide a REST API that allows you to look up networks and, say, import them into an Excel spreadsheet. The API is documentedhere
 
 ###Retrieve a network
