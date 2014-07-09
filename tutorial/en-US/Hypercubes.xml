@@ -68,7 +68,7 @@
     <para>The facts in a hypercube can be queried with the function <code>sec:facts-for-hypercube</code>.
     There is a very high number of facts in this hypercube: all those without extra dimensions.
     Hundreds of thousands of them. Very often, when you query for facts against this dimensionless
-    hypercube, you are asking for specifing archives. The archive is just a dimension like others, so
+    hypercube, you are asking for specific archives. The archive is just a dimension like others, so
     you can build a user-defined hypercube with a filter on this dimension.</para>
     <para>Let's count all those facts that are in a given archive (here 1423).</para>
     <example>
