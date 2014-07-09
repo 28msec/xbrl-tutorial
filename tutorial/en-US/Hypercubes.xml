@@ -68,8 +68,8 @@
     <para>The facts in a hypercube can be queried with the function <code>sec:facts-for-hypercube</code>.
     There is a very high number of facts in this hypercube: all those without extra dimensions.
     Hundreds of thousands of them. Very often, when you query for facts against this dimensionless
-    hypercube, you are asking for specifing archives. The function sec:facts-for-hypercube allows you to do so with
-    its optional second parameter (the first being the hypercube).</para>
+    hypercube, you are asking for specific archives. The archive is just a dimension like others, so
+    you can build a user-defined hypercube with a filter on this dimension.</para>
     <para>Let's count all those facts that are in a given archive (here 1423).</para>
     <example>
       <title>Retrieving the facts in the dimensionless hypercube for some filings</title>
@@ -78,12 +78,15 @@
                                 parse="text"/></programlisting>
     </example>
     <para>Instead of looking at a single archive, you can look across archives, for concepts like <code>us-gaap:Assets</code> and <code>us-gaap:Equity</code>.
-      In order to do so, you need to modify the dimensionless hypercube add filter on these two concepts.
+      In order to do so, you need to modify the dimensionless hypercube and add a filter on these two concepts (you
+      could also use a user-defined hypercube, but if all you do is filter on concepts/entities/periods/units, then
+      the dimensionless hypercube is sufficient and simpler to use).
       There are over 70k such facts.</para>
     <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
                                 href="../../queries/public/hypercubes/dimensionless-with-concepts.jq"
                                 parse="text"/></programlisting>
-    <para>You can also build your own hypercube. To restrict a dimension, just add
+    <para>You can also build your own hypercube.
+      To restrict a dimension, just add
       a field (One of <code>Concepts</code>, <code>Entities</code>, <code>Periods</code>, <code>Units</code>) with an array of values.
       Below we show you how to make a restriction on DOW30 companies with just a small modification
       of the dimensionless hypercube function call.</para>
@@ -91,9 +94,8 @@
                                 href="../../queries/public/hypercubes/dimensionless-with-concepts-and-entities.jq"
                                 parse="text"/></programlisting>
     <para>If you begin to query across archives, and attempt to filter on periods, you will very soon notice
-      that it is hard, because fiscal years differ from company to company. Technically, fiscal years and
-      periods (FY, Q1, Q2, Q3) are not hypercube dimensions, but you can still filter for them using this
-      Profiles.SEC.Fiscal part that annotates objects using the second parameter of <code>sec:facts-for-hypercube</code>.
+      that it is hard, because fiscal years differ from company to company. The good news is that fiscal years and
+      periods (FY, Q1, Q2, Q3) are now hypercube dimensions. You can filter on them just like we did on archives.
       For example, here is how to get all assets and equities (no extra dimensions) for FY 2012 (6847 of them)</para>
     <programlisting><xi:include xmlns:xi="http://www.w3.org/2001/XInclude"
                                 href="../../queries/public/hypercubes/dimensionless-with-fiscal-year.jq"
