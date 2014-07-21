@@ -33,12 +33,6 @@ module.exports = function (grunt) {
             },
             dist: {}
         },
-        branch_run: {
-            options: {
-                master: ['gh-pages']
-            },
-            dist: {}
-        },
         shell: {
             zorba: {
                 options: {
@@ -48,5 +42,12 @@ module.exports = function (grunt) {
             }
         }
     });
-    grunt.registerTask('default', ['xqlint', 'shell', 'gitbook', 'branch_run']);
+    
+    grunt.registerTask('deploy', function() {
+        if(process.env.TRAVIS_BRANCH === 'master' && process.env.TRAVIS_PULL_REQUEST === 'false') {
+            grunt.task.run(['gh-pages']);
+        }
+    });
+ 
+    grunt.registerTask('default', ['xqlint', 'shell', 'gitbook', 'deploy']);
 };
