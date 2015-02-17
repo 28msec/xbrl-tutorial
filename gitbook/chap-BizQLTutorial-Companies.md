@@ -1,4 +1,4 @@
-#Companies
+#Entities
 Companies submit fiscal filings (which are archives) to the FSA.
 
 In the XBRL world, companies correspond to reporting *entities*.
