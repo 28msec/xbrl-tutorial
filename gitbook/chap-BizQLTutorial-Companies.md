@@ -11,8 +11,6 @@ The rest of this section is showing developers how to use the entities interface
 Let us begin with a very simple query that just retrieves a company, say, Canon. Canon's ticker is 7751.
 
 
- Example - Canon
-
 ```REST
 http://edinet.28.io/v1/_queries/public/api/entities.jq?ticker=7751
 ```
