@@ -53,7 +53,7 @@ You can identify a company with its EDINET code like so:
 http://edinet.28.io/v1/_queries/public/api/entities.jq?edinetcode=E02274
 ```
 
-Also, companies all have some EIDs that are used by regulatory authorities. These EIDs are used to associate each fact to the entity that this fact applies to.
+Also, companies all have some EIDs that are used by regulatory authorities. These EIDs are used to associate each fact to the entity that this fact applies to. An entity may have several EIDs. For example, Japanese taxonomies have an EID against the TDNET repository, as well as an EID for the former generations of EDINET taxonomies, and an EID for the next-generation EDINET taxonomy.
 
 An EID is always made of an URI scheme followed by an identifier. For example, this is the TDNET EID of Canon:
 
