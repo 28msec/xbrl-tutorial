@@ -1,7 +1,7 @@
 #Entities
 Companies submit fiscal filings (which are archives) to the FSA.
 
-In the XBRL world, companies correspond to reporting *entities*.
+In the XBRL world, companies correspond to reporting *entities*. The entities endpoint provides metadata about the entities against which data has been stored in the cell store.
 
 ##Looking Up A Company
 Let us begin with a very simple query that just retrieves a company, say, Canon. Canon's ticker is 7751.
