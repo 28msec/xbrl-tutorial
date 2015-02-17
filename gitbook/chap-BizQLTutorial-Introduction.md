@@ -22,12 +22,12 @@ JSONiq is the language used by 28msec's Virtual Database platform, 28.io. It is 
 Business users do not need to learn anything about JSONiq (except, maybe, that it is a totally awesome language and that we love it) or REST (which is cool as well).
 
 ##Available repositories
-We provide various repositories containing data from reporting authorities (SEC for various subsets of fiscal reports filed by American companies, FSA in Japan, Chile, ...). This tutorial will be based on SEC data, however the ideas are the same for any other kind of data. If you are interesting in setting up a repository with any other kind of data, do not hesitate and contact us. We are here for you at hello@28.io and would love to help.
+We provide various repositories containing data from reporting authorities (SEC for various subsets of fiscal reports filed by American companies, FSA in Japan, Chile, ...). This tutorial will be based on Japan data, however the ideas are the same for any other kind of data. If you are interesting in setting up a repository with any other kind of data, do not hesitate and contact us. We are here for you at hello@28.io and would love to help.
 
 ##How to run the queries
 All queries shown in this tutorial can be run directly on our platform. You are encouraged to register and get your own token. Private usage is free and we only bill for commercial use.
 
-##Organization of the tutorial
+##High level summary
 XBRL is about submitting *facts* . Facts are reported by companies
 
 In real life though, facts are not reported one by one, but are submitted to an authority like the SEC in *archives* . A bit like you don't buy pop corn one chunk at a time, but in a pop corn package. You can think of an archive as an Excel file.
@@ -38,3 +38,6 @@ An archive is made of facts, but also contains metainformation on these facts. T
 2. *Components*. They organize the report elements in a meaningful way. With components, it is possibly to know exactly what cells are relevant to the filing and how they are grouped. For example, a balance sheet can be a component, and an income statement another component. You can think of each component in a filing as an Excel sheet.
 3. User-friendly *labels* for the report elements, to be able to display the data beautifully to business users and in the language they want.
 4. *Formulas*, that can be used to either validate the reported facts (example: the assets match the equities and liabilities) or to compute new, non reported facts. Formulas are like Excel formulas.
+
+##Organization of the tutorial
+This tutorial will initiate you, in this order, to entities (companies), archives, components, fact tables, report elements, spreadsheets and labels.
