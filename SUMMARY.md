@@ -1,4 +1,8 @@
-#Querying XBRL reports submitted to the SEC
+#An Introduction To Cell Stores
+
+Dr. Ghislain Fourny, 28msec Inc.
+
+This tutorial will help you get started using cell stores including the REST API.
 
 * [Introduction](gitbook/chap-BizQLTutorial-Introduction.md)
 * [Companies](gitbook/chap-BizQLTutorial-Companies.md)
