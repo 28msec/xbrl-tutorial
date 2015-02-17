@@ -1,7 +1,7 @@
 #Companies
-Companies submit filings to the SEC via the Edgar system.
+Companies submit fiscal filings (which are archives) to the FSA.
 
-In the XBRL world, companies correspond to reporting *entities.*
+In the XBRL world, companies correspond to reporting *entities*.
 
 ##Looking Up A Company
 Let us begin with a very simple query that just retrieves a company, say, Canon. Canon's ticker is 7751.
