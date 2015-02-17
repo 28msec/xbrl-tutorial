@@ -1,7 +1,11 @@
 #Entities
 Companies submit fiscal filings (which are archives) to the FSA.
 
-In the XBRL world, companies correspond to reporting *entities*. The entities endpoint provides metadata about the entities against which data has been stored in the cell store.
+In the XBRL world, companies correspond to reporting *entities*. The entities interface provides metadata, such as name, ticker, etc, about the entities against which data has been stored in the cell store.
+
+Entities can be identified by ticker, by EDINET code, by stock index or by a regulation authority specific Entity ID.
+
+The rest of this section is showing developers how to use the entities interface to retrieve entity in a format understandable ty computers. If you are not a developer, you can stop reading now and jump to the next section.
 
 ##Looking Up A Company
 Let us begin with a very simple query that just retrieves a company, say, Canon. Canon's ticker is 7751.
@@ -54,6 +58,12 @@ Also, companies all have some EIDs that are used by regulatory authorities. Thes
 An EID is always made of an URI scheme followed by an identifier. For example, this is the TDNET EID of Canon:
 
     http://www.tse.or.jp/sicc 77510
+
+Although it is less common and not very practical, you can use the eid parameter to retrieve an entity with its EID. You will need to URL-encode the space with %20, as well as any other special characters that might be in here.
+
+```REST
+http://edinet.28.io/v1/_queries/public/api/entities.jq?eid=http://www.tse.or.jp/sicc%2077510
+```
 
 ##Getting companies by stock index
 
