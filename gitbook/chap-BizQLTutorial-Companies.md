@@ -25,7 +25,7 @@ The entities that have been requested (in this case just one) are in the Entitie
       "Entities" : [ ... ]
     }
 
-#Output formats
+##Output formats
 
 The data can also be obtained in other formats, such as XML, HTML and CSV.
 
@@ -41,7 +41,7 @@ http://edinet.28.io/v1/_queries/public/api/entities.jq?ticker=7751&format=csv
 http://edinet.28.io/v1/_queries/public/api/entities.jq?ticker=7751&format=html
 ```
 
-#Other ways of identifying a company
+##Other ways of identifying a company
 
 You can identify a company with its EDINET code like so:
 
@@ -49,7 +49,7 @@ You can identify a company with its EDINET code like so:
 http://edinet.28.io/v1/_queries/public/api/entities.jq?edinetcode=E02274
 ```
 
-#Getting companies by stock index
+##Getting companies by stock index
 
 You can retrieve all companies in an index with a single call. Here is an example with the NIKKEI:
 
@@ -57,7 +57,7 @@ You can retrieve all companies in an index with a single call. Here is an exampl
 http://edinet.28.io/v1/_queries/public/api/entities.jq?tag=NIKKEI
 ```
 
-#Mixing parameters
+##Mixing parameters
 
 If you use multiple parameters, it will accumulate the companies as you add more parameters:
 
