@@ -49,6 +49,12 @@ You can identify a company with its EDINET code like so:
 http://edinet.28.io/v1/_queries/public/api/entities.jq?edinetcode=E02274
 ```
 
+Also, companies all have some EIDs that are used by regulatory authorities. These EIDs are used to associate each fact to the entity that this fact applies to.
+
+An EID is always made of an URI scheme followed by an identifier. For example, this is the TDNET EID of Canon:
+
+    http://www.tse.or.jp/sicc 77510
+
 ##Getting companies by stock index
 
 You can retrieve all companies in an index with a single call. Here is an example with the NIKKEI:
