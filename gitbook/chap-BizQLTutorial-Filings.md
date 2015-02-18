@@ -8,7 +8,7 @@ The archives interface provides metadata about the archives that are present in 
 
 Archives can be identified with an Archive ID specific to the regulation authority. For example, SEC Archive IDs are called Accession Numbers.
 
-##Looking Up Archives Belong To A Given Entity
+##Looking Up Archives Belonging To A Given Entity
 
 Let us begin with a very simple query that just lists the archives submitted by an entity, like Canon. The way
  the entity or the entities are identified is identical to the [entities endpoint](gitbook/chap-BizQLTutorial-Companies.md).
