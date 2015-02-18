@@ -8,6 +8,8 @@ The archives interface provides metadata about the archives that are present in 
 
 Archives can be identified with an Archive ID specific to the regulation authority. For example, SEC Archive IDs are called Accession Numbers.
 
+The rest of this section is showing developers how to use the archives interface to retrieve archive metadata in a format understandable ty computers. If you are not a developer, you can stop reading now and jump to the next section.
+
 ##Looking Up Archives Belonging To A Given Entity
 
 Let us begin with a very simple query that just lists the archives submitted by an entity, like Canon. The way
