@@ -48,3 +48,15 @@ elements, spreadsheets and labels.
 For pedagogical reasons, links are only shown with the relevant parameters. When you create your own links, however, you need to add a token parameter. On this sample DB, the token is publicly available and is 54eb0587-1aee-44a5-bb56-627f6ef43da6.
 
 Also, the HTTP requests need to to sent as POST (although they will very soon be available as GET as well). For convenience, you can add &_method=POST if you are testing the links in your favorite browser. If you are using curl, add -X POST, etc.
+
+So, when you see in this tutorial:
+
+```REST
+http://edinet.28.io/v1/_queries/public/api/entities.jq?ticker=7751
+```
+
+You actually need to understand it as being really:
+
+```REST
+http://edinet.28.io/v1/_queries/public/api/entities.jq?ticker=7751&token=54eb0587-1aee-44a5-bb56-627f6ef43da6&_method=POST
+```
