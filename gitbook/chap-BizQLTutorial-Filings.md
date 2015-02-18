@@ -61,7 +61,7 @@ You could also look for the Q1 filings filed for 2012:
 http://edinet.28.io/v1/_queries/public/api/filings.jq?tag=NIKKEI&format=html&fiscalYear=2012&fiscalPeriod=Q1
 ```
 
-The available fiscal periods are Q1, Q2, Q3, Q4 and FY. Fiscal years are integers (2012, 2013, ...). ALL can be used as a joker for both parameters.
+The available fiscal periods are Q1, Q2, Q3, Q4 and FY. Fiscal years are integers (2012, 2013, ...). ALL can be used as a joker for one or both parameters.
 
 Finally, you can filter by the kind of filings (TDNET, EDINET, quarterly-securities-report, etc). This is the one that appears in the FilingKinds field of the output.
 
