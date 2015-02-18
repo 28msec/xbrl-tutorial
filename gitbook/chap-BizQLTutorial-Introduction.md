@@ -41,4 +41,10 @@ An archive is made of facts, but also contains metainformation on these facts. T
 4. *Formulas*, that can be used to either validate the reported facts (example: the assets match the equities and liabilities) or to compute new, non reported facts. Formulas are like Excel formulas.
 
 ##Organization of the tutorial
-This tutorial will initiate you, in this order, to entities (companies), archives, components, fact tables, report elements, spreadsheets and labels.
+This tutorial will initiate you, in this order, to entities (companies), archives, components, fact tables, report 
+elements, spreadsheets and labels.
+
+##About the sample REST links (for developers)
+For pedagogical reasons, links are only shown with the relevant parameters. When you create your own links, however, you need to add a token parameter. On this sample DB, the token is publicly available and is 54eb0587-1aee-44a5-bb56-627f6ef43da6.
+
+Also, the HTTP requests need to to sent as POST (although they will very soon be available as GET as well). For convenience, you can add &_method=POST if you are testing the links in your favorite browser. If you are using curl, add -X POST, etc.
