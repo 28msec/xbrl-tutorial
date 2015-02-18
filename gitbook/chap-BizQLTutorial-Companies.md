@@ -5,7 +5,7 @@ In the XBRL world, companies correspond to reporting *entities*. The entities in
 
 Entities can be identified by ticker, by EDINET code, by stock index or by a regulation authority specific Entity ID.
 
-The rest of this section is showing developers how to use the entities interface to retrieve entity in a format understandable ty computers. If you are not a developer, you can stop reading now and jump to the next section.
+The rest of this section is showing developers how to use the entities interface to retrieve entity metadata in a format understandable ty computers. If you are not a developer, you can stop reading now and jump to the next section.
 
 ##Looking Up A Company
 Let us begin with a very simple query that just retrieves a company, say, Canon. Canon's ticker is 7751.
